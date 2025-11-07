@@ -171,10 +171,28 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    overscroll-behavior-y: none;
+  }
   body {
     @apply bg-background text-foreground;
     /* OpenSauceOne font - usar Inter como alternativa hasta que se agreguen archivos de fuente */
-    font-family: var(--font-sans, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif);
+    font-family: var(
+      --font-sans,
+      "Inter",
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      "Roboto",
+      "Oxygen",
+      "Ubuntu",
+      "Cantarell",
+      "Fira Sans",
+      "Droid Sans",
+      "Helvetica Neue",
+      sans-serif
+    );
+    overscroll-behavior-y: none;
   }
 }
 
@@ -197,7 +215,7 @@ h6 {
 
 a {
   text-decoration: none;
-  color: inherit;
+  /* Removido color: inherit para permitir estilos inline de los componentes */
 }
 
 button {

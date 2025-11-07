@@ -1,56 +1,66 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { useEffect, useState } from "react"
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
 
 export default function Header() {
-  const pathname = usePathname()
-  const [isOnWhiteBackground, setIsOnWhiteBackground] = useState(false)
-  const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname();
+  const [isOnWhiteBackground, setIsOnWhiteBackground] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navItems = [
     { label: "Inicio", href: "/" },
     { label: "Productos", href: "/productos" },
     { label: "Información", href: "/informacion" },
     { label: "Acerca", href: "/acerca" },
-  ]
+  ];
 
   // Detectar si estamos en una página con fondo blanco (no home)
   useEffect(() => {
-    setIsOnWhiteBackground(pathname !== "/")
-  }, [pathname])
+    setIsOnWhiteBackground(pathname !== "/");
+  }, [pathname]);
 
   // Detectar scroll en home para cambiar estilos
   useEffect(() => {
-    if (pathname !== "/") return
+    if (pathname !== "/") return;
 
     const handleScroll = () => {
-      const scrollY = window.scrollY
+      const scrollY = window.scrollY;
       // Cambiar a fondo blanco después de pasar el hero (aproximadamente 100vh)
-      setIsScrolled(scrollY > window.innerHeight * 0.8)
-    }
+      setIsScrolled(scrollY > window.innerHeight * 0.8);
+    };
 
-    window.addEventListener("scroll", handleScroll)
-    handleScroll() // Check initial state
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check initial state
 
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [pathname])
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [pathname]);
 
-  const shouldUseWhiteBackground = isOnWhiteBackground || isScrolled
+  const shouldUseWhiteBackground = isOnWhiteBackground || isScrolled;
 
   // Función para scroll smooth al top cuando ya estás en home
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (pathname === "/" && window.scrollY > 0) {
-      e.preventDefault()
-      window.scrollTo({ top: 0, behavior: "smooth" })
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
-  }
+  };
 
   return (
-    <header className={`header ${shouldUseWhiteBackground ? "header-white" : ""}`}>
+    <header
+      className={`header ${shouldUseWhiteBackground ? "header-white" : ""}`}
+      data-theme={shouldUseWhiteBackground ? "dark" : "light"}
+    >
       <div className="header-container">
-        <Link href="/" className="logo" onClick={handleHomeClick}>
+        <Link
+          href="/"
+          className="logo"
+          onClick={handleHomeClick}
+          style={{
+            color: shouldUseWhiteBackground ? "#1a1a1a" : "#ffffff",
+          }}
+        >
           Agri Star
         </Link>
 
@@ -60,9 +70,14 @@ export default function Header() {
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`nav-link ${pathname === item.href ? "active" : ""}`}
+                  className={`nav-link ${
+                    pathname === item.href ? "active" : ""
+                  }`}
                   aria-current={pathname === item.href ? "page" : undefined}
                   onClick={item.href === "/" ? handleHomeClick : undefined}
+                  style={{
+                    color: shouldUseWhiteBackground ? "#1a1a1a" : "#ffffff",
+                  }}
                 >
                   {item.label}
                 </Link>
@@ -71,15 +86,23 @@ export default function Header() {
           </ul>
         </nav>
 
-        <Link href="/contacto" className="header-cta">
+        <Link
+          href="/contacto"
+          className="header-cta"
+          style={{
+            color: shouldUseWhiteBackground ? "#1a1a1a" : "#ffffff",
+          }}
+        >
           Contactanos
         </Link>
       </div>
 
       <style jsx>{`
         .header {
-          position: sticky;
+          position: fixed;
           top: 0;
+          left: 0;
+          right: 0;
           z-index: 50;
           width: 100%;
           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -88,7 +111,6 @@ export default function Header() {
           transition: all 0.3s ease;
         }
 
-        /* Estilos cuando está sobre fondo blanco - traducidos de Tailwind */
         .header-white {
           background: rgba(255, 255, 255, 0.95);
           border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -100,24 +122,6 @@ export default function Header() {
           }
         }
 
-        .header-white .logo,
-        .header-white .nav-link {
-          color: var(--color-text);
-        }
-
-        .header-white .nav-link.active::after {
-          background: var(--color-text);
-        }
-
-        .header-white .header-cta {
-          background: var(--color-text);
-          color: var(--color-white);
-        }
-
-        .header-white .header-cta:hover {
-          background: rgba(26, 26, 26, 0.9);
-        }
-        
         .header-container {
           max-width: var(--container-max);
           margin: 0 auto;
@@ -127,75 +131,70 @@ export default function Header() {
           justify-content: space-between;
           gap: 2rem;
         }
-        
+
         .logo {
           font-size: 1.5rem;
           font-weight: 600;
-          color: var(--color-white);
-          transition: opacity 0.2s;
+          transition: color 0.3s ease, opacity 0.2s ease;
         }
-        
+
         .logo:hover {
           opacity: 0.8;
         }
-        
+
         .nav-list {
           display: flex;
           align-items: center;
           gap: 2rem;
           list-style: none;
         }
-        
+
         .nav-link {
-          color: var(--color-white);
           font-size: 0.9375rem;
           font-weight: 400;
-          transition: opacity 0.2s;
+          transition: color 0.3s ease, opacity 0.2s ease;
           position: relative;
         }
-        
+
         .nav-link:hover {
           opacity: 0.8;
         }
-        
+
         .nav-link.active {
           font-weight: 500;
         }
-        
+
         .nav-link.active::after {
-          content: '';
+          content: "";
           position: absolute;
           bottom: -0.5rem;
           left: 0;
           right: 0;
           height: 2px;
-          background: var(--color-white);
+          transition: background 0.3s ease;
         }
-        
+
+        .header[data-theme="light"] .nav-link.active::after {
+          background: #ffffff;
+        }
+
+        .header[data-theme="dark"] .nav-link.active::after {
+          background: #1a1a1a;
+        }
+
         .header-cta {
           padding: 0.625rem 1.5rem;
-          background: var(--color-white);
-          color: var(--color-text);
           border-radius: 0.5rem;
           font-size: 0.9375rem;
           font-weight: 500;
-          transition: all 0.2s;
-        }
-        
-        .header-cta:hover {
-          background: rgba(255, 255, 255, 0.9);
-          transform: translateY(-1px);
-        }
-        
-        .header-cta:focus-visible {
-          outline: 2px solid var(--color-white);
-          outline-offset: 2px;
+          transition: all 0.3s ease;
         }
 
-        .header-white .header-cta:focus-visible {
-          outline: 2px solid var(--color-text);
+        .header-cta:hover {
+          opacity: 0.9;
+          transform: translateY(-1px);
         }
-        
+
         @media (max-width: 768px) {
           .nav {
             display: none;
@@ -203,5 +202,5 @@ export default function Header() {
         }
       `}</style>
     </header>
-  )
+  );
 }
