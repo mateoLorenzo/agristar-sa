@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import { useRef, useState, useEffect } from "react"
-import Link from "next/link"
+import { useRef, useState, useEffect } from "react";
+import Link from "next/link";
 
 const categories = [
   {
@@ -34,95 +34,124 @@ const categories = [
     image: "/soil-fumigation-agriculture-treatment.jpg",
     date: "19 August 2025",
   },
-]
+];
 
 export default function CategoryCarousel() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null)
-  const [canScrollLeft, setCanScrollLeft] = useState(false)
-  const [canScrollRight, setCanScrollRight] = useState(true)
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
 
   const checkScroll = () => {
-    const container = scrollContainerRef.current
-    if (!container) return
+    const container = scrollContainerRef.current;
+    if (!container) return;
 
-    setCanScrollLeft(container.scrollLeft > 0)
-    setCanScrollRight(container.scrollLeft < container.scrollWidth - container.clientWidth - 10)
-  }
+    setCanScrollLeft(container.scrollLeft > 0);
+    setCanScrollRight(
+      container.scrollLeft < container.scrollWidth - container.clientWidth - 10
+    );
+  };
 
   useEffect(() => {
-    const container = scrollContainerRef.current
-    if (!container) return
+    const container = scrollContainerRef.current;
+    if (!container) return;
 
-    checkScroll()
-    container.addEventListener("scroll", checkScroll)
-    window.addEventListener("resize", checkScroll)
+    checkScroll();
+    container.addEventListener("scroll", checkScroll);
+    window.addEventListener("resize", checkScroll);
 
     return () => {
-      container.removeEventListener("scroll", checkScroll)
-      window.removeEventListener("resize", checkScroll)
-    }
-  }, [])
+      container.removeEventListener("scroll", checkScroll);
+      window.removeEventListener("resize", checkScroll);
+    };
+  }, []);
 
   const scroll = (direction: "left" | "right") => {
-    const container = scrollContainerRef.current
-    if (!container) return
+    const container = scrollContainerRef.current;
+    if (!container) return;
 
-    const scrollAmount = 340
-    const targetScroll = container.scrollLeft + (direction === "left" ? -scrollAmount : scrollAmount)
+    const scrollAmount = 340;
+    const targetScroll =
+      container.scrollLeft +
+      (direction === "left" ? -scrollAmount : scrollAmount);
 
     container.scrollTo({
       left: targetScroll,
       behavior: "smooth",
-    })
-  }
+    });
+  };
 
   return (
-    <section className="carousel-section">
-      <div className="carousel-container">
-        <div className="carousel-header">
-          <p className="carousel-label">Latest Info</p>
-          <h2 className="carousel-title">
+    <section className="py-24 bg-white">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
+        <div className="text-center mb-24">
+          <p className="text-sm font-medium text-gray-600 uppercase tracking-wider mb-4">
+            Latest Info
+          </p>
+          <h2 className="text-4xl lg:text-5xl font-semibold leading-tight text-[#1a1a1a] tracking-tight">
             Catch up on today's top updates and the
             <br />
             stories that matter most
           </h2>
         </div>
 
-        <div className="carousel-wrapper">
+        <div className="relative mb-12">
           <button
             onClick={() => scroll("left")}
             disabled={!canScrollLeft}
-            className="carousel-nav carousel-nav-left"
+            className="hidden md:flex absolute left-[-24px] top-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-gray-200 rounded-full items-center justify-center text-[#1a1a1a] transition-all z-[2] shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:bg-[#1a1a1a] hover:text-white hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-[#1a1a1a] disabled:hover:scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
             aria-label="Previous categories"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M15 18l-6-6 6-6" />
             </svg>
           </button>
 
-          <div ref={scrollContainerRef} className="carousel-track">
+          <div
+            ref={scrollContainerRef}
+            className="flex gap-6 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden py-4"
+          >
             {categories.map((category, index) => (
               <Link
                 key={index}
-                href={`/productos?cat=Agroquímicos&sub=${encodeURIComponent(category.name)}`}
-                className="category-card"
+                href={`/productos?cat=Agroquímicos&sub=${encodeURIComponent(
+                  category.name
+                )}`}
+                className="group flex-shrink-0 w-[280px] md:w-[320px] snap-start rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_16px_rgba(0,0,0,0.1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
               >
-                <div className="card-image-wrapper">
+                <div className="relative h-60 overflow-hidden">
                   <img
                     src={category.image || "/placeholder.svg"}
                     alt={`${category.name} category`}
-                    className="card-image"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
-                  <div className="card-overlay" />
-                  <p className="card-date">{category.date}</p>
-                  <div className="card-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-0% to-black/60" />
+                  <p className="absolute bottom-4 left-4 text-sm text-white z-[2]">
+                    {category.date}
+                  </p>
+                  <div className="absolute top-4 right-4 w-12 h-12 bg-black/60 rounded-full flex items-center justify-center text-white transition-colors group-hover:bg-black/80">
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
                       <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </div>
                 </div>
-                <div className="card-content">
-                  <h3 className="card-title">{category.name}</h3>
+                <div className="p-6 bg-[#1a1a1a] text-white">
+                  <h3 className="text-lg font-semibold text-white leading-snug">
+                    {category.name}
+                  </h3>
                 </div>
               </Link>
             ))}
@@ -131,250 +160,41 @@ export default function CategoryCarousel() {
           <button
             onClick={() => scroll("right")}
             disabled={!canScrollRight}
-            className="carousel-nav carousel-nav-right"
+            className="hidden md:flex absolute right-[-24px] top-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-gray-200 rounded-full items-center justify-center text-[#1a1a1a] transition-all z-[2] shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:bg-[#1a1a1a] hover:text-white hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-[#1a1a1a] disabled:hover:scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
             aria-label="Next categories"
           >
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M9 18l6-6-6-6" />
             </svg>
           </button>
         </div>
 
-        <div className="carousel-footer">
-          <Link href="/productos" className="show-all-link">
+        <div className="flex justify-center">
+          <Link
+            href="/productos"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-[#1a1a1a] text-white rounded-full text-[0.9375rem] font-medium transition-all hover:bg-black hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
+          >
             Show All
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
           </Link>
         </div>
       </div>
-
-      <style jsx>{`
-        .carousel-section {
-          padding: var(--spacing-3xl) 0;
-          background: var(--color-white);
-        }
-        
-        .carousel-container {
-          max-width: var(--container-max);
-          margin: 0 auto;
-          padding: 0 var(--container-padding);
-        }
-        
-        .carousel-header {
-          text-align: center;
-          margin-bottom: var(--spacing-3xl);
-        }
-        
-        .carousel-label {
-          font-size: 0.875rem;
-          font-weight: 500;
-          color: var(--color-text-light);
-          text-transform: uppercase;
-          letter-spacing: 0.05em;
-          margin-bottom: var(--spacing-sm);
-        }
-        
-        .carousel-title {
-          font-size: 2.5rem;
-          font-weight: 600;
-          line-height: 1.2;
-          color: var(--color-text);
-          letter-spacing: -0.02em;
-        }
-        
-        .carousel-wrapper {
-          position: relative;
-          margin-bottom: var(--spacing-xl);
-        }
-        
-        .carousel-track {
-          display: flex;
-          gap: 1.5rem;
-          overflow-x: auto;
-          scroll-snap-type: x mandatory;
-          scrollbar-width: none;
-          -ms-overflow-style: none;
-          padding: 1rem 0;
-        }
-        
-        .carousel-track::-webkit-scrollbar {
-          display: none;
-        }
-        
-        .category-card {
-          flex: 0 0 320px;
-          scroll-snap-align: start;
-          border-radius: var(--radius-lg);
-          overflow: hidden;
-          transition: transform 0.3s, box-shadow 0.3s;
-          cursor: pointer;
-        }
-        
-        .category-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
-        }
-        
-        .category-card:focus-visible {
-          outline: 2px solid var(--color-primary);
-          outline-offset: 2px;
-        }
-        
-        .card-image-wrapper {
-          position: relative;
-          height: 240px;
-          overflow: hidden;
-        }
-        
-        .card-image {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s;
-        }
-        
-        .category-card:hover .card-image {
-          transform: scale(1.05);
-        }
-        
-        .card-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(
-            to bottom,
-            rgba(0, 0, 0, 0) 0%,
-            rgba(0, 0, 0, 0.6) 100%
-          );
-        }
-
-        .card-date {
-          position: absolute;
-          bottom: 1rem;
-          left: 1rem;
-          font-size: 0.875rem;
-          color: var(--color-white);
-          z-index: 2;
-        }
-        
-        .card-icon {
-          position: absolute;
-          top: 1rem;
-          right: 1rem;
-          width: 48px;
-          height: 48px;
-          background: rgba(0, 0, 0, 0.6);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--color-white);
-          transition: background 0.3s;
-        }
-        
-        .category-card:hover .card-icon {
-          background: rgba(0, 0, 0, 0.8);
-        }
-        
-        .card-content {
-          padding: 1.5rem;
-          background: var(--color-text);
-          color: var(--color-white);
-        }
-        
-        .card-title {
-          font-size: 1.125rem;
-          font-weight: 600;
-          color: var(--color-white);
-          line-height: 1.4;
-        }
-        
-        .carousel-nav {
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-          width: 48px;
-          height: 48px;
-          background: var(--color-white);
-          border: 1px solid var(--color-border);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--color-text);
-          transition: all 0.2s;
-          z-index: 2;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        .carousel-nav:hover:not(:disabled) {
-          background: var(--color-text);
-          color: var(--color-white);
-          transform: translateY(-50%) scale(1.1);
-        }
-        
-        .carousel-nav:disabled {
-          opacity: 0.3;
-          cursor: not-allowed;
-        }
-        
-        .carousel-nav:focus-visible {
-          outline: 2px solid var(--color-primary);
-          outline-offset: 2px;
-        }
-        
-        .carousel-nav-left {
-          left: -24px;
-        }
-        
-        .carousel-nav-right {
-          right: -24px;
-        }
-        
-        .carousel-footer {
-          display: flex;
-          justify-content: center;
-        }
-        
-        .show-all-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.75rem 2rem;
-          background: var(--color-text);
-          color: var(--color-white);
-          border-radius: 2rem;
-          font-size: 0.9375rem;
-          font-weight: 500;
-          transition: all 0.2s;
-        }
-        
-        .show-all-link:hover {
-          background: #000000;
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .show-all-link:focus-visible {
-          outline: 2px solid var(--color-primary);
-          outline-offset: 2px;
-        }
-        
-        @media (max-width: 768px) {
-          .carousel-title {
-            font-size: 1.75rem;
-          }
-          
-          .carousel-nav {
-            display: none;
-          }
-          
-          .category-card {
-            flex: 0 0 280px;
-          }
-        }
-      `}</style>
     </section>
-  )
+  );
 }

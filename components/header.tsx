@@ -49,13 +49,17 @@ export default function Header() {
 
   return (
     <header
-      className={`header ${shouldUseWhiteBackground ? "header-white" : ""}`}
+      className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 backdrop-blur-xl ${
+        shouldUseWhiteBackground
+          ? "bg-white/60 border-b border-black/10 supports-[backdrop-filter]:bg-white/60"
+          : "bg-white/5 border-b border-white/10"
+      }`}
       data-theme={shouldUseWhiteBackground ? "dark" : "light"}
     >
-      <div className="header-container">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-4 flex items-center justify-between gap-8">
         <Link
           href="/"
-          className="logo"
+          className="text-2xl font-semibold transition-all duration-300 hover:opacity-80"
           onClick={handleHomeClick}
           style={{
             color: shouldUseWhiteBackground ? "#1a1a1a" : "#ffffff",
@@ -64,14 +68,16 @@ export default function Header() {
           Agri Star
         </Link>
 
-        <nav className="nav" aria-label="Main navigation">
-          <ul className="nav-list">
+        <nav className="hidden md:block" aria-label="Main navigation">
+          <ul className="flex items-center gap-8 list-none">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className={`nav-link ${
-                    pathname === item.href ? "active" : ""
+                  className={`relative text-[0.9375rem] transition-all duration-300 hover:opacity-80 ${
+                    pathname === item.href
+                      ? "font-medium after:content-[''] after:absolute after:bottom-[-0.5rem] after:left-0 after:right-0 after:h-0.5 after:transition-colors after:duration-300"
+                      : "font-normal"
                   }`}
                   aria-current={pathname === item.href ? "page" : undefined}
                   onClick={item.href === "/" ? handleHomeClick : undefined}
@@ -80,6 +86,16 @@ export default function Header() {
                   }}
                 >
                   {item.label}
+                  {pathname === item.href && (
+                    <span
+                      className="absolute bottom-[-0.5rem] left-0 right-0 h-0.5 transition-colors duration-300"
+                      style={{
+                        background: shouldUseWhiteBackground
+                          ? "#1a1a1a"
+                          : "#ffffff",
+                      }}
+                    />
+                  )}
                 </Link>
               </li>
             ))}
@@ -88,7 +104,7 @@ export default function Header() {
 
         <Link
           href="/contacto"
-          className="header-cta"
+          className="px-6 py-2.5 rounded-lg text-[0.9375rem] font-medium transition-all duration-300 hover:opacity-90 hover:-translate-y-px"
           style={{
             color: shouldUseWhiteBackground ? "#1a1a1a" : "#ffffff",
           }}
@@ -96,111 +112,6 @@ export default function Header() {
           Contactanos
         </Link>
       </div>
-
-      <style jsx>{`
-        .header {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          z-index: 50;
-          width: 100%;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          background: rgba(255, 255, 255, 0.05);
-          backdrop-filter: blur(12px);
-          transition: all 0.3s ease;
-        }
-
-        .header-white {
-          background: rgba(255, 255, 255, 0.95);
-          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        @supports (backdrop-filter: blur(10px)) {
-          .header-white {
-            background: rgba(255, 255, 255, 0.6);
-          }
-        }
-
-        .header-container {
-          max-width: var(--container-max);
-          margin: 0 auto;
-          padding: 1rem var(--container-padding);
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 2rem;
-        }
-
-        .logo {
-          font-size: 1.5rem;
-          font-weight: 600;
-          transition: color 0.3s ease, opacity 0.2s ease;
-        }
-
-        .logo:hover {
-          opacity: 0.8;
-        }
-
-        .nav-list {
-          display: flex;
-          align-items: center;
-          gap: 2rem;
-          list-style: none;
-        }
-
-        .nav-link {
-          font-size: 0.9375rem;
-          font-weight: 400;
-          transition: color 0.3s ease, opacity 0.2s ease;
-          position: relative;
-        }
-
-        .nav-link:hover {
-          opacity: 0.8;
-        }
-
-        .nav-link.active {
-          font-weight: 500;
-        }
-
-        .nav-link.active::after {
-          content: "";
-          position: absolute;
-          bottom: -0.5rem;
-          left: 0;
-          right: 0;
-          height: 2px;
-          transition: background 0.3s ease;
-        }
-
-        .header[data-theme="light"] .nav-link.active::after {
-          background: #ffffff;
-        }
-
-        .header[data-theme="dark"] .nav-link.active::after {
-          background: #1a1a1a;
-        }
-
-        .header-cta {
-          padding: 0.625rem 1.5rem;
-          border-radius: 0.5rem;
-          font-size: 0.9375rem;
-          font-weight: 500;
-          transition: all 0.3s ease;
-        }
-
-        .header-cta:hover {
-          opacity: 0.9;
-          transform: translateY(-1px);
-        }
-
-        @media (max-width: 768px) {
-          .nav {
-            display: none;
-          }
-        }
-      `}</style>
     </header>
   );
 }

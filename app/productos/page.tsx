@@ -9,55 +9,24 @@ function ProductosContent() {
   const subcategory = searchParams.get("sub")
 
   return (
-    <main className="page-main">
-      <div className="page-container">
+    <main className="min-h-[calc(100vh-200px)] pt-[120px] flex items-center justify-center">
+      <div className="text-center px-6 md:px-12">
         {category && subcategory ? (
           <>
-            <h1 className="page-title">
+            <h1 className="text-5xl md:text-6xl font-semibold text-[#1a1a1a] mb-6">
               {category} - {subcategory}
             </h1>
-            <p className="page-description">Explorá nuestra selección de {subcategory.toLowerCase()}</p>
+            <p className="text-lg text-gray-600">Explorá nuestra selección de {subcategory.toLowerCase()}</p>
           </>
         ) : (
           <>
-            <h1 className="page-title">Productos</h1>
-            <p className="page-description">Explorá todos nuestros productos</p>
+            <h1 className="text-5xl md:text-6xl font-semibold text-[#1a1a1a] mb-6">
+              Productos
+            </h1>
+            <p className="text-lg text-gray-600">Explorá todos nuestros productos</p>
           </>
         )}
       </div>
-
-      <style jsx>{`
-        .page-main {
-          min-height: calc(100vh - 200px);
-          padding-top: 120px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        .page-container {
-          text-align: center;
-          padding: 0 var(--container-padding);
-        }
-        
-        .page-title {
-          font-size: 3rem;
-          font-weight: 600;
-          color: var(--color-text);
-          margin-bottom: var(--spacing-md);
-        }
-        
-        .page-description {
-          font-size: 1.125rem;
-          color: var(--color-text-light);
-        }
-        
-        @media (max-width: 768px) {
-          .page-title {
-            font-size: 2rem;
-          }
-        }
-      `}</style>
     </main>
   )
 }
@@ -66,9 +35,11 @@ export default function ProductosPage() {
   return (
     <Suspense
       fallback={
-        <main className="page-main">
-          <div className="page-container">
-            <h1 className="page-title">Productos</h1>
+        <main className="min-h-[calc(100vh-200px)] pt-[120px] flex items-center justify-center">
+          <div className="text-center px-6 md:px-12">
+            <h1 className="text-5xl md:text-6xl font-semibold text-[#1a1a1a]">
+              Productos
+            </h1>
           </div>
         </main>
       }

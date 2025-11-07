@@ -4,18 +4,23 @@ import Link from "next/link"
 
 export default function CTASection() {
   return (
-    <section className="cta-section">
-      <div className="cta-container">
-        <div className="cta-content">
-          <h2 className="cta-title">Became Our Member</h2>
-          <p className="cta-description">
+    <section className="bg-[#011F2B] py-24 m-0">
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+        <div className="text-white">
+          <h2 className="text-4xl lg:text-5xl font-semibold leading-tight mb-8 tracking-tight">
+            Became Our Member
+          </h2>
+          <p className="text-base leading-relaxed text-white/90 mb-12">
             Became our member and save the team with sustainable energy
             <br />
             from the sun going solar means reducing your carbon
           </p>
-          <Link href="/contacto" className="cta-button">
+          <Link 
+            href="/contacto" 
+            className="inline-flex items-center gap-3 px-8 py-4 bg-[#1a1a1a] text-white rounded-full text-[0.9375rem] font-medium transition-all hover:bg-[#1a1a1a]/90 hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(0,0,0,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+          >
             Get Started
-            <span className="cta-button-icon">
+            <span className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-[#1a1a1a]">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
@@ -23,104 +28,14 @@ export default function CTASection() {
           </Link>
         </div>
 
-        <div className="cta-image-wrapper">
-          <img src="/person-installing-solar-panels-on-roof.jpg" alt="Professional installing solar panels" className="cta-image" />
+        <div className="rounded-2xl overflow-hidden shadow-[0_20px_40px_rgba(0,0,0,0.3)]">
+          <img 
+            src="/person-installing-solar-panels-on-roof.jpg" 
+            alt="Professional installing solar panels" 
+            className="w-full h-auto block" 
+          />
         </div>
       </div>
-
-      <style jsx>{`
-        .cta-section {
-          background: #011F2B;
-          padding: var(--spacing-3xl) 0;
-          margin: 0;
-        }
-        
-        .cta-container {
-          max-width: var(--container-max);
-          margin: 0 auto;
-          padding: 0 var(--container-padding);
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: var(--spacing-3xl);
-          align-items: center;
-        }
-        
-        .cta-content {
-          color: var(--color-white);
-        }
-        
-        .cta-title {
-          font-size: 3rem;
-          font-weight: 600;
-          line-height: 1.2;
-          margin-bottom: var(--spacing-lg);
-          letter-spacing: -0.02em;
-        }
-        
-        .cta-description {
-          font-size: 1rem;
-          line-height: 1.6;
-          color: rgba(255, 255, 255, 0.9);
-          margin-bottom: var(--spacing-xl);
-        }
-        
-        .cta-button {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.75rem;
-          padding: 1rem 2rem;
-          background: var(--color-text);
-          color: var(--color-white);
-          border-radius: 2rem;
-          font-size: 0.9375rem;
-          font-weight: 500;
-          transition: all 0.2s;
-        }
-        
-        .cta-button:hover {
-          background: rgba(26, 26, 26, 0.9);
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .cta-button:focus-visible {
-          outline: 2px solid var(--color-white);
-          outline-offset: 2px;
-        }
-
-        .cta-button-icon {
-          width: 32px;
-          height: 32px;
-          background: var(--color-white);
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--color-text);
-        }
-        
-        .cta-image-wrapper {
-          border-radius: var(--radius-lg);
-          overflow: hidden;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-        
-        .cta-image {
-          width: 100%;
-          height: auto;
-          display: block;
-        }
-        
-        @media (max-width: 1024px) {
-          .cta-container {
-            grid-template-columns: 1fr;
-          }
-          
-          .cta-title {
-            font-size: 2.25rem;
-          }
-        }
-      `}</style>
     </section>
   )
 }

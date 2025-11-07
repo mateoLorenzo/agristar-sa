@@ -2,23 +2,6 @@
 
 export default function GradientSeparator() {
   return (
-    <div className="gradient-separator">
-      <style jsx>{`
-        .gradient-separator {
-          position: relative;
-          height: 200px;
-          margin-top: -200px;
-          background: linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.2) 30%,
-            rgba(255, 255, 255, 0.5) 60%,
-            rgba(255, 255, 255, 1) 100%
-          );
-          pointer-events: none;
-          z-index: 1;
-        }
-      `}</style>
-    </div>
+    <div className="relative h-[200px] -mt-[200px] bg-gradient-to-b from-white/0 via-white/20 via-30% via-white/50 via-60% to-white pointer-events-none z-[1]" />
   )
 }

@@ -67,29 +67,6 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-
-  --color-primary: #2563eb;
-  --color-primary-hover: #1d4ed8;
-  --color-text: #1a1a1a;
-  --color-text-light: #6b7280;
-  --color-white: #ffffff;
-  --color-border: #e5e7eb;
-  --color-overlay: rgba(0, 0, 0, 0.4);
-
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-2xl: 4rem;
-  --spacing-3xl: 6rem;
-
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
-  --radius-lg: 1rem;
-
-  --container-max: 1280px;
-  --container-padding: 1.5rem;
 }
 
 .dark {
@@ -194,52 +171,22 @@
     );
     overscroll-behavior-y: none;
   }
-}
-
-@media (min-width: 768px) {
-  :root {
-    --container-padding: 3rem;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold leading-tight;
   }
-}
-
-/* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 600;
-  line-height: 1.2;
-}
-
-a {
-  text-decoration: none;
-  /* Removido color: inherit para permitir estilos inline de los componentes */
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  background: none;
-}
-
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Utility Classes */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
+  a {
+    @apply no-underline;
+  }
+  button {
+    @apply cursor-pointer border-none bg-transparent;
+    font-family: inherit;
+  }
+  img {
+    @apply block h-auto max-w-full;
+  }
 }
