@@ -11,8 +11,8 @@ export default function GradientSeparator() {
           background: linear-gradient(
             to bottom,
             rgba(255, 255, 255, 0) 0%,
-            rgba(255, 255, 255, 0.3) 30%,
-            rgba(255, 255, 255, 0.7) 60%,
+            rgba(255, 255, 255, 0.2) 30%,
+            rgba(255, 255, 255, 0.5) 60%,
             rgba(255, 255, 255, 1) 100%
           );
           pointer-events: none;

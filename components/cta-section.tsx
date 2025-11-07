@@ -15,9 +15,11 @@ export default function CTASection() {
           </p>
           <Link href="/contacto" className="cta-button">
             Get Started
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+            <span className="cta-button-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </span>
           </Link>
         </div>
 
@@ -28,9 +30,9 @@ export default function CTASection() {
 
       <style jsx>{`
         .cta-section {
-          background: linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 100%);
+          background: #011F2B;
           padding: var(--spacing-3xl) 0;
-          margin: var(--spacing-3xl) 0;
+          margin: 0;
         }
         
         .cta-container {
@@ -67,8 +69,8 @@ export default function CTASection() {
           align-items: center;
           gap: 0.75rem;
           padding: 1rem 2rem;
-          background: var(--color-white);
-          color: var(--color-text);
+          background: var(--color-text);
+          color: var(--color-white);
           border-radius: 2rem;
           font-size: 0.9375rem;
           font-weight: 500;
@@ -76,7 +78,7 @@ export default function CTASection() {
         }
         
         .cta-button:hover {
-          background: rgba(255, 255, 255, 0.9);
+          background: rgba(26, 26, 26, 0.9);
           transform: translateY(-2px);
           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
         }
@@ -84,6 +86,17 @@ export default function CTASection() {
         .cta-button:focus-visible {
           outline: 2px solid var(--color-white);
           outline-offset: 2px;
+        }
+
+        .cta-button-icon {
+          width: 32px;
+          height: 32px;
+          background: var(--color-white);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--color-text);
         }
         
         .cta-image-wrapper {

@@ -80,7 +80,7 @@ export default function CategoryCarousel() {
     <section className="carousel-section">
       <div className="carousel-container">
         <div className="carousel-header">
-          <p className="carousel-label">Subscribe</p>
+          <p className="carousel-label">Latest Info</p>
           <h2 className="carousel-title">
             Catch up on today's top updates and the
             <br />
@@ -114,14 +114,14 @@ export default function CategoryCarousel() {
                     className="card-image"
                   />
                   <div className="card-overlay" />
+                  <p className="card-date">{category.date}</p>
                   <div className="card-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M7 17L17 7M17 7H7M17 7V17" />
+                      <path d="M5 12h14M12 5l7 7-7 7" />
                     </svg>
                   </div>
                 </div>
                 <div className="card-content">
-                  <p className="card-date">{category.date}</p>
                   <h3 className="card-title">{category.name}</h3>
                 </div>
               </Link>
@@ -213,8 +213,8 @@ export default function CategoryCarousel() {
         }
         
         .category-card:hover {
-          transform: translateY(-8px);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+          transform: translateY(-4px);
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
         
         .category-card:focus-visible {
@@ -248,6 +248,15 @@ export default function CategoryCarousel() {
             rgba(0, 0, 0, 0.6) 100%
           );
         }
+
+        .card-date {
+          position: absolute;
+          bottom: 1rem;
+          left: 1rem;
+          font-size: 0.875rem;
+          color: var(--color-white);
+          z-index: 2;
+        }
         
         .card-icon {
           position: absolute;
@@ -255,38 +264,29 @@ export default function CategoryCarousel() {
           right: 1rem;
           width: 48px;
           height: 48px;
-          background: rgba(255, 255, 255, 0.2);
-          backdrop-filter: blur(8px);
+          background: rgba(0, 0, 0, 0.6);
           border-radius: 50%;
           display: flex;
           align-items: center;
           justify-content: center;
           color: var(--color-white);
-          transition: all 0.3s;
+          transition: background 0.3s;
         }
         
         .category-card:hover .card-icon {
-          background: rgba(255, 255, 255, 0.3);
-          transform: rotate(45deg);
+          background: rgba(0, 0, 0, 0.8);
         }
         
         .card-content {
           padding: 1.5rem;
-          background: var(--color-white);
-          border: 1px solid var(--color-border);
-          border-top: none;
-        }
-        
-        .card-date {
-          font-size: 0.875rem;
-          color: var(--color-text-light);
-          margin-bottom: 0.5rem;
+          background: var(--color-text);
+          color: var(--color-white);
         }
         
         .card-title {
           font-size: 1.125rem;
           font-weight: 600;
-          color: var(--color-text);
+          color: var(--color-white);
           line-height: 1.4;
         }
         

@@ -2,24 +2,56 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import { useEffect, useState } from "react"
 
 export default function Header() {
   const pathname = usePathname()
+  const [isOnWhiteBackground, setIsOnWhiteBackground] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
 
   const navItems = [
     { label: "Inicio", href: "/" },
     { label: "Productos", href: "/productos" },
     { label: "Información", href: "/informacion" },
     { label: "Acerca", href: "/acerca" },
-    { label: "Datos Tributarios", href: "/datos-tributarios" },
-    { label: "Contacto", href: "/contacto" },
   ]
 
+  // Detectar si estamos en una página con fondo blanco (no home)
+  useEffect(() => {
+    setIsOnWhiteBackground(pathname !== "/")
+  }, [pathname])
+
+  // Detectar scroll en home para cambiar estilos
+  useEffect(() => {
+    if (pathname !== "/") return
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      // Cambiar a fondo blanco después de pasar el hero (aproximadamente 100vh)
+      setIsScrolled(scrollY > window.innerHeight * 0.8)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    handleScroll() // Check initial state
+
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [pathname])
+
+  const shouldUseWhiteBackground = isOnWhiteBackground || isScrolled
+
+  // Función para scroll smooth al top cuando ya estás en home
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/" && window.scrollY > 0) {
+      e.preventDefault()
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    }
+  }
+
   return (
-    <header className="header">
+    <header className={`header ${shouldUseWhiteBackground ? "header-white" : ""}`}>
       <div className="header-container">
-        <Link href="/" className="logo">
-          Greenco
+        <Link href="/" className="logo" onClick={handleHomeClick}>
+          Agri Star
         </Link>
 
         <nav className="nav" aria-label="Main navigation">
@@ -30,6 +62,7 @@ export default function Header() {
                   href={item.href}
                   className={`nav-link ${pathname === item.href ? "active" : ""}`}
                   aria-current={pathname === item.href ? "page" : undefined}
+                  onClick={item.href === "/" ? handleHomeClick : undefined}
                 >
                   {item.label}
                 </Link>
@@ -39,20 +72,50 @@ export default function Header() {
         </nav>
 
         <Link href="/contacto" className="header-cta">
-          Get Started
+          Contactanos
         </Link>
       </div>
 
       <style jsx>{`
         .header {
-          position: fixed;
+          position: sticky;
           top: 0;
-          left: 0;
-          right: 0;
           z-index: 50;
+          width: 100%;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
           background: rgba(255, 255, 255, 0.05);
           backdrop-filter: blur(12px);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          transition: all 0.3s ease;
+        }
+
+        /* Estilos cuando está sobre fondo blanco - traducidos de Tailwind */
+        .header-white {
+          background: rgba(255, 255, 255, 0.95);
+          border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        @supports (backdrop-filter: blur(10px)) {
+          .header-white {
+            background: rgba(255, 255, 255, 0.6);
+          }
+        }
+
+        .header-white .logo,
+        .header-white .nav-link {
+          color: var(--color-text);
+        }
+
+        .header-white .nav-link.active::after {
+          background: var(--color-text);
+        }
+
+        .header-white .header-cta {
+          background: var(--color-text);
+          color: var(--color-white);
+        }
+
+        .header-white .header-cta:hover {
+          background: rgba(26, 26, 26, 0.9);
         }
         
         .header-container {
@@ -127,6 +190,10 @@ export default function Header() {
         .header-cta:focus-visible {
           outline: 2px solid var(--color-white);
           outline-offset: 2px;
+        }
+
+        .header-white .header-cta:focus-visible {
+          outline: 2px solid var(--color-text);
         }
         
         @media (max-width: 768px) {

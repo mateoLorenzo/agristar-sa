@@ -96,6 +96,7 @@ export default function Footer() {
           background: #0f172a;
           color: var(--color-white);
           padding: var(--spacing-3xl) 0 var(--spacing-xl);
+          margin: 0;
         }
         
         .footer-container {
