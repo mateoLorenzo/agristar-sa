@@ -1,7 +1,14 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
 import Link from "next/link";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import type { CarouselApi } from "@/components/ui/carousel";
+import { useEffect, useState } from "react";
+import WheelGesturesPlugin from "embla-carousel-wheel-gestures";
 
 const categories = [
   {
@@ -26,7 +33,7 @@ const categories = [
   },
   {
     name: "Coadyuvantes, Fitoreguladores y PGR",
-    image: "/plant-growth-regulator-agriculture.jpg",
+    image: "/fitoreguladores-temp.jpg",
     date: "19 August 2025",
   },
   {
@@ -37,161 +44,125 @@ const categories = [
 ];
 
 export default function CategoryCarousel() {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const [canScrollLeft, setCanScrollLeft] = useState(false);
-  const [canScrollRight, setCanScrollRight] = useState(true);
+  const [api, setApi] = useState<CarouselApi>();
 
-  const checkScroll = () => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    setCanScrollLeft(container.scrollLeft > 0);
-    setCanScrollRight(
-      container.scrollLeft < container.scrollWidth - container.clientWidth - 10
-    );
-  };
+  // Triplicar las cards para asegurar suficiente contenido para el loop
+  const infiniteCategories = [...categories, ...categories, ...categories];
 
   useEffect(() => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
+    if (!api) return;
 
-    checkScroll();
-    container.addEventListener("scroll", checkScroll);
-    window.addEventListener("resize", checkScroll);
-
-    return () => {
-      container.removeEventListener("scroll", checkScroll);
-      window.removeEventListener("resize", checkScroll);
-    };
-  }, []);
-
-  const scroll = (direction: "left" | "right") => {
-    const container = scrollContainerRef.current;
-    if (!container) return;
-
-    const scrollAmount = 340;
-    const targetScroll =
-      container.scrollLeft +
-      (direction === "left" ? -scrollAmount : scrollAmount);
-
-    container.scrollTo({
-      left: targetScroll,
-      behavior: "smooth",
-    });
-  };
+    // Iniciar en el segundo set (medio)
+    setTimeout(() => {
+      const middleIndex = categories.length + Math.floor(categories.length / 2);
+      api.scrollTo(middleIndex, false);
+    }, 0);
+  }, [api]);
 
   return (
-    <section className="py-24 bg-white">
+    <section className="py-24 bg-white overflow-hidden">
+      {/* Header Section - Centered with max-width */}
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
-        <div className="text-center mb-24">
+        <div className="text-center mb-16">
           <p className="text-sm font-medium text-gray-600 uppercase tracking-wider mb-4">
             Latest Info
           </p>
-          <h2 className="text-4xl lg:text-5xl font-semibold leading-tight text-[#1a1a1a] tracking-tight">
+          <h2 className="text-[2.5rem] font-semibold leading-tight text-[#1a1a1a] tracking-tight">
             Catch up on today's top updates and the
             <br />
             stories that matter most
           </h2>
         </div>
+      </div>
 
-        <div className="relative mb-12">
-          <button
-            onClick={() => scroll("left")}
-            disabled={!canScrollLeft}
-            className="hidden md:flex absolute left-[-24px] top-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-gray-200 rounded-full items-center justify-center text-[#1a1a1a] transition-all z-[2] shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:bg-[#1a1a1a] hover:text-white hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-[#1a1a1a] disabled:hover:scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
-            aria-label="Previous categories"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
-          </button>
-
-          <div
-            ref={scrollContainerRef}
-            className="flex gap-6 overflow-x-auto snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden py-4"
-          >
-            {categories.map((category, index) => (
-              <Link
+      {/* Carousel Section - Full width */}
+      <div className="relative mb-12 w-full">
+        <Carousel
+          opts={{
+            align: "center",
+            loop: true,
+            skipSnaps: false,
+            dragFree: true,
+          }}
+          plugins={[WheelGesturesPlugin()]}
+          setApi={setApi}
+          className="w-full"
+        >
+          <CarouselContent className="-ml-4">
+            {infiniteCategories.map((category, index) => (
+              <CarouselItem
                 key={index}
-                href={`/productos?cat=Agroquímicos&sub=${encodeURIComponent(
-                  category.name
-                )}`}
-                className="group flex-shrink-0 w-[280px] md:w-[320px] snap-start rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_16px_rgba(0,0,0,0.1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
+                className="pl-4 basis-[290px] min-w-[290px]"
               >
-                <div className="relative h-60 overflow-hidden">
-                  <img
-                    src={category.image || "/placeholder.svg"}
-                    alt={`${category.name} category`}
-                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent via-0% to-black/60" />
-                  <p className="absolute bottom-4 left-4 text-sm text-white z-[2]">
-                    {category.date}
-                  </p>
-                  <div className="absolute top-4 right-4 w-12 h-12 bg-black/60 rounded-full flex items-center justify-center text-white transition-colors group-hover:bg-black/80">
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M5 12h14M12 5l7 7-7 7" />
-                    </svg>
+                <Link
+                  href={`/productos?cat=Agroquímicos&sub=${encodeURIComponent(
+                    category.name
+                  )}`}
+                  className="group block rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_12px_24px_rgba(0,0,0,0.15)] focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
+                >
+                  <div className="relative h-[400px] overflow-hidden">
+                    <img
+                      src={category.image || "/placeholder.svg"}
+                      alt={`${category.name} category`}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% via-transparent via-50% to-black/70" />
+
+                    {/* Circle with arrow - Top Right */}
+                    <div className="absolute top-5 right-5 w-11 h-11 bg-[#011f2b] rounded-full flex items-center justify-center text-white">
+                      <svg
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                      </svg>
+                    </div>
+
+                    {/* Text overlay - Bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <p className="text-xs text-white/90 mb-2">
+                        {category.date}
+                      </p>
+                      <h3 className="text-xl font-semibold text-white leading-tight">
+                        {category.name}
+                      </h3>
+                    </div>
                   </div>
-                </div>
-                <div className="p-6 bg-[#1a1a1a] text-white">
-                  <h3 className="text-lg font-semibold text-white leading-snug">
-                    {category.name}
-                  </h3>
-                </div>
-              </Link>
+                </Link>
+              </CarouselItem>
             ))}
-          </div>
+          </CarouselContent>
+        </Carousel>
+      </div>
 
-          <button
-            onClick={() => scroll("right")}
-            disabled={!canScrollRight}
-            className="hidden md:flex absolute right-[-24px] top-1/2 -translate-y-1/2 w-12 h-12 bg-white border border-gray-200 rounded-full items-center justify-center text-[#1a1a1a] transition-all z-[2] shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:bg-[#1a1a1a] hover:text-white hover:scale-110 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-[#1a1a1a] disabled:hover:scale-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
-            aria-label="Next categories"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M9 18l6-6-6-6" />
-            </svg>
-          </button>
-        </div>
-
+      {/* See All Button - Centered with max-width */}
+      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="flex justify-center">
           <Link
             href="/productos"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-[#1a1a1a] text-white rounded-full text-[0.9375rem] font-medium transition-all hover:bg-black hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
+            className="group relative inline-flex items-center gap-0 pl-5.5 pr-1.5 py-1.5 bg-[#011f2b] text-white rounded-full text-sm font-normal transition-all hover:bg-[#022b3d] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(1,31,43,0.4)] focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
           >
-            Show All
-            <svg
-              width="20"
-              height="20"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            >
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+            See all
+            <div className="ml-5 w-9 h-9 bg-white rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="#011f2b"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </div>
           </Link>
         </div>
       </div>
