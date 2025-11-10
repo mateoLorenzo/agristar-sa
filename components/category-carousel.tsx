@@ -13,33 +13,35 @@ import WheelGesturesPlugin from "embla-carousel-wheel-gestures";
 const categories = [
   {
     name: "Fungicidas",
+    description: "Prevenga y elimine las principales enfermedades fúngicas.",
     image: "/fungicide-agricultural-spray-crops.jpg",
-    date: "19 August 2025",
   },
   {
     name: "Insecticidas",
+    description: "Protección eficaz frente a las plagas más comunes.",
     image: "/insecticide-pest-control-agriculture.jpg",
-    date: "19 August 2025",
   },
   {
     name: "Herbicidas",
+    description: "Soluciones selectivas para un control total de malezas.",
     image: "/herbicide-weed-control-farming.jpg",
-    date: "19 August 2025",
   },
   {
     name: "Fertilizantes",
+    description:
+      "Formulaciones que potencian el crecimiento y la productividad.",
     image: "/fertilizer-soil-nutrients-agriculture.jpg",
-    date: "19 August 2025",
   },
   {
     name: "Coadyuvantes, Fitoreguladores y PGR",
+    description:
+      "Mejoran la eficacia de las aplicaciones y estimulan el desarrollo vegetal.",
     image: "/fitoreguladores-temp.jpg",
-    date: "19 August 2025",
   },
   {
     name: "Fumigantes de suelo",
+    description: "Preparan el terreno para un cultivo sano y uniforme.",
     image: "/soil-fumigation-agriculture-treatment.jpg",
-    date: "19 August 2025",
   },
 ];
 
@@ -60,17 +62,17 @@ export default function CategoryCarousel() {
   }, [api]);
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-30 bg-white overflow-hidden">
       {/* Header Section - Centered with max-width */}
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
           <p className="text-sm font-medium text-gray-600 uppercase tracking-wider mb-4">
-            Latest Info
+            CATÁLOGO
           </p>
-          <h2 className="text-[2.5rem] font-semibold leading-tight text-[#1a1a1a] tracking-tight">
-            Catch up on today's top updates and the
+          <h2 className="text-[2.5rem] font-semibold leading-tight text-[#1a1a1a] tracking-tight mb-4">
+            Conozca nuestros productos
             <br />
-            stories that matter most
+            Calidad, innovación y eficacia para cada necesidad
           </h2>
         </div>
       </div>
@@ -109,7 +111,7 @@ export default function CategoryCarousel() {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% via-transparent via-50% to-black/70" />
 
                     {/* Circle with arrow - Top Right */}
-                    <div className="absolute top-5 right-5 w-11 h-11 bg-[#011f2b] rounded-full flex items-center justify-center text-white">
+                    <div className="absolute top-5 right-5 w-11 h-11 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110">
                       <svg
                         width="18"
                         height="18"
@@ -126,12 +128,12 @@ export default function CategoryCarousel() {
 
                     {/* Text overlay - Bottom */}
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <p className="text-xs text-white/90 mb-2">
-                        {category.date}
-                      </p>
-                      <h3 className="text-xl font-semibold text-white leading-tight">
+                      <h3 className="text-xl font-semibold text-white leading-tight mb-2">
                         {category.name}
                       </h3>
+                      <p className="text-sm text-white/90">
+                        {category.description}
+                      </p>
                     </div>
                   </div>
                 </Link>
@@ -148,7 +150,7 @@ export default function CategoryCarousel() {
             href="/productos"
             className="group relative inline-flex items-center gap-0 pl-5.5 pr-1.5 py-1.5 bg-[#011f2b] text-white rounded-full text-sm font-normal transition-all hover:bg-[#022b3d] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(1,31,43,0.4)] focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
           >
-            See all
+            Ver todos
             <div className="ml-5 w-9 h-9 bg-white rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
               <svg
                 width="16"
