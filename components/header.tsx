@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -59,13 +60,17 @@ export default function Header() {
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-4 flex items-center justify-between gap-8">
         <Link
           href="/"
-          className="text-2xl font-semibold transition-all duration-300 hover:opacity-80"
+          className="transition-all duration-300 hover:opacity-80 flex items-center"
           onClick={handleHomeClick}
-          style={{
-            color: shouldUseWhiteBackground ? "#1a1a1a" : "#ffffff",
-          }}
         >
-          Agri Star
+          <Image
+            src="/logo.png"
+            alt="Agri Star"
+            width={160}
+            height={60}
+            className="h-12 w-auto"
+            priority
+          />
         </Link>
 
         <nav className="hidden md:block" aria-label="Main navigation">

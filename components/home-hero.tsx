@@ -16,11 +16,18 @@ export default function HomeHero() {
         <div className="absolute inset-0 bg-black/20" />
       </div>
 
-      <div className="relative z-[1] text-center px-6 md:px-12 max-w-[900px] mx-auto">
-        <h1 className="text-5xl md:text-6xl lg:text-[4rem] font-medium leading-[1.1] text-white mb-8 tracking-tight">
-          Evolución para su cultivo
-          <br />
-          Eficiencia, rendimiento y confianza
+      <div className="relative z-[1] text-center px-6 md:px-12 max-w-[1100px] mx-auto">
+        <h1
+          className="text-4xl md:text-5xl lg:text-[3.5rem] font-medium leading-[1.2] text-white mb-8 tracking-tight"
+          style={{
+            textShadow:
+              "0 2px 8px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.2)",
+          }}
+        >
+          <span className="block">Evolución para su cultivo</span>
+          <span className="block whitespace-nowrap">
+            Eficiencia, rendimiento y confianza
+          </span>
         </h1>
 
         <p className="text-lg leading-relaxed text-white/90 mb-12 max-w-[700px] mx-auto">
@@ -34,7 +41,7 @@ export default function HomeHero() {
             href="/productos?cat=Línea Bio"
             className="inline-flex items-center justify-center px-8 py-4 text-[0.9375rem] font-medium rounded-lg transition-all bg-white text-[#1a1a1a] hover:bg-white/90 hover:-translate-y-0.5 hover:shadow-[0_10px_25px_rgba(0,0,0,0.2)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 w-full md:w-auto"
           >
-            Conozca nuestra línea BIO
+            Nueva línea BIO
           </Link>
           <Link
             href="/contacto"

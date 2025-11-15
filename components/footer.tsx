@@ -4,7 +4,12 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-900 text-white py-24 pb-12 m-0">
+    <footer
+      className="text-white py-24 pb-12 m-0"
+      style={{
+        background: "#101C1C",
+      }}
+    >
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1.5fr] gap-12 mb-12">
           <div className="flex flex-col gap-6">

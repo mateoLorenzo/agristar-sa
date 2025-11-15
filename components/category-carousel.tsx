@@ -34,8 +34,7 @@ const categories = [
   },
   {
     name: "Coadyuvantes, Fitoreguladores y PGR",
-    description:
-      "Mejoran la eficacia de las aplicaciones y estimulan el desarrollo vegetal.",
+    description: "Optimizan aplicaciones y estimulan el desarrollo vegetal.",
     image: "/fitoreguladores-temp.jpg",
   },
   {
