@@ -1,3 +1,20 @@
+// Categorías principales
+export type MainCategory = "Agroquímicos" | "Línea Bio";
+
+// Subcategorías por categoría principal
+export type AgroquimicosSubcategory =
+  | "Fertilizantes"
+  | "Fumigantes de suelo"
+  | "Fungicidas"
+  | "Herbicidas"
+  | "Insecticidas"
+  | "Coadyuvantes, Fitoreguladores y PGR";
+
+export type LineaBioSubcategory = "Bioinsumos" | "Feromonas";
+
+export type Subcategory = AgroquimicosSubcategory | LineaBioSubcategory;
+
+// Para retrocompatibilidad
 export type Category =
   | "Herbicidas"
   | "Insecticidas"
@@ -10,5 +27,12 @@ export type Product = {
   name: string;
   logoUrl: string;
   category: Category;
+  mainCategory?: MainCategory;
+  subcategory?: Subcategory;
+};
+
+export type CategoryStructure = {
+  name: MainCategory;
+  subcategories: Subcategory[];
 };
 
