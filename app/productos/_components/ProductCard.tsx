@@ -12,7 +12,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const animation = useScrollAnimation({ delay: 0.2 }); // Mismo delay para todos los productos
-
+  console.log("product.logoUrl", product.logoUrl);
   return (
     <article
       ref={animation.ref}

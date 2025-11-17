@@ -53,8 +53,8 @@ export default function CategoryCarousel() {
   const carouselAnimation = useScrollAnimation({ delay: 0.1 });
   const buttonAnimation = useScrollAnimation({ delay: 0.3 });
 
-  // NO triplicar - usar solo las categorías originales
-  const displayCategories = categories;
+  // Duplicar categorías para un loop infinito fluido
+  const displayCategories = [...categories, ...categories];
 
   return (
     <section className="py-16 bg-white overflow-visible">
@@ -88,7 +88,7 @@ export default function CategoryCarousel() {
         <Carousel
           opts={{
             align: "start",
-            loop: false,
+            loop: true,
             skipSnaps: false,
             dragFree: true,
           }}
@@ -98,17 +98,18 @@ export default function CategoryCarousel() {
         >
           <CarouselContent className="-ml-4">
             {displayCategories.map((category, index) => {
-              const animationDelay = 0.2 + index * 0.12;
+              // Solo aplicar delay escalonado a las primeras 6 categorías (originales)
+              const animationDelay = index < 6 ? 0.2 + index * 0.12 : 0.2;
 
               return (
                 <CarouselItem
-                  key={index}
+                  key={`${category.name}-${index}`}
                   className="pl-4 basis-[290px] min-w-[290px]"
                   style={{
                     opacity: carouselAnimation.isVisible ? 1 : 0,
                     transform: carouselAnimation.isVisible
-                      ? "translateY(0) scale(1)"
-                      : "translateY(30px) scale(1)",
+                      ? "translateY(0)"
+                      : "translateY(30px)",
                     transition: `opacity 0.6s ease-out ${animationDelay}s, transform 0.6s ease-out ${animationDelay}s`,
                   }}
                 >

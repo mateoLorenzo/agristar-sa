@@ -37,7 +37,7 @@ export default function ProductDetailPage({ params }: Props) {
     category: "Bioestimulantes" as const,
     mainCategory: "Línea Bio" as const,
     subcategory: "Bioinsumos" as const,
-    composition: "Mezcla de ésteres vegetales 86% SL",
+    // composition: "Mezcla de ésteres vegetales 86% SL",
     description:
       "STARECO es un moderno insecticida-acaricida orgánico de contacto que se deposita sobre la cutícula de los artrópodos de cuerpo blando, y comienza a disolverla, evitando el intercambio gaseoso por lo que provoca la muerte del insecto. Stareco es un producto total y fácilmente biodegradable, y no produce ningún daño ambiental.",
     characteristics: [
@@ -140,7 +140,7 @@ export default function ProductDetailPage({ params }: Props) {
             {/* Contact CTA */}
             <Link
               href="/contacto"
-              className="block w-full bg-[#659C39] hover:bg-[#5a8b32] text-white text-center py-4 px-6 rounded-xl font-medium transition-all hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[#659C39] focus-visible:outline-offset-2"
+              className="block w-full bg-[#223534] hover:bg-[##182424 text-white text-center py-4 px-6 rounded-xl font-medium transition-all hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[#659C39] focus-visible:outline-offset-2"
             >
               Consultar sobre este producto
             </Link>
@@ -153,11 +153,11 @@ export default function ProductDetailPage({ params }: Props) {
               <h1 className="text-4xl md:text-5xl font-bold text-[#111] mb-4 leading-tight">
                 {product.name}
               </h1>
-              {product.composition && (
+              {/* {product.composition && (
                 <p className="text-lg text-[#6B7280] font-medium">
                   {product.composition}
                 </p>
-              )}
+              )} */}
             </div>
 
             {/* Description */}
@@ -166,104 +166,38 @@ export default function ProductDetailPage({ params }: Props) {
                 <h2 className="text-sm font-semibold text-[#111] uppercase tracking-wide mb-3">
                   Descripción
                 </h2>
-                <p className="text-[#374151] leading-relaxed">
-                  {product.description}
+                <p className="text-[#374151] text-sm leading-relaxed">
+                  {/* {product.description} */}
+                  STARECO es un moderno insecticida-acaricida orgánico de
+                  contacto que se deposita sobre la cutícula de los artrópodos
+                  de cuerpo blando, y comienza a disolverla, evitando el
+                  intercambio gaseoso por lo que provoca la muerte del insecto.
+                  <br />
+                  <br />
+                  Stareco es un producto total y fácilmente biodegradable, y no
+                  produce ningún daño ambiental.
+                  <br />
+                  <br />
+                  Stareco esta especialmente indicado para el Control biológico
+                  de plagas. Puede usarse como insecticida para control de
+                  ácaros, trips, mosca blanca, áfidos, etc. en intervalos de
+                  3-10 días, de ser necesario.
+                  <br />
+                  <br />
+                  El tratamiento es aplicable hasta antes de cosecha. No posee
+                  carencia.
+                  <br />
+                  <br />
+                  Esta recomendado para el manejo integral de plagas (M.I.P).
+                  <br />
+                  <br />
+                  Posee propiedades insecticidas y además particularidades de
+                  coadyuvante – adherente agrícola.
+                  <br />
+                  <br />
+                  Especialmente recomendado para Cultivos: Frutales de Carozo y
+                  de Pepita, Citrus, Hortalizas y Ornamentales..
                 </p>
-              </div>
-            )}
-
-            {/* Characteristics */}
-            {product.characteristics && product.characteristics.length > 0 && (
-              <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 shadow-sm">
-                <h2 className="text-sm font-semibold text-[#111] uppercase tracking-wide mb-4">
-                  Características
-                </h2>
-                <ul className="space-y-3">
-                  {product.characteristics.map((char, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <svg
-                        className="w-5 h-5 text-[#659C39] flex-shrink-0 mt-0.5"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M5 13l4 4L19 7"
-                        />
-                      </svg>
-                      <span className="text-[#374151]">{char}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Applications */}
-            {product.applications && product.applications.length > 0 && (
-              <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 shadow-sm">
-                <h2 className="text-sm font-semibold text-[#111] uppercase tracking-wide mb-4">
-                  Aplicaciones
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  {product.applications.map((app, index) => (
-                    <span
-                      key={index}
-                      className="inline-flex items-center px-3 py-1.5 rounded-lg bg-[#F8F9FB] text-sm text-[#374151] border border-[#E5E7EB]"
-                    >
-                      {app}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Recommended Crops */}
-            {product.recommendedCrops &&
-              product.recommendedCrops.length > 0 && (
-                <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 shadow-sm">
-                  <h2 className="text-sm font-semibold text-[#111] uppercase tracking-wide mb-4">
-                    Cultivos Recomendados
-                  </h2>
-                  <div className="flex flex-wrap gap-2">
-                    {product.recommendedCrops.map((crop, index) => (
-                      <span
-                        key={index}
-                        className="inline-flex items-center px-3 py-1.5 rounded-lg bg-[#F0F7EC] text-sm text-[#659C39] font-medium"
-                      >
-                        {crop}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-            {/* Dosage */}
-            {product.dosage && (
-              <div className="bg-[#FEF3C7] border border-[#FDE68A] rounded-xl p-6">
-                <div className="flex gap-3">
-                  <svg
-                    className="w-6 h-6 text-[#D97706] flex-shrink-0"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>
-                  <div>
-                    <h3 className="text-sm font-semibold text-[#92400E] mb-2">
-                      Dosificación
-                    </h3>
-                    <p className="text-[#92400E]">{product.dosage}</p>
-                  </div>
-                </div>
               </div>
             )}
 
@@ -315,7 +249,32 @@ export default function ProductDetailPage({ params }: Props) {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                      Folleto
+                    </span>
+                  </a>
+                )}
+                {product.label && (
+                  <a
+                    href={product.label}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                  >
+                    <svg
+                      className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                       />
                     </svg>
                     <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
@@ -340,7 +299,7 @@ export default function ProductDetailPage({ params }: Props) {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                       />
                     </svg>
                     <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">

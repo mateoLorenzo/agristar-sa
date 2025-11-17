@@ -41,6 +41,7 @@ export type Product = {
   };
   safetySheet?: string;
   label?: string;
+  brochure?: string;
 };
 
 export type CategoryStructure = {

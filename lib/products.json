@@ -1,0 +1,359 @@
+[
+  {
+    "id": "stareco-mezcla-de-esteres-vegetales-86-sl",
+    "name": "STARECO",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/stareco-1.jpg",
+    "categories": ["bioinsumos", "linea-bio"],
+    "description": "STARECO es un moderno insecticida-acaricida orgánico de contacto que se deposita sobre la cutícula de los artrópodos de cuerpo blando, disolviéndola y evitando el intercambio gaseoso, provocando la muerte del insecto. Es totalmente biodegradable y no produce daño ambiental. Está especialmente indicado para el control biológico de plagas (ácaros, trips, mosca blanca, áfidos, etc.), aplicable incluso hasta antes de cosecha sin período de carencia. Posee propiedades insecticidas y actúa además como coadyuvante-adherente agrícola, recomendado en cultivos frutales, cítricos, hortícolas y ornamentales."
+  },
+  {
+    "id": "manconyl-mancozeb-64-metalaxil-8-wp",
+    "name": "STARXIFOP R LPU",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/starxifop-1.jpg",
+    "categories": ["agroquimicos", "herbicidas"],
+    "description": "Es un herbicida post-emergente de acción sistémica, selectivo para los cultivos indicados. Controla malezas gramíneas perennes y anuales: las malezas tratadas detienen su crecimiento a los pocos días de la aplicación. En los rizomas, destruye inicialmente las yemas y luego necrosa el tejido. No requiere agregar aceites coadyuvantes, ya que viene formulado Lista Para Usar."
+  },
+  {
+    "id": "cyd-x-lc-cydia-pomonella-granulovirus-o-cpgv-006-sc",
+    "name": "CYD – X LC",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/cyd-2.jpg",
+    "categories": ["bioinsumos", "linea-bio"],
+    "description": "CYD-X LC contiene un insecticida biológico a base de baculovirus (Cydia pomonella granulovirus, CpGV) específico para el control de larvas de Carpocapsa (Cydia pomonella). Debido a esa especificidad, CYD-X LC ofrece una oportunidad única de control biológico de la plaga sin efectos adversos para humanos, animales domésticos, fauna benéfica ni las plantas."
+  },
+  {
+    "id": "starlin-pendimetalin-33-ec",
+    "name": "STARLIN 33",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/starlin-1.jpg",
+    "categories": ["agroquimicos", "herbicidas"],
+    "description": "Es un herbicida del grupo de las dinitroanilinas, selectivo para cultivos como maní, arveja, cebolla, tomate, zanahoria, ajo, soja, poroto, maíz y trigo. Inhibe la germinación de las malezas susceptibles, causándoles la muerte poco después de emerger. Es efectivo aplicado en pre-emergencia o pre-siembra incorporada, y puede usarse en mezclas con otros herbicidas o en aplicaciones post-emergentes para controlar malezas en germinación, pero no malezas ya establecidas."
+  },
+  {
+    "id": "ecotech-bacillus-thuringiensis-var-kurstaki-10-wp",
+    "name": "ECOTECH",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/ecotech-1.jpg",
+    "categories": ["bioinsumos", "linea-bio"],
+    "description": "Es un insecticida biológico selectivo para el control de orugas (larvas de lepidópteros). ECOTECH actúa exclusivamente por ingestión, ya que está constituido por cristales tóxicos de delta-endotoxina y esporas de Bacillus thuringiensis; al ser ingerido por las larvas, provoca inapetencia a las pocas horas y la muerte en 24 a 48 horas posteriores. Es un producto de origen natural que no afecta insectos benéficos."
+  },
+  {
+    "id": "super-onecide-fluazifop-p-butyl-35-ec",
+    "name": "SUPER ONECIDE",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/superonecide-1.jpg",
+    "categories": ["agroquimicos", "herbicidas"],
+    "description": "Graminicida post-emergente selectivo en cultivos como soja, poroto, algodón, maní y diversos hortícolas (papa, tomate, lechuga, batata, zapallito). Actúa en post-emergencia con alta acción sistémica, eliminando eficazmente malezas gramíneas presentes en dichos cultivos."
+  },
+  {
+    "id": "dipi",
+    "name": "DIPI",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/dipi-1.jpg",
+    "categories": ["feromonas", "linea-bio"],
+    "description": "El insecticida DIPI – Dispensador de insecticida de Plato Industries – es un producto órgano-fosforado que actúa por contacto, ingestión e inhalación para el monitoreo y la captura del picudo del algodonero (Anthonomus grandis). Se utiliza dentro de trampas cebo para atraer y eliminar a los picudos, permitiendo reducir sus poblaciones como parte del Manejo Integrado de Plagas."
+  },
+  {
+    "id": "starbuzin-metribuzin-48-sc",
+    "name": "STARBUZIN",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/starbuzin-1.jpg",
+    "categories": ["agroquimicos", "herbicidas"],
+    "description": "Herbicida sistémico y residual, de aplicación tanto en pre como en post-emergencia. Posee un amplio espectro de control sobre malezas gramíneas y latifoliadas. Es absorbido principalmente por las raíces y también a través del follaje, traslocándose dentro de la planta. Su modo de acción interrumpe la fotosíntesis y la síntesis de clorofila en las malezas, provocando su marchitamiento, amarillamiento y posterior muerte."
+  },
+  {
+    "id": "pid-feromona-grandlure-15-para-anthonomus-grandis",
+    "name": "PID",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/pid-1.jpg",
+    "categories": ["feromonas", "linea-bio"],
+    "description": "PID es un dispensador de feromona de Plato Industries que funciona como atrayente sexual para trampas del picudo del algodonero (Anthonomus grandis). Se emplea como cebo en trampas de monitoreo y control: los picudos son atraídos a la trampa por la feromona y quedan capturados, reduciendo la población de esta plaga."
+  },
+  {
+    "id": "starfen-oxifluorfen-24-ec",
+    "name": "STARFEN",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/starfen-1.jpg",
+    "categories": ["agroquimicos", "herbicidas"],
+    "description": "Es un herbicida indicado para el control tanto pre como post-emergente de malezas latifoliadas y gramíneas en diversos cultivos. No se transloca dentro de las plantas, sino que actúa por contacto dañando los órganos aéreos de las malezas. Además de controlar las plántulas emergidas, el producto que alcanza el suelo forma una barrera química residual que elimina las nuevas malezas que van naciendo. (Ingrediente activo: oxifluorfen 24% EC)."
+  },
+  {
+    "id": "trampa-de-feromona",
+    "name": "TRAMPA PLATO",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/trampa-plato-1.jpg",
+    "categories": ["feromonas", "linea-bio"],
+    "description": "La TRAMPA PLATO está especialmente diseñada para detectar poblaciones del picudo del algodonero (Anthonomus grandis). Su función principal es monitorear la presencia y nivel de infestación del picudo durante el ciclo del cultivo. Al inicio del cultivo, la trampa detecta y captura los picudos migratorios provenientes de refugios o malezas hospederas. Durante el cultivo, indica dónde están los picudos y su nivel de infestación. En la entresafra, es una herramienta fundamental para monitorear la plaga, indicando su ubicación y nivel poblacional sobreviviente."
+  },
+  {
+    "id": "tmp-turbo-mata-picudo-malathion-28-feromona-grandlure-033",
+    "name": "TMP (Turbo Mata Picudo)",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/tmp-1.jpg",
+    "categories": ["feromonas", "linea-bio"],
+    "description": "El TMP es un sistema de atracción y control para el picudo del algodonero. Está compuesto por una feromona que atrae al picudo y un insecticida (malatión 28%) que, al contacto, provoca la muerte del insecto. Los picudos son atraídos al dispositivo por la feromona y mueren al entrar en contacto con el malatión. Este sistema permite reducir la población de picudos en el cultivo como parte de un manejo integrado de la plaga."
+  },
+  {
+    "id": "amarillo-adhesivo-base-acuosa",
+    "name": "AMARILLO",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/amarillo-1.jpg",
+    "categories": ["bioinsumos", "linea-bio"],
+    "description": "AMARILLO es un producto diseñado para crear placas y láminas adhesivas no tóxicas a base de agua, utilizadas para la captura de moscas y otros insectos voladores en huertos, invernaderos, gallineros, establos, etc. Es un adhesivo de base acuosa, inocuo para el ambiente, que atrapa a los insectos plaga al contacto, sin necesidad de usar insecticidas."
+  },
+  {
+    "id": "command-36-clomazone-36-microencap",
+    "name": "COMMAND 36",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/command36-1.jpg",
+    "categories": ["agroquimicos", "herbicidas"],
+    "description": "COMMAND 36 CS® es un herbicida pre-emergente sistémico, selectivo para cultivos de soja, maní, papa, arroz y tabaco. Ofrece excelente control y residualidad sobre malezas gramíneas anuales y algunas latifoliadas. Pertenece a la familia de los inhibidores de pigmentos (HPPD). Se absorbe principalmente por las raíces de las malezas. Se aplica en pre-emergencia del cultivo y no presenta restricciones para cultivos posteriores."
+  },
+  {
+    "id": "prometrina-50-sc",
+    "name": "PROMETRINA 50",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/prometrina50-1.jpg",
+    "categories": ["agroquimicos", "herbicidas"],
+    "description": "Prometrina 50% SC es un herbicida pre-emergente selectivo utilizado para el control de malezas en diversos cultivos (por ejemplo, en soja y algodón). Se aplica antes de la emergencia del cultivo para impedir el desarrollo de malezas de hoja ancha y algunas gramíneas."
+  },
+  {
+    "id": "exocet-fluroxypir-28-8-ec",
+    "name": "EXOCET",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/exocet-1.jpg",
+    "categories": ["agroquimicos", "herbicidas"],
+    "description": "Herbicida sistémico de acción hormonal, recomendado para el control de malezas latifoliadas en barbechos químicos y cultivos de cereales, cebolla, cítricos, frutales de pepita y caña de azúcar. Controla un amplio espectro de malezas y es altamente efectivo en mezclas de tanque con glifosato y otros herbicidas auxínicos. Por ejemplo, es muy eficaz contra trébol blanco, rama negra (en estado de roseta), soja guacha, lotus, malva blanca, bejucos, enredaderas perennes y senecios. Aplicado antes de la siembra, no deja restricciones para los cultivos siguientes."
+  },
+  {
+    "id": "startina-lpu-abamectina-07-lpu",
+    "name": "STARTINA LPU",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/startina-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "STARTINA LPU es un insecticida-acaricida de origen natural. Actúa por contacto e ingestión y posee acción translaminar. Su principio activo, la abamectina, altera la función neurológica de las plagas estimulando la liberación del neurotransmisor GABA, bloqueando la transmisión de impulsos nerviosos motores. Los ácaros e insectos tratados quedan paralizados poco después de la exposición. STARTINA LPU controla eficazmente ácaros e insectos adultos. (Abamectina 0,7% LPU)."
+  },
+  {
+    "id": "ishimetrin-active-alfacipermetrina-10-ec",
+    "name": "ISHIMETRIN ACTIVE",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/ishimetrin-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "Insecticida piretroide que actúa por contacto e ingestión sobre diversas plagas (principalmente lepidópteros y hemípteros). Posee amplio espectro y gran poder de volteo. ISHIMETRIN ACTIVE está formulado solo con los isómeros más activos de la cipermetrina, lo que le confiere mayor eficacia que formulaciones comunes, logrando un control rápido tanto de larvas como de adultos en numerosos cultivos. (Alfacipermetrina 10% EC)."
+  },
+  {
+    "id": "starprid-acetamiprid-20-wp",
+    "name": "STARPRID",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/starprid-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "Es un insecticida de acción rápida y efecto residual prolongado. Tiene alta acción sistémica y translaminar, siendo muy bien absorbido por el follaje (aplicación foliar) y por las raíces (cuando se aplica a la semilla). Controla una amplia gama de insectos plaga: áfidos, moscas blancas, trips y minadores de hoja, y también ejerce control sobre algunas especies de lepidópteros, coleópteros e isópteros. No es perjudicial para insectos benéficos como abejas y abejorros. (Ingrediente activo: Acetamiprid 20% WP)."
+  },
+  {
+    "id": "teppeki",
+    "name": "TEPPEKI",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/teppeki-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "Teppeki es un aficida sistémico moderno y seguro, muy activo contra áfidos e insectos chupadores. No causa impacto negativo en insectos benéficos o enemigos naturales, por lo que es adecuado para usarlo dentro de programas de Manejo Integrado de Plagas."
+  },
+  {
+    "id": "metoxistar",
+    "name": "METOXISTAR",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/metoxistar-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "MetoxiStar es un insecticida regulador de crecimiento cuyo modo de acción afecta a las larvas de lepidópteros, acelerando su proceso de muda y presentando también acción ovicida. Las larvas dejan de alimentarse inmediatamente, evitando la defoliación, y mueren a los pocos días. Actúa principalmente por ingestión (y en menor medida por contacto). No afecta insectos de otros grupos (predadores o benéficos), lo que permite su uso en programas de control integrado."
+  },
+  {
+    "id": "imistar",
+    "name": "IMISTAR",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/imistar-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "Es un insecticida neonicotinoide de amplio espectro, que actúa por contacto, ingestión y de forma sistémica. Interviene en la transmisión de los impulsos nerviosos en los insectos, provocando la parálisis y muerte de las plagas."
+  },
+  {
+    "id": "ronfos-plus",
+    "name": "RONFOS +",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/ronfos-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "Insecticida \"curador\" que combina un componente organofosforado (profenofós) y un regulador de crecimiento (IGR, lufenurón). Actúa por contacto, ingestión e inhalación, controlando plagas (especialmente orugas) en cultivos de algodón y soja sin afectar a insectos benéficos. El profenofós brinda un volteo rápido de las plagas, mientras que el lufenurón impide el desarrollo de sus estados inmaduros, proporcionando un control prolongado."
+  },
+  {
+    "id": "caliban",
+    "name": "CALIBAN",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/caliban-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "Caliban es un insecticida sistémico y de contacto a base del ingrediente activo tiacloprid, cuya acción se basa en interferir la transmisión de los impulsos nerviosos en los insectos. No ha manifestado efectos fitotóxicos en los cultivos recomendados. Se utiliza para controlar diversas plagas (principalmente insectos chupadores) en cultivos hortícolas y frutales."
+  },
+  {
+    "id": "talstar",
+    "name": "TALSTAR",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/talstar-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "Talstar es un insecticida piretroide de amplio espectro formulado a base de bifentrina. Es eficaz contra más de 75 especies de plagas (hormigas, arañas, pulgas, garrapatas, mosquitos, etc.), tanto en interiores como en exteriores. Proporciona un control de larga duración y actúa rápidamente al contacto, paralizando y eliminando las plagas. Es de baja irritación, sin olor fuerte ni manchas en las superficies."
+  },
+  {
+    "id": "amitraz-estrella",
+    "name": "AMITRAZ ESTRELLA",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/amitraz-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "Amitraz Estrella es un acaricida e insecticida de amplio espectro a base de amitraz, utilizado principalmente en el control de ácaros (como la arañuela roja) en diversos cultivos e incluso en sanidad animal (por ejemplo, varroasis en abejas). Actúa por contacto e ingestión, afectando el sistema nervioso de los ácaros e insectos objetivo y proporcionando un control efectivo de estas plagas."
+  },
+  {
+    "id": "manconyl-mancozeb-64-metalaxil-8-wp-2",
+    "name": "MANCONYL",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/manconyl-1.jpg",
+    "categories": ["agroquimicos", "fungicidas"],
+    "description": "Manconyl es un fungicida sistémico y de contacto, efectivo para el control de enfermedades causadas por hongos Oomicetes (como mildiu). La fracción sistémica (metalaxil 8%) es rápidamente absorbida por la planta y distribuida hacia las zonas de crecimiento, evitando lavado por lluvias. La fracción de contacto (mancozeb 64%) complementa la acción actuando en forma preventiva, impidiendo la germinación de esporas y la penetración del hongo en la planta."
+  },
+  {
+    "id": "myclostar",
+    "name": "MYCLOSTAR",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/myclostar-1.jpg",
+    "categories": ["agroquimicos", "fungicidas"],
+    "description": "Myclostar es un fungicida sistémico de prolongada actividad residual, con acción protectora y curativa. Protege tanto la superficie externa como interna de las plantas; se absorbe rápidamente y no es removido por la lluvia. No deja sabores u olores indeseables en los frutos tratados, siendo seguro para la calidad de la cosecha. (Ingrediente activo: miclobutanil 25% EC)."
+  },
+  {
+    "id": "timbal",
+    "name": "TIMBAL",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/timbal-1.jpg",
+    "categories": ["agroquimicos", "fungicidas"],
+    "description": "TIMBAL es un fungicida preventivo de amplio espectro a base de un ditiocarbamato de zinc (Zineb). Por su acción inespecífica, su uso continuado no genera resistencia en los patógenos. Proporciona un alto nivel de protección del cultivo y, gracias a su persistencia sobre el follaje, asegura un control prolongado de las enfermedades criptogámicas."
+  },
+  {
+    "id": "candil-80",
+    "name": "CANDIL 80",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/candil80-1.jpg",
+    "categories": ["agroquimicos", "fungicidas"],
+    "description": "Candil 80 es un fungicida orgánico de contacto indicado para la prevención de numerosas enfermedades de origen fúngico en una amplia variedad de cultivos. Actúa de forma preventiva formando una barrera protectora sobre las plantas. (Ingrediente activo: mancozeb 80% WP). Es bien tolerado por los cultivos y no provoca fitotoxicidad significativa."
+  },
+  {
+    "id": "thiram-granuflo-thiram-80-wg",
+    "name": "THIRAM Granuflo ®",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/thiramgranuflo-1.jpg",
+    "categories": ["agroquimicos", "fungicidas"],
+    "description": "Thiram Granuflo® es un fungicida de acción preventiva y amplio espectro. Es bien tolerado por los cultivos y semillas. Se utiliza ampliamente en frutales para prevenir enfermedades foliares, en la conservación de frutas y en hortalizas. Es particularmente efectivo contra Botrytis (podredumbre gris), roña, monilia, antracnosis y Fusarium en numerosos cultivos. También puede utilizarse como raleo químico en manzanos y perales. Especialmente indicado en frutilla (sólo 1 día de carencia)."
+  },
+  {
+    "id": "ziram-granuflo-ziram-76-wg",
+    "name": "ZIRAM Granuflo ®",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/ziramgranuflo-1.jpg",
+    "categories": ["agroquimicos", "fungicidas"],
+    "description": "Fungicida foliar de contacto con acción preventiva y de amplio espectro. Es bien tolerado por cualquier cultivo y se usa principalmente en frutales de carozo y pepita, cítricos, cultivos hortícolas y ornamentales. Además, actúa como repelente para pájaros y roedores. A diferencia de otros ditiocarbamatos, su degradación no genera ETU (etilentiourea), sustancia altamente peligrosa para la salud humana. ZIRAM Granuflo® está registrado en la Unión Europea y EPA. Formulación granulada de alta calidad."
+  },
+  {
+    "id": "emerald-23-me-tetraconazole-23-me",
+    "name": "EMERALD 23 ME",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/emerald23-1.jpg",
+    "categories": ["agroquimicos", "fungicidas"],
+    "description": "EMERALD 23 ME es un fungicida sistémico con acción tanto preventiva como curativa. Actúa sobre los estados vegetativos de los hongos patógenos, protegiendo eficazmente a la planta tanto en su interior como en la superficie contra las enfermedades foliares."
+  },
+  {
+    "id": "neoram-37-5-wg",
+    "name": "NEORAM",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/neoram-1.jpg",
+    "categories": ["agroquimicos", "fungicidas"],
+    "description": "Neoram 37,5 WG es un fungicida a base de oxicloruro de cobre formulado como gránulos dispersables, indicado para la prevención de enfermedades criptogámicas en diversos cultivos. Actúa por contacto, creando una barrera protectora desde el inicio del cultivo que impide la instalación de hongos patógenos."
+  },
+  {
+    "id": "azimut",
+    "name": "AZIMUT",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/azimut-1.jpg",
+    "categories": ["agroquimicos", "fungicidas"],
+    "description": "Azimut es un fungicida sistémico con efectos preventivos y curativos. Está especialmente indicado, por ejemplo, para controlar enfermedades foliares como el tizón en cultivos de sorgo, entre otros. Su acción sistémica protege integralmente a la planta contra una variedad de enfermedades."
+  },
+  {
+    "id": "starfert",
+    "name": "STARFERT",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/starfert-1.jpg",
+    "categories": ["agroquimicos", "fertilizantes"],
+    "description": "Starfert está elaborado a base de extractos vegetales, microelementos y enzimas que permiten una alta absorción tanto radicular como estomática, suministrando una rápida corrección de deficiencias nutricionales en los cultivos. Es un fertilizante líquido de aplicación directa al suelo o vía foliar, que mejora el crecimiento y rendimiento de las plantas."
+  },
+  {
+    "id": "msmax",
+    "name": "MSMAX",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/msmax-1.jpg",
+    "categories": ["agroquimicos", "fertilizantes"],
+    "description": ""
+  },
+  {
+    "id": "starfert-cu",
+    "name": "STARFERT CU",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/starfertcu-1.jpg",
+    "categories": ["agroquimicos", "fertilizantes"],
+    "description": "Starfert Cu es un fertilizante foliar a base de cobre quelatado que corrige eficientemente las deficiencias de este micronutriente. Mejora la sanidad de los cultivos aportando cobre disponible, lo que fortalece los tejidos de las plantas y previene desórdenes nutricionales asociados a la falta de cobre."
+  },
+  {
+    "id": "starquat",
+    "name": "STARQUAT",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/starquat-1.jpg",
+    "categories": ["agroquimicos", "herbicidas"],
+    "description": "Starquat es un herbicida de contacto no selectivo a base de paraquat, empleado para el control total de malezas en barbechos y áreas no cultivadas. Actúa rápidamente desecando los tejidos verdes de las malezas al contacto, produciendo la muerte de las plantas tratadas en poco tiempo."
+  },
+  {
+    "id": "startion",
+    "name": "STARTION",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/startion-1.jpg",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": ""
+  },
+  {
+    "id": "starzoato",
+    "name": "STARZOATO",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/starzoato-1.jpg",
+    "categories": ["agroquimicos", "herbicidas"],
+    "description": "Starzoato es un herbicida sistémico no selectivo a base de glifosato, utilizado en aplicaciones post-emergentes para eliminar malezas anuales y perennes. Es absorbido por el follaje y traslocado hacia las raíces, logrando la eliminación completa de las malezas tratadas."
+  },
+  {
+    "id": "stress-stop",
+    "name": "STRESS STOP",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/stressstop-1.jpg",
+    "categories": ["agroquimicos", "fertilizantes"],
+    "description": ""
+  },
+  {
+    "id": "crop-plus",
+    "name": "CROP +",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/cropplus-1.jpg",
+    "categories": ["agroquimicos", "fertilizantes"],
+    "description": ""
+  },
+  {
+    "id": "bionutriente-calcio",
+    "name": "BIONUTRIENTE CALCIO",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/bionutriente-calcio-1.jpg",
+    "categories": ["agroquimicos", "fertilizantes"],
+    "description": "Bionutriente Calcio es un fertilizante especializado que aporta calcio altamente asimilable para las plantas. Mejora la firmeza de los tejidos vegetales y la calidad de frutos, previniendo desórdenes fisiológicos (como la podredumbre apical en tomate o bitter pit en manzana) asociados a deficiencias de calcio."
+  },
+  {
+    "id": "bionutriente-multimineral",
+    "name": "BIONUTRIENTE MULTIMINERAL",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/bionutriente-multimineral-1.jpg",
+    "categories": ["agroquimicos", "fertilizantes"],
+    "description": "Bionutriente Multimineral es un fertilizante foliar que aporta una mezcla balanceada de micronutrientes esenciales (como zinc, hierro, manganeso, boro, entre otros) para los cultivos. Su aplicación ayuda a prevenir y corregir deficiencias múltiples, asegurando una nutrición completa que se traduce en un crecimiento saludable y un mayor rendimiento."
+  },
+  {
+    "id": "frufix",
+    "name": "FRUFIX",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/frufix-1.jpg",
+    "categories": ["agroquimicos", "coadyuvantes-fitoreguladores-pgr"],
+    "description": "Frufix es un regulador de crecimiento formulado para mejorar el cuaje y desarrollo de frutos en cultivos frutales. Su aplicación promueve el amarre de frutos y reduce la caída prematura, aumentando así la cantidad y calidad de la cosecha."
+  },
+  {
+    "id": "agrostim",
+    "name": "AGROSTIM",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/agrostim-1.jpg",
+    "categories": ["agroquimicos", "coadyuvantes-fitoreguladores-pgr"],
+    "description": "Agrostim es un bioestimulante que promueve el crecimiento y vigor de las plantas. Mejora procesos fisiológicos clave, lo que se traduce en cultivos más desarrollados, con mayor rendimiento y mejor capacidad para sobrellevar situaciones de estrés (como sequía, frío o salinidad)."
+  },
+  {
+    "id": "belcocel",
+    "name": "BELCOCEL",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/belcocel-1.jpg",
+    "categories": ["agroquimicos", "coadyuvantes-fitoreguladores-pgr"],
+    "description": ""
+  },
+  {
+    "id": "bac-hm36",
+    "name": "BAC HM36",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/bac-hm36-1.jpg",
+    "categories": ["agroquimicos", "coadyuvantes-fitoreguladores-pgr"],
+    "description": "BAC HM36 es un bioinsumo a base de bacterias benéficas (por ejemplo, cepas específicas de Bacillus) que contribuye al control biológico de enfermedades del suelo y estimula el crecimiento saludable de las plantas. Su incorporación al cultivo mejora la sanidad radicular y complementa las estrategias de manejo integrado, reduciendo la incidencia de patógenos del suelo."
+  },
+  {
+    "id": "vapam",
+    "name": "VAPAM",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/vapam-1.jpg",
+    "categories": ["agroquimicos", "fumigantes-de-suelo"],
+    "description": "VAPAM es un fumigante de suelo de amplio espectro a base de metamsodio. Se utiliza antes de la siembra para desinfectar el suelo, controlando hongos, nematodos, insectos de suelo y semillas de malezas. Tras su aplicación bajo suelo húmedo y sellado, se descompone liberando gas fumigante que elimina eficazmente las plagas del suelo, dejando el terreno listo para un cultivo libre de infestaciones."
+  },
+  {
+    "id": "seed-extra",
+    "name": "SEED + EXTRA",
+    "logoUrl": "https://agristar.com.ar/wp-content/uploads/2020/09/seedextra-1.jpg",
+    "categories": ["agroquimicos", "fertilizantes"],
+    "description": "SEED+ EXTRA es un tratamiento complementario para semillas que combina nutrientes esenciales y bioestimulantes para mejorar la germinación y el establecimiento inicial de los cultivos. Al aplicar SEED+ EXTRA sobre la semilla, se potencia la vigorosidad de las plántulas, logrando una emergencia más uniforme y plántulas iniciales más fuertes, lo que contribuye a un mejor desarrollo del cultivo."
+  }
+]
