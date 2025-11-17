@@ -29,10 +29,21 @@ export type Product = {
   category: Category;
   mainCategory?: MainCategory;
   subcategory?: Subcategory;
+  description?: string;
+  composition?: string;
+  applications?: string[];
+  characteristics?: string[];
+  recommendedCrops?: string[];
+  dosage?: string;
+  certifications?: {
+    organic?: boolean;
+    pdf?: string;
+  };
+  safetySheet?: string;
+  label?: string;
 };
 
 export type CategoryStructure = {
   name: MainCategory;
   subcategories: Subcategory[];
 };
-

@@ -1,4 +1,5 @@
-import type { Product } from "./products";
+import type { Product } from "./types";
+import { PRODUCTS } from "./products";
 
 /**
  * Parses a comma-separated category parameter from URL
@@ -39,3 +40,26 @@ export function filterProducts(
   });
 }
 
+/**
+ * Gets a product by its ID
+ */
+export function getProductById(id: string): Product | undefined {
+  return PRODUCTS.find((product) => product.id === id);
+}
+
+/**
+ * Gets related products (same category, excluding current product)
+ */
+export function getRelatedProducts(
+  currentProductId: string,
+  limit: number = 4
+): Product[] {
+  const currentProduct = getProductById(currentProductId);
+  if (!currentProduct) return [];
+
+  return PRODUCTS.filter(
+    (product) =>
+      product.id !== currentProductId &&
+      product.category === currentProduct.category
+  ).slice(0, limit);
+}

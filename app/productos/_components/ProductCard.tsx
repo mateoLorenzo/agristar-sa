@@ -8,7 +8,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <article className="bg-white rounded-xl border border-[#E5E7EB] shadow-sm px-1  md:px-2 md:pb-4 md:pt-2 transition-all hover:-translate-y-[1px] hover:shadow-md hover:border-[#D1D5DB] group">
+    <article className="bg-white rounded-xl border border-[#E5E7EB] shadow-sm px-1  md:px-2 md:pb-4 md:pt-2 transition-all hover:-translate-y-[1px] hover:shadow-md hover:border-[#D1D5DB] group cursor-pointer">
       {/* Logo Container */}
       <div className="bg-[#F8F9FB] rounded-lg p-4 mb-2 flex items-center justify-center min-h-[56px] md:min-h-[72px]">
         <div className="relative w-full h-14 md:h-16">
