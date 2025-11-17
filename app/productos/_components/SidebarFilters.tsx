@@ -1,109 +1,59 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { CATEGORY_HIERARCHY } from "../_data/categories";
 import type { MainCategory, Subcategory } from "../_data/types";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
-type FilterSelection = {
-  mainCategories: Set<MainCategory>;
-  subcategories: Set<Subcategory>;
-};
+interface SidebarFiltersProps {
+  selectedCategories: Set<string>;
+  onCategoryChange: (categories: Set<string>) => void;
+}
 
-export function SidebarFilters() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
+export function SidebarFilters({
+  selectedCategories,
+  onCategoryChange,
+}: SidebarFiltersProps) {
   const [isOpen, setIsOpen] = useState(false);
   const animation = useScrollAnimation({ delay: 0 });
-  const [selectedFilters, setSelectedFilters] = useState<FilterSelection>(
-    () => {
-      const cat = searchParams.get("cat");
-      const sub = searchParams.get("sub");
-      return {
-        mainCategories: cat
-          ? new Set(cat.split(",") as MainCategory[])
-          : new Set(),
-        subcategories: sub
-          ? new Set(sub.split(",") as Subcategory[])
-          : new Set(),
-      };
-    }
-  );
 
-  // Sincronizar con URL cuando cambia
-  useEffect(() => {
-    const params = new URLSearchParams(searchParams.toString());
+  const handleCategoryToggle = (category: string) => {
+    const newCategories = new Set(selectedCategories);
+    if (newCategories.has(category)) {
+      newCategories.delete(category);
 
-    if (selectedFilters.mainCategories.size > 0) {
-      params.set("cat", Array.from(selectedFilters.mainCategories).join(","));
-    } else {
-      params.delete("cat");
-    }
-
-    if (selectedFilters.subcategories.size > 0) {
-      params.set("sub", Array.from(selectedFilters.subcategories).join(","));
-    } else {
-      params.delete("sub");
-    }
-
-    router.replace(`/productos?${params.toString()}`, { scroll: false });
-  }, [selectedFilters, router, searchParams]);
-
-  const handleMainCategoryToggle = (category: MainCategory) => {
-    setSelectedFilters((prev) => {
-      const next = { ...prev };
-      if (next.mainCategories.has(category)) {
-        next.mainCategories.delete(category);
-        // Desmarcar también sus subcategorías
-        const categoryData = CATEGORY_HIERARCHY.find(
-          (c) => c.name === category
-        );
-        if (categoryData) {
-          categoryData.subcategories.forEach((sub) => {
-            next.subcategories.delete(sub);
-          });
-        }
-      } else {
-        next.mainCategories.add(category);
+      // Si es una categoría principal, también quitar sus subcategorías
+      const categoryData = CATEGORY_HIERARCHY.find((c) => c.name === category);
+      if (categoryData) {
+        categoryData.subcategories.forEach((sub) => {
+          newCategories.delete(sub);
+        });
       }
-      return {
-        mainCategories: new Set(next.mainCategories),
-        subcategories: new Set(next.subcategories),
-      };
-    });
+    } else {
+      newCategories.add(category);
+    }
+    onCategoryChange(newCategories);
   };
 
   const handleSubcategoryToggle = (
     mainCategory: MainCategory,
     subcategory: Subcategory
   ) => {
-    setSelectedFilters((prev) => {
-      const next = { ...prev };
-      if (next.subcategories.has(subcategory)) {
-        next.subcategories.delete(subcategory);
-      } else {
-        next.subcategories.add(subcategory);
-        // Si agregamos una subcategoría, marcar también la categoría principal
-        next.mainCategories.add(mainCategory);
-      }
-      return {
-        mainCategories: new Set(next.mainCategories),
-        subcategories: new Set(next.subcategories),
-      };
-    });
+    const newCategories = new Set(selectedCategories);
+    if (newCategories.has(subcategory)) {
+      newCategories.delete(subcategory);
+    } else {
+      newCategories.add(subcategory);
+      // No marcar automáticamente la categoría principal
+    }
+    onCategoryChange(newCategories);
   };
 
   const handleReset = () => {
-    setSelectedFilters({
-      mainCategories: new Set(),
-      subcategories: new Set(),
-    });
+    onCategoryChange(new Set());
   };
 
-  const hasActiveFilters =
-    selectedFilters.mainCategories.size > 0 ||
-    selectedFilters.subcategories.size > 0;
+  const hasActiveFilters = selectedCategories.size > 0;
 
   return (
     <aside
@@ -177,8 +127,9 @@ export function SidebarFilters() {
           <nav aria-label="Filtros de categoría">
             <div className="space-y-4">
               {CATEGORY_HIERARCHY.map((categoryGroup) => {
-                const isMainCategoryChecked =
-                  selectedFilters.mainCategories.has(categoryGroup.name);
+                const isMainCategoryChecked = selectedCategories.has(
+                  categoryGroup.name
+                );
 
                 return (
                   <div key={categoryGroup.name}>
@@ -188,7 +139,7 @@ export function SidebarFilters() {
                         type="checkbox"
                         checked={isMainCategoryChecked}
                         onChange={() =>
-                          handleMainCategoryToggle(categoryGroup.name)
+                          handleCategoryToggle(categoryGroup.name)
                         }
                         className="w-4 h-4 rounded border-[#E5E7EB] text-[#111] focus:ring-2 focus:ring-[#E5E7EB] focus:ring-offset-0 cursor-pointer"
                         aria-label={`Filtrar por ${categoryGroup.name}`}
@@ -202,7 +153,7 @@ export function SidebarFilters() {
                     <ul className="ml-7 mt-1 space-y-1">
                       {categoryGroup.subcategories.map((subcategory) => {
                         const isSubcategoryChecked =
-                          selectedFilters.subcategories.has(subcategory);
+                          selectedCategories.has(subcategory);
 
                         return (
                           <li key={subcategory}>

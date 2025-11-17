@@ -42,6 +42,8 @@ export type Product = {
   safetySheet?: string;
   label?: string;
   brochure?: string;
+  // Array original de categorías del JSON (slugs en minúsculas)
+  categories?: string[];
 };
 
 export type CategoryStructure = {

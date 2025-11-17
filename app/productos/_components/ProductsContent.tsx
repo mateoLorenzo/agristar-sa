@@ -1,30 +1,42 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
 import { SearchBar } from "./SearchBar";
 import { SidebarFilters } from "./SidebarFilters";
 import { ProductsGrid } from "./ProductsGrid";
 import { PRODUCTS } from "../_data/products";
-import { filterProducts } from "../_data/helpers";
 
 export function ProductsContent() {
-  const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
-
-  const mainCategories = searchParams.get("cat")?.split(",") || [];
-  const subcategories = searchParams.get("sub")?.split(",") || [];
-
-  // Combinar categorías principales y subcategorías para el filtrado
-  const allSelectedCategories = useMemo(() => {
-    return new Set([...mainCategories, ...subcategories]);
-  }, [mainCategories, subcategories]);
-
-  // Filter products
-  const filteredProducts = useMemo(
-    () => filterProducts(PRODUCTS, allSelectedCategories, searchQuery),
-    [allSelectedCategories, searchQuery]
+  const [selectedCategories, setSelectedCategories] = useState<Set<string>>(
+    new Set()
   );
+
+  // Filter products based on search and selected categories
+  const filteredProducts = useMemo(() => {
+    return PRODUCTS.filter((product) => {
+      // Filter by search query
+      const matchesSearch =
+        !searchQuery ||
+        product.name.toLowerCase().includes(searchQuery.toLowerCase());
+
+      // Filter by categories
+      let matchesCategory = true;
+      if (selectedCategories.size > 0) {
+        // Get product categories from the product object
+        const productCategories = product.categories || [];
+        
+        // Check if product has any of the selected categories
+        matchesCategory = Array.from(selectedCategories).some((selectedCat) => {
+          // Convert selected category to slug format
+          const selectedSlug = categoryToSlug(selectedCat);
+          return productCategories.includes(selectedSlug);
+        });
+      }
+
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchQuery, selectedCategories]);
 
   return (
     <main className="min-h-screen pt-[120px] pb-16">
@@ -43,7 +55,10 @@ export function ProductsContent() {
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 lg:gap-8">
           {/* Sidebar */}
           <aside className="lg:max-w-[280px]" aria-label="Filtros de productos">
-            <SidebarFilters />
+            <SidebarFilters
+              selectedCategories={selectedCategories}
+              onCategoryChange={setSelectedCategories}
+            />
           </aside>
 
           {/* Main Content */}
@@ -54,7 +69,7 @@ export function ProductsContent() {
             </div>
 
             {/* Results Count */}
-            {(searchQuery || allSelectedCategories.size > 0) && (
+            {(searchQuery || selectedCategories.size > 0) && (
               <div className="mb-4 text-sm text-[#6B7280]">
                 {filteredProducts.length === 1
                   ? "1 producto encontrado"
@@ -66,11 +81,32 @@ export function ProductsContent() {
             <ProductsGrid
               products={filteredProducts}
               searchQuery={searchQuery}
-              hasActiveFilters={allSelectedCategories.size > 0}
+              hasActiveFilters={selectedCategories.size > 0}
             />
           </div>
         </div>
       </div>
     </main>
   );
+}
+
+// Helper function to convert category name to slug
+function categoryToSlug(category: string): string {
+  const categoryMap: Record<string, string> = {
+    // Main categories
+    Agroquímicos: "agroquimicos",
+    "Línea Bio": "linea-bio",
+    // Agroquímicos subcategories
+    Fertilizantes: "fertilizantes",
+    "Fumigantes de suelo": "fumigantes-de-suelo",
+    Fungicidas: "fungicidas",
+    Herbicidas: "herbicidas",
+    Insecticidas: "insecticidas",
+    "Coadyuvantes, Fitoreguladores y PGR": "coadyuvantes-fitoreguladores-pgr",
+    // Línea Bio subcategories
+    Bioinsumos: "bioinsumos",
+    Feromonas: "feromonas",
+  };
+
+  return categoryMap[category] || category.toLowerCase();
 }

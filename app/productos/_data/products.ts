@@ -149,6 +149,8 @@ export const PRODUCTS: Product[] = productsData.map((product: any) => {
     mainCategory: mapping.mainCategory,
     subcategory: mapping.subcategory,
     description: product.description || undefined,
+    // ✅ IMPORTANTE: Preservar el array original de categorías del JSON
+    categories: product.categories,
   };
 });
 
