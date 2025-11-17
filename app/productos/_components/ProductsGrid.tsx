@@ -1,6 +1,6 @@
 import { ProductCard } from "./ProductCard";
 import { ProductCardSkeleton } from "./ProductCardSkeleton";
-import type { Product } from "../_data/products";
+import type { Product } from "../_data/types";
 
 interface ProductsGridProps {
   products: Product[];
@@ -63,4 +63,3 @@ export function ProductsGrid({
     </div>
   );
 }
-
