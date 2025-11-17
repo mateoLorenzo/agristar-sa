@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
+import { WhatsAppButton } from "@/components/whatsapp-button";
 
 // OpenSauceOne no está disponible en Google Fonts, usando Inter como alternativa temporal
 // Para usar OpenSauceOne, agregar archivos de fuente en /public/fonts y configurar @font-face en globals.css
@@ -33,6 +34,7 @@ export default function RootLayout({
         <Header />
         {children}
         <Footer />
+        <WhatsAppButton />
         <Analytics />
       </body>
     </html>
