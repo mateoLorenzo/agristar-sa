@@ -1,14 +1,30 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "../_data/types";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 interface ProductCardProps {
   product: Product;
+  index?: number;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, index = 0 }: ProductCardProps) {
+  const animation = useScrollAnimation({ delay: 0.2 }); // Mismo delay para todos los productos
+
   return (
-    <article className="bg-white rounded-xl border border-[#E5E7EB] shadow-sm px-1  md:px-2 md:pb-4 md:pt-2 transition-all hover:-translate-y-[1px] hover:shadow-md hover:border-[#D1D5DB] group cursor-pointer">
+    <article
+      ref={animation.ref}
+      className="bg-white rounded-xl border border-[#E5E7EB] shadow-sm px-1  md:px-2 md:pb-4 md:pt-2 transition-all hover:-translate-y-[1px] hover:shadow-md hover:border-[#D1D5DB] group cursor-pointer"
+      style={{
+        opacity: animation.isVisible ? 1 : 0,
+        transform: animation.isVisible
+          ? "translateY(0) scale(1)"
+          : "translateY(10px) scale(1)",
+        transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+      }}
+    >
       {/* Logo Container */}
       <div className="bg-[#F8F9FB] rounded-lg p-4 mb-2 flex items-center justify-center min-h-[56px] md:min-h-[72px]">
         <div className="relative w-full h-14 md:h-16">

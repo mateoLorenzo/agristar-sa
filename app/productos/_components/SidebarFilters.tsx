@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 import { CATEGORY_HIERARCHY } from "../_data/categories";
 import type { MainCategory, Subcategory } from "../_data/types";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 type FilterSelection = {
   mainCategories: Set<MainCategory>;
@@ -14,6 +15,7 @@ export function SidebarFilters() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [isOpen, setIsOpen] = useState(false);
+  const animation = useScrollAnimation({ delay: 0 });
   const [selectedFilters, setSelectedFilters] = useState<FilterSelection>(
     () => {
       const cat = searchParams.get("cat");
@@ -104,7 +106,15 @@ export function SidebarFilters() {
     selectedFilters.subcategories.size > 0;
 
   return (
-    <aside className="w-full lg:w-[280px] lg:sticky lg:top-24 lg:self-start">
+    <aside
+      ref={animation.ref}
+      className="w-full lg:w-[280px] lg:sticky lg:top-24 lg:self-start"
+      style={{
+        opacity: animation.isVisible ? 1 : 0,
+        transform: animation.isVisible ? "translateY(0)" : "translateY(10px)",
+        transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+      }}
+    >
       <div className="bg-white rounded-xl border border-[#E5E7EB] p-6">
         {/* Mobile: Botón colapsable */}
         <button

@@ -2,11 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export function SearchBar() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("q") || "");
+  const animation = useScrollAnimation({ delay: 0.15 });
 
   // Debounce para actualizar la URL
   useEffect(() => {
@@ -24,7 +26,16 @@ export function SearchBar() {
   }, [query, router, searchParams]);
 
   return (
-    <div className="relative">
+    <div
+      ref={animation.ref}
+      className="relative"
+      style={{
+        opacity: animation.isVisible ? 1 : 0,
+        // transform: animation.isVisible ? "translateY(0)" : "translateY(10px)",
+        transform: animation.isVisible ? "translateY(0)" : "translateY(10px)",
+        transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+      }}
+    >
       <div className="absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none">
         <svg
           width="16"
@@ -53,4 +64,3 @@ export function SearchBar() {
     </div>
   );
 }
-
