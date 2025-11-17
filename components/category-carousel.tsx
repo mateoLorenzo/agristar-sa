@@ -65,9 +65,7 @@ export default function CategoryCarousel() {
       {/* Header Section - Centered with max-width */}
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="text-center mb-16">
-          <p className="text-sm font-medium text-gray-600 uppercase tracking-wider mb-4">
-            CATÁLOGO
-          </p>
+          <p className="text-sm font-light text-[#243938] mb-4">Catálogo</p>
           <h2 className="text-[2.5rem] font-semibold leading-tight text-[#1a1a1a] tracking-tight mb-4">
             Conozca nuestros productos
             <br />
@@ -147,7 +145,7 @@ export default function CategoryCarousel() {
         <div className="flex justify-center">
           <Link
             href="/productos"
-            className="group relative inline-flex items-center gap-0 pl-5.5 pr-1.5 py-1.5 bg-[#011f2b] text-white rounded-full text-sm font-normal transition-all hover:bg-[#022b3d] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(1,31,43,0.4)] focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
+            className="group relative inline-flex items-center gap-0 pl-5.5 pr-1.5 py-1.5 bg-[#0f1c1d] text-white rounded-full text-sm font-normal transition-all hover:bg-[#000000] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(1,31,43,0.4)] focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
           >
             Ver todos
             <div className="ml-5 w-9 h-9 bg-white rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
