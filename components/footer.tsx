@@ -1,8 +1,19 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
+  // Función para scroll smooth al top cuando ya estás en home
+  const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <footer
       className="text-white py-24 pb-12 m-0"
@@ -27,6 +38,7 @@ export default function Footer() {
               <li>
                 <Link
                   href="/"
+                  onClick={handleHomeClick}
                   className="text-white/70 text-[0.9375rem] transition-colors hover:text-white"
                 >
                   Inicio
