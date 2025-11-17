@@ -9,6 +9,7 @@ export default function Header() {
   const pathname = usePathname();
   const [isOnWhiteBackground, setIsOnWhiteBackground] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false);
 
   const navItems = [
     { label: "Inicio", href: "/" },
@@ -16,6 +17,14 @@ export default function Header() {
     { label: "Información", href: "/informacion" },
     { label: "Acerca", href: "/acerca" },
   ];
+
+  // Animación inicial del header (drawer effect)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsHeaderVisible(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   // Detectar si estamos en una página con fondo blanco (no home)
   useEffect(() => {
@@ -56,6 +65,12 @@ export default function Header() {
           : "bg-white/5 border-b border-white/10"
       }`}
       data-theme={shouldUseWhiteBackground ? "dark" : "light"}
+      style={{
+        transform: isHeaderVisible ? "translateY(0)" : "translateY(-100%)",
+        opacity: isHeaderVisible ? 1 : 0,
+        transition:
+          "transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease-out, background-color 0.3s, border-color 0.3s",
+      }}
     >
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-4 flex items-center justify-between gap-8">
         <Link

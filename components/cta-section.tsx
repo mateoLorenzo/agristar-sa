@@ -1,8 +1,15 @@
 "use client";
 
 import Link from "next/link";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function CTASection() {
+  // Animaciones escalonadas para elementos de texto
+  const titleAnimation = useScrollAnimation({ delay: 0 });
+  const descriptionAnimation = useScrollAnimation({ delay: 0.15 });
+  const buttonAnimation = useScrollAnimation({ delay: 0.3 });
+  const imageAnimation = useScrollAnimation({ delay: 0 });
+
   return (
     <section
       className="py-24 m-0"
@@ -14,36 +21,77 @@ export default function CTASection() {
     >
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
         <div className="text-white">
-          <h2 className="text-4xl lg:text-5xl font-medium leading-tight mb-8 tracking-tight">
+          <h2
+            ref={titleAnimation.ref}
+            className="text-4xl lg:text-5xl font-medium leading-tight mb-8 tracking-tight"
+            style={{
+              opacity: titleAnimation.isVisible ? 1 : 0,
+              transform: titleAnimation.isVisible
+                ? "translateY(0)"
+                : "translateY(30px)",
+              transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+            }}
+          >
             Calidad única
           </h2>
-          <p className="text-base font-light leading-relaxed text-white/90 mb-12">
+          <p
+            ref={descriptionAnimation.ref}
+            className="text-base font-light leading-relaxed text-white/90 mb-12"
+            style={{
+              opacity: descriptionAnimation.isVisible ? 1 : 0,
+              transform: descriptionAnimation.isVisible
+                ? "translateY(0)"
+                : "translateY(30px)",
+              transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+            }}
+          >
             Nuestro equipo de ingenieros agrónomos brinda soporte integral a
             <br />
             productores y distribuidores, ofreciendo recomendaciones según tipo
             de cultivo, zona y condiciones climáticas.
           </p>
-          <Link
-            href="/contacto"
-            className="group relative inline-flex items-center gap-0 pl-5.5 pr-2 py-2 bg-[#0f1c1d] text-white rounded-full text-[15px] font-normal transition-all hover:bg-[##0d191a hover:-translate-y-0.5 hover:shadow-[0_5px_25px_rgba(1,31,43,0.3)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+          <div
+            ref={buttonAnimation.ref}
+            style={{
+              opacity: buttonAnimation.isVisible ? 1 : 0,
+              transform: buttonAnimation.isVisible
+                ? "translateY(0)"
+                : "translateY(30px)",
+              transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+            }}
           >
-            Contactanos
-            <div className="ml-5 w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#011f2b] transition-transform group-hover:scale-105">
-              <svg
-                width="17"
-                height="17"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </div>
-          </Link>
+            <Link
+              href="/contacto"
+              className="group relative inline-flex items-center gap-0 pl-5.5 pr-2 py-2 bg-[#0f1c1d] text-white rounded-full text-[15px] font-normal transition-all hover:bg-[##0d191a hover:-translate-y-0.5 hover:shadow-[0_5px_25px_rgba(1,31,43,0.3)] focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2"
+            >
+              Contactanos
+              <div className="ml-5 w-10 h-10 bg-white rounded-full flex items-center justify-center text-[#011f2b] transition-transform group-hover:scale-105">
+                <svg
+                  width="17"
+                  height="17"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </div>
+            </Link>
+          </div>
         </div>
 
-        <div className="rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.3)] aspect-square">
+        <div
+          ref={imageAnimation.ref}
+          className="rounded-2xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.3)] aspect-square"
+          style={{
+            opacity: imageAnimation.isVisible ? 1 : 0,
+            transform: imageAnimation.isVisible
+              ? "translateY(0)"
+              : "translateY(30px)",
+            transition: "opacity 0.8s ease-out, transform 0.8s ease-out",
+          }}
+        >
           <img
             // src="/person-installing-solar-panels-on-roof.jpg"
             src="/image-1.jpg"

@@ -2,9 +2,17 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function Footer() {
   const pathname = usePathname();
+
+  // Animaciones escalonadas para cada columna del footer
+  const aboutAnimation = useScrollAnimation({ delay: 0 });
+  const companyAnimation = useScrollAnimation({ delay: 0.08 });
+  const agroquimicosAnimation = useScrollAnimation({ delay: 0.16 });
+  const lineaBioAnimation = useScrollAnimation({ delay: 0.24 });
+  const socialAnimation = useScrollAnimation({ delay: 0.28 });
 
   // Función para scroll smooth al top cuando ya estás en home
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -23,7 +31,17 @@ export default function Footer() {
     >
       <div className="max-w-[1280px] mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr_1.5fr] gap-12 mb-12">
-          <div className="flex flex-col gap-6">
+          <div
+            ref={aboutAnimation.ref}
+            className="flex flex-col gap-6"
+            style={{
+              opacity: aboutAnimation.isVisible ? 1 : 0,
+              transform: aboutAnimation.isVisible
+                ? "translateY(0)"
+                : "translateY(20px)",
+              transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+            }}
+          >
             <p className="text-white/70 text-[0.9375rem] leading-relaxed max-w-[400px]">
               Agri Star S.A., fundada en 2005, es una empresa especializada en
               la comercialización de agroquímicos, fertilizantes y semillas. Nos
@@ -32,7 +50,17 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="flex flex-col gap-6">
+          <div
+            ref={companyAnimation.ref}
+            className="flex flex-col gap-6"
+            style={{
+              opacity: companyAnimation.isVisible ? 1 : 0,
+              transform: companyAnimation.isVisible
+                ? "translateY(0)"
+                : "translateY(20px)",
+              transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+            }}
+          >
             <h3 className="text-base font-semibold text-white">Compañía</h3>
             <ul className="list-none flex flex-col gap-3">
               <li>
@@ -87,7 +115,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-6">
+          <div
+            ref={agroquimicosAnimation.ref}
+            className="flex flex-col gap-6"
+            style={{
+              opacity: agroquimicosAnimation.isVisible ? 1 : 0,
+              transform: agroquimicosAnimation.isVisible
+                ? "translateY(0)"
+                : "translateY(20px)",
+              transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+            }}
+          >
             <h3 className="text-base font-semibold text-white">Agroquímicos</h3>
             <ul className="list-none flex flex-col gap-3">
               <li>
@@ -141,7 +179,17 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-6">
+          <div
+            ref={lineaBioAnimation.ref}
+            className="flex flex-col gap-6"
+            style={{
+              opacity: lineaBioAnimation.isVisible ? 1 : 0,
+              transform: lineaBioAnimation.isVisible
+                ? "translateY(0)"
+                : "translateY(20px)",
+              transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+            }}
+          >
             <h3 className="text-base font-semibold text-white">Línea Bio</h3>
             <ul className="list-none flex flex-col gap-3">
               <li>
@@ -189,7 +237,17 @@ export default function Footer() {
         </div>
 
         <div className="pt-12 border-t border-white/10">
-          <div className="flex gap-6">
+          <div
+            ref={socialAnimation.ref}
+            className="flex gap-6"
+            style={{
+              opacity: socialAnimation.isVisible ? 1 : 0,
+              transform: socialAnimation.isVisible
+                ? "translateY(0)"
+                : "translateY(20px)",
+              transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+            }}
+          >
             <Link
               href="/contacto"
               aria-label="Contacto"
