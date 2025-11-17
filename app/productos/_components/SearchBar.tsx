@@ -1,29 +1,22 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
-export function SearchBar() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get("q") || "");
+interface SearchBarProps {
+  onSearch: (query: string) => void;
+}
+
+export function SearchBar({ onSearch }: SearchBarProps) {
+  const [inputValue, setInputValue] = useState("");
   const animation = useScrollAnimation({ delay: 0.15 });
 
-  // Debounce para actualizar la URL
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      const params = new URLSearchParams(searchParams.toString());
-      if (query.trim()) {
-        params.set("q", query.trim());
-      } else {
-        params.delete("q");
-      }
-      router.replace(`/productos?${params.toString()}`, { scroll: false });
-    }, 300);
-
-    return () => clearTimeout(timer);
-  }, [query, router, searchParams]);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputValue(value);
+    // Llamar a onSearch mientras el usuario escribe
+    onSearch(value.trim());
+  };
 
   return (
     <div
@@ -31,7 +24,6 @@ export function SearchBar() {
       className="relative"
       style={{
         opacity: animation.isVisible ? 1 : 0,
-        // transform: animation.isVisible ? "translateY(0)" : "translateY(10px)",
         transform: animation.isVisible ? "translateY(0)" : "translateY(10px)",
         transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
       }}
@@ -55,8 +47,8 @@ export function SearchBar() {
       </div>
       <input
         type="search"
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
+        value={inputValue}
+        onChange={handleChange}
         placeholder="Buscar producto"
         className="w-full h-12 pl-11 pr-4 border border-[#E5E7EB] rounded-lg bg-white text-[#111] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#E5E7EB] focus:ring-offset-0 transition-all"
         aria-label="Buscar producto"

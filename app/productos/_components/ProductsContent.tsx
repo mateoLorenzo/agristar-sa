@@ -1,7 +1,7 @@
 "use client";
 
 import { useSearchParams } from "next/navigation";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { SearchBar } from "./SearchBar";
 import { SidebarFilters } from "./SidebarFilters";
 import { ProductsGrid } from "./ProductsGrid";
@@ -10,8 +10,8 @@ import { filterProducts } from "../_data/helpers";
 
 export function ProductsContent() {
   const searchParams = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const searchQuery = searchParams.get("q") || "";
   const mainCategories = searchParams.get("cat")?.split(",") || [];
   const subcategories = searchParams.get("sub")?.split(",") || [];
 
@@ -50,7 +50,7 @@ export function ProductsContent() {
           <div className="min-w-0">
             {/* Search Bar */}
             <div className="mb-6">
-              <SearchBar />
+              <SearchBar onSearch={setSearchQuery} />
             </div>
 
             {/* Results Count */}
