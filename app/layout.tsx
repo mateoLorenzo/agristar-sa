@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   description:
     "Agri Star S.A, operando desde el año 2005, es una empresa especializada en la comercialización de agroquímicos y semillas, principalmente en los mercados de cultivos intensivos.",
   generator: "v0.app",
+  icons: {
+    icon: "/logo-square.png",
+    shortcut: "/logo-square.png",
+    apple: "/logo-square.png",
+  },
 };
 
 export default function RootLayout({
