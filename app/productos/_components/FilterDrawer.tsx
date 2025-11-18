@@ -2,19 +2,28 @@
 
 import { CATEGORY_HIERARCHY } from "../_data/categories";
 import type { MainCategory, Subcategory } from "../_data/types";
-import { useScrollAnimation } from "@/hooks/use-scroll-animation";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetClose,
+} from "@/components/ui/sheet";
+import { X } from "lucide-react";
 
-interface SidebarFiltersProps {
+interface FilterDrawerProps {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
   selectedCategories: Set<string>;
   onCategoryChange: (categories: Set<string>) => void;
 }
 
-export function SidebarFilters({
+export function FilterDrawer({
+  open,
+  onOpenChange,
   selectedCategories,
   onCategoryChange,
-}: SidebarFiltersProps) {
-  const animation = useScrollAnimation({ delay: 0 });
-
+}: FilterDrawerProps) {
   const handleCategoryToggle = (category: string) => {
     const newCategories = new Set(selectedCategories);
     if (newCategories.has(category)) {
@@ -42,45 +51,31 @@ export function SidebarFilters({
       newCategories.delete(subcategory);
     } else {
       newCategories.add(subcategory);
-      // No marcar automáticamente la categoría principal
     }
     onCategoryChange(newCategories);
   };
 
-  const handleReset = () => {
-    onCategoryChange(new Set());
-  };
-
-  const hasActiveFilters = selectedCategories.size > 0;
-
   return (
-    <aside
-      ref={animation.ref}
-      className="w-full lg:w-[280px] lg:sticky lg:top-24 lg:self-start"
-      style={{
-        opacity: animation.isVisible ? 1 : 0,
-        transform: animation.isVisible ? "translateY(0)" : "translateY(10px)",
-        transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
-      }}
-    >
-      <div className="bg-white rounded-xl border border-[#E5E7EB] p-6">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-lg font-semibold text-[#111]">Categorías</h2>
-          {hasActiveFilters && (
-            <button
-              onClick={handleReset}
-              className="text-sm text-[#6B7280] hover:text-[#111] transition-colors focus-visible:outline-2 focus-visible:outline-[#E5E7EB] focus-visible:outline-offset-2 rounded"
-              aria-label="Restablecer filtros"
-            >
-              Restablecer
-            </button>
-          )}
-        </div>
+    <Sheet open={open} onOpenChange={onOpenChange}>
+      <SheetContent
+        side="right"
+        className="w-[75%] sm:w-[75%] md:w-[60%] p-0 flex flex-col"
+      >
+        <SheetHeader className="border-b border-[#E5E7EB] px-6 py-5">
+          <div className="flex items-center justify-between">
+            <SheetTitle className="text-xl font-semibold text-[#1a1a1a]">
+              Filtros
+            </SheetTitle>
+            <SheetClose className="rounded-sm opacity-70 ring-offset-white transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[#E5E7EB] focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+              <X className="h-5 w-5" />
+              <span className="sr-only">Cerrar</span>
+            </SheetClose>
+          </div>
+        </SheetHeader>
 
-        {/* Filtros */}
-        <nav aria-label="Filtros de categoría">
-          <div className="space-y-4">
+        <div className="flex-1 overflow-y-auto px-6 py-6">
+          {/* Categorías */}
+          <div className="space-y-6">
             {CATEGORY_HIERARCHY.map((categoryGroup) => {
               const isMainCategoryChecked = selectedCategories.has(
                 categoryGroup.name
@@ -89,28 +84,27 @@ export function SidebarFilters({
               return (
                 <div key={categoryGroup.name}>
                   {/* Categoría principal */}
-                  <label className="flex items-center gap-3 cursor-pointer group py-1.5 px-2 -mx-2 rounded-lg hover:bg-[#F8F9FB] transition-colors">
+                  <label className="flex items-start gap-3 cursor-pointer group py-2">
                     <input
                       type="checkbox"
                       checked={isMainCategoryChecked}
                       onChange={() => handleCategoryToggle(categoryGroup.name)}
-                      className="w-4 h-4 rounded border-[#E5E7EB] text-[#111] focus:ring-2 focus:ring-[#E5E7EB] focus:ring-offset-0 cursor-pointer"
-                      aria-label={`Filtrar por ${categoryGroup.name}`}
+                      className="mt-0.5 w-5 h-5 rounded border-[#D1D5DB] text-[#111] focus:ring-2 focus:ring-[#659C39] focus:ring-offset-0 cursor-pointer"
                     />
-                    <span className="text-sm font-semibold text-[#111] group-hover:text-[#111] uppercase tracking-wide">
+                    <span className="text-base font-semibold text-[#1a1a1a] uppercase tracking-wide">
                       {categoryGroup.name}
                     </span>
                   </label>
 
                   {/* Subcategorías */}
-                  <ul className="ml-7 mt-1 space-y-1">
+                  <ul className="ml-8 mt-3 space-y-3">
                     {categoryGroup.subcategories.map((subcategory) => {
                       const isSubcategoryChecked =
                         selectedCategories.has(subcategory);
 
                       return (
                         <li key={subcategory}>
-                          <label className="flex items-center gap-3 cursor-pointer group py-1 px-2 -mx-2 rounded-lg hover:bg-[#F8F9FB] transition-colors">
+                          <label className="flex items-start gap-3 cursor-pointer group py-1">
                             <input
                               type="checkbox"
                               checked={isSubcategoryChecked}
@@ -120,10 +114,9 @@ export function SidebarFilters({
                                   subcategory
                                 )
                               }
-                              className="w-3.5 h-3.5 rounded border-[#E5E7EB] text-[#111] focus:ring-2 focus:ring-[#E5E7EB] focus:ring-offset-0 cursor-pointer"
-                              aria-label={`Filtrar por ${subcategory}`}
+                              className="mt-0.5 w-4 h-4 rounded border-[#D1D5DB] text-[#111] focus:ring-2 focus:ring-[#659C39] focus:ring-offset-0 cursor-pointer"
                             />
-                            <span className="text-sm text-[#6B7280] group-hover:text-[#111]">
+                            <span className="text-sm text-[#374151] leading-relaxed">
                               {subcategory}
                             </span>
                           </label>
@@ -135,8 +128,18 @@ export function SidebarFilters({
               );
             })}
           </div>
-        </nav>
-      </div>
-    </aside>
+        </div>
+
+        {/* Botón de aplicar */}
+        <div className="border-t border-[#E5E7EB] px-6 py-4">
+          <button
+            onClick={() => onOpenChange(false)}
+            className="w-full bg-[#111] hover:bg-[#1a1a1a] text-white py-3 px-6 rounded-lg font-medium transition-colors"
+          >
+            Aplicar Filtros
+          </button>
+        </div>
+      </SheetContent>
+    </Sheet>
   );
 }

@@ -14,7 +14,7 @@ export default function CTASection() {
     <section
       className="py-16 md:py-20 lg:py-24 m-0"
       style={{
-        // background: "linear-gradient(135deg, #1e3a5f 0%, #2d5a7b 100%)",
+        // background: "linear-gradient(135deg, #1e3a5f 0%, #2image.pngd5a7b 100%)",
         // background: "linear-gradient(135deg, #659C39 0%, #4c752b 100%)",
         background: "linear-gradient(135deg, #273E3D 0%, #1d2d2c 100%)",
       }}

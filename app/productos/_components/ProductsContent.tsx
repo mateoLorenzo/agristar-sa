@@ -4,8 +4,10 @@ import { useMemo, useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { SearchBar } from "./SearchBar";
 import { SidebarFilters } from "./SidebarFilters";
+import { FilterDrawer } from "./FilterDrawer";
 import { ProductsGrid } from "./ProductsGrid";
 import { PRODUCTS } from "../_data/products";
+import { SlidersHorizontal } from "lucide-react";
 
 export function ProductsContent() {
   const searchParams = useSearchParams();
@@ -13,6 +15,7 @@ export function ProductsContent() {
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(
     new Set()
   );
+  const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
 
   // Leer parámetros de URL y sincronizar con el estado
   useEffect(() => {
@@ -54,7 +57,7 @@ export function ProductsContent() {
       if (selectedCategories.size > 0) {
         // Get product categories from the product object
         const productCategories = product.categories || [];
-        
+
         // Check if product has any of the selected categories
         matchesCategory = Array.from(selectedCategories).some((selectedCat) => {
           // Convert selected category to slug format
@@ -69,21 +72,24 @@ export function ProductsContent() {
 
   return (
     <main className="min-h-screen pt-[120px] pb-16">
-      <div className="max-w-[1200px] mx-auto px-6 md:px-12">
+      <div className="max-w-[1200px] mx-auto px-4 sm:px-6 md:px-12">
         {/* Page Header */}
-        <div className="mb-8">
-          <h1 className="text-4xl md:text-5xl font-semibold text-[#1a1a1a] mb-2">
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-semibold text-[#1a1a1a] mb-2">
             Productos
           </h1>
-          <p className="text-lg text-[#6B7280]">
+          <p className="text-base md:text-lg text-[#6B7280]">
             Explorá nuestro catálogo completo
           </p>
         </div>
 
         {/* Layout: Sidebar + Content */}
         <div className="grid grid-cols-1 lg:grid-cols-[280px_1fr] gap-6 lg:gap-8">
-          {/* Sidebar */}
-          <aside className="lg:max-w-[280px]" aria-label="Filtros de productos">
+          {/* Sidebar - Hidden on mobile, visible on desktop */}
+          <aside
+            className="hidden lg:block lg:max-w-[280px]"
+            aria-label="Filtros de productos"
+          >
             <SidebarFilters
               selectedCategories={selectedCategories}
               onCategoryChange={setSelectedCategories}
@@ -92,9 +98,27 @@ export function ProductsContent() {
 
           {/* Main Content */}
           <div className="min-w-0">
-            {/* Search Bar */}
-            <div className="mb-6">
-              <SearchBar onSearch={setSearchQuery} />
+            {/* Search Bar + Filter Button (Mobile) */}
+            <div className="mb-6 flex gap-3">
+              <div className="flex-1">
+                <SearchBar onSearch={setSearchQuery} />
+              </div>
+              {/* Mobile Filter Button */}
+              <button
+                onClick={() => setIsFilterDrawerOpen(true)}
+                className="lg:hidden flex items-center justify-center w-12 h-12 bg-white border-2 border-[#D1D5DB] rounded-lg hover:border-[#9CA3AF] transition-colors focus-visible:outline-2 focus-visible:outline-[#659C39] focus-visible:outline-offset-2 relative"
+                aria-label="Abrir filtros"
+                style={{
+                  border: "1px solid #e5e5e5",
+                }}
+              >
+                <SlidersHorizontal className="w-5 h-5 text-[#6B7280]" />
+                {selectedCategories.size > 0 && (
+                  <span className="absolute -top-1.5 -right-1.5 w-5 h-5 bg-[#659C39] text-white text-xs font-semibold rounded-full flex items-center justify-center">
+                    {selectedCategories.size}
+                  </span>
+                )}
+              </button>
             </div>
 
             {/* Results Count */}
@@ -115,6 +139,14 @@ export function ProductsContent() {
           </div>
         </div>
       </div>
+
+      {/* Filter Drawer (Mobile) */}
+      <FilterDrawer
+        open={isFilterDrawerOpen}
+        onOpenChange={setIsFilterDrawerOpen}
+        selectedCategories={selectedCategories}
+        onCategoryChange={setSelectedCategories}
+      />
     </main>
   );
 }

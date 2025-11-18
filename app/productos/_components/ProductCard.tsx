@@ -21,7 +21,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
     >
       <article
         ref={animation.ref}
-        className="bg-white rounded-xl border border-[#E5E7EB] shadow-sm px-1 md:px-2 md:pb-4 md:pt-2 transition-all hover:-translate-y-[1px] hover:shadow-md hover:border-[#D1D5DB] group cursor-pointer h-full"
+        className="bg-white rounded-xl border border-[#E5E7EB] shadow-sm p-4 md:px-4 md:py-5 transition-all hover:-translate-y-[1px] hover:shadow-md hover:border-[#D1D5DB] group cursor-pointer h-full flex flex-col"
         style={{
           opacity: animation.isVisible ? 1 : 0,
           transform: animation.isVisible
@@ -31,8 +31,8 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         }}
       >
         {/* Logo Container */}
-        <div className="bg-[#F8F9FB] rounded-lg p-4 mb-2 flex items-center justify-center min-h-[56px] md:min-h-[72px]">
-          <div className="relative w-full h-14 md:h-16">
+        <div className="bg-[#F8F9FB] rounded-lg p-4 md:p-5 mb-3 md:mb-4 flex items-center justify-center min-h-[80px] md:min-h-[100px]">
+          <div className="relative w-full h-16 md:h-20">
             <Image
               src={product.logoUrl}
               alt={`Logo de ${product.name}`}
@@ -45,16 +45,16 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         </div>
 
         {/* Product Name */}
-        <h3 className="text-sm font-medium text-[#111] leading-tight line-clamp-2 mb-2">
+        <h3 className="text-sm md:text-base font-medium text-[#111] leading-tight line-clamp-2 mb-3 md:mb-4 flex-1">
           {product.name}
         </h3>
 
         {/* More Info Link */}
-        <div className="flex items-center justify-between">
-          <span className="text-sm text-[#6B7280] group-hover:text-[#111] transition-colors">
+        <div className="flex items-center justify-between mt-auto">
+          <span className="text-xs md:text-sm text-[#6B7280] group-hover:text-[#111] transition-colors">
             Más información
           </span>
-          <div className="w-9 h-9 rounded-full bg-[#111] text-white flex items-center justify-center group-hover:bg-[#1a1a1a] transition-colors">
+          <div className="w-9 h-9 rounded-full bg-[#111] text-white flex items-center justify-center group-hover:bg-[#1a1a1a] transition-colors flex-shrink-0">
             <svg
               width="15"
               height="15"
