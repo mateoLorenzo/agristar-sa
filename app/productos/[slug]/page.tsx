@@ -105,29 +105,29 @@ export default async function ProductDetailPage({ params }: Props) {
   const relatedProducts = getRelatedProducts(product.id);
 
   return (
-    <div className="min-h-screen bg-[#FAFAFA] pt-20">
+    <div className="min-h-screen bg-[#FAFAFA] pt-20 md:pt-20">
       {/* Breadcrumb */}
       <div className="bg-white border-b border-[#E5E7EB]">
-        <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-4">
+        <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12 py-3 md:py-4">
           <nav
             aria-label="Breadcrumb"
-            className="flex items-center gap-2 text-sm"
+            className="flex items-center gap-2 text-xs md:text-sm overflow-x-auto scrollbar-hide"
           >
             <Link
               href="/"
-              className="text-[#6B7280] hover:text-[#111] transition-colors"
+              className="text-[#6B7280] hover:text-[#111] transition-colors whitespace-nowrap flex-shrink-0"
             >
               Inicio
             </Link>
-            <span className="text-[#D1D5DB]">/</span>
+            <span className="text-[#D1D5DB] flex-shrink-0">/</span>
             <Link
               href="/productos"
-              className="text-[#6B7280] hover:text-[#111] transition-colors"
+              className="text-[#6B7280] hover:text-[#111] transition-colors whitespace-nowrap flex-shrink-0"
             >
               Productos
             </Link>
-            <span className="text-[#D1D5DB]">/</span>
-            <span className="text-[#111] font-medium line-clamp-1">
+            <span className="text-[#D1D5DB] flex-shrink-0">/</span>
+            <span className="text-[#111] font-medium whitespace-nowrap">
               {product.name}
             </span>
           </nav>
@@ -135,27 +135,27 @@ export default async function ProductDetailPage({ params }: Props) {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-12">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12 py-8 md:py-12">
         {/* Product Title - Moverlo arriba para mejor jerarquía visual */}
-        <div className="mb-8">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#111] mb-3 leading-tight">
+        <div className="mb-6 md:mb-8">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#111] mb-2 md:mb-3 leading-tight">
             {product.name}
           </h1>
           {/* Category Badge inline */}
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-[#659C39]" />
-            <p className="text-sm text-[#6B7280] font-medium">
+            <p className="text-xs sm:text-sm text-[#6B7280] font-medium">
               {product.mainCategory} • {product.subcategory}
             </p>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mb-12 md:mb-16">
           {/* Left Column - Product Image */}
-          <div className="order-2 lg:order-1">
-            {/* Product Logo - altura fija para simetría */}
-            <div className="bg-white rounded-2xl border border-[#E5E7EB] p-8 md:p-12 shadow-sm lg:sticky lg:top-24 h-[500px] lg:h-[600px] flex items-center justify-center">
-              <div className="relative w-full h-full max-w-md mx-auto">
+          <div className="order-1 lg:order-1">
+            {/* Product Logo - proporción 2:4 en mobile, altura fija en desktop */}
+            <div className="bg-white rounded-xl md:rounded-2xl border border-[#E5E7EB] p-6 sm:p-8 md:p-12 shadow-sm lg:sticky lg:top-24">
+              <div className="relative w-full aspect-[4/2] lg:aspect-auto lg:h-[600px]">
                 <Image
                   src={product.logoUrl}
                   alt={`Logo de ${product.name}`}
@@ -169,15 +169,15 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
 
           {/* Right Column - Product Details con scroll */}
-          <div className="order-1 lg:order-2">
+          <div className="order-2 lg:order-2">
             {/* Container con altura fija y scroll interno */}
-            <div className="lg:h-[600px] flex flex-col space-y-6">
+            <div className="lg:h-[600px] flex flex-col space-y-4 md:space-y-6">
               {/* Description con scroll si es necesario */}
               {product.description && (
-                <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 md:p-8 shadow-sm flex-1 flex flex-col overflow-hidden">
-                  <h2 className="text-base font-semibold text-[#111] uppercase tracking-wide mb-4 flex items-center gap-2 flex-shrink-0">
+                <div className="bg-white rounded-xl border border-[#E5E7EB] p-5 sm:p-6 md:p-8 shadow-sm flex-1 flex flex-col overflow-hidden">
+                  <h2 className="text-sm md:text-base font-semibold text-[#111] uppercase tracking-wide mb-3 md:mb-4 flex items-center gap-2 flex-shrink-0">
                     <svg
-                      className="w-5 h-5 text-[#659C39]"
+                      className="w-4 h-4 md:w-5 md:h-5 text-[#659C39]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -192,7 +192,7 @@ export default async function ProductDetailPage({ params }: Props) {
                     Descripción
                   </h2>
                   <div className="overflow-y-auto flex-1 pr-2 custom-scrollbar">
-                    <p className="text-[#374151] leading-relaxed whitespace-pre-line">
+                    <p className="text-sm md:text-base text-[#374151] leading-relaxed whitespace-pre-line">
                       {product.description}
                     </p>
                   </div>
@@ -204,10 +204,10 @@ export default async function ProductDetailPage({ params }: Props) {
                 product.brochure ||
                 product.label ||
                 product.certifications?.pdf) && (
-                <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 md:p-8 shadow-sm flex-shrink-0">
-                  <h2 className="text-base font-semibold text-[#111] uppercase tracking-wide mb-4 flex items-center gap-2">
+                <div className="bg-white rounded-xl border border-[#E5E7EB] p-5 sm:p-6 md:p-8 shadow-sm flex-shrink-0">
+                  <h2 className="text-sm md:text-base font-semibold text-[#111] uppercase tracking-wide mb-3 md:mb-4 flex items-center gap-2">
                     <svg
-                      className="w-5 h-5 text-[#659C39]"
+                      className="w-4 h-4 md:w-5 md:h-5 text-[#659C39]"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -221,16 +221,16 @@ export default async function ProductDetailPage({ params }: Props) {
                     </svg>
                     Documentación
                   </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 md:gap-3">
                     {product.safetySheet && (
                       <a
                         href={product.safetySheet}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                        className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
                       >
                         <svg
-                          className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                          className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -242,7 +242,7 @@ export default async function ProductDetailPage({ params }: Props) {
                             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                           />
                         </svg>
-                        <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                        <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
                           Hoja de Seguridad
                         </span>
                       </a>
@@ -252,10 +252,10 @@ export default async function ProductDetailPage({ params }: Props) {
                         href={product.brochure}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                        className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
                       >
                         <svg
-                          className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                          className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -267,7 +267,7 @@ export default async function ProductDetailPage({ params }: Props) {
                             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                           />
                         </svg>
-                        <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                        <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
                           Folleto
                         </span>
                       </a>
@@ -277,10 +277,10 @@ export default async function ProductDetailPage({ params }: Props) {
                         href={product.label}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                        className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
                       >
                         <svg
-                          className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                          className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -292,7 +292,7 @@ export default async function ProductDetailPage({ params }: Props) {
                             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                           />
                         </svg>
-                        <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                        <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
                           Etiqueta
                         </span>
                       </a>
@@ -302,10 +302,10 @@ export default async function ProductDetailPage({ params }: Props) {
                         href={product.certifications.pdf}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                        className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
                       >
                         <svg
-                          className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                          className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="currentColor"
@@ -317,7 +317,7 @@ export default async function ProductDetailPage({ params }: Props) {
                             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                           />
                         </svg>
-                        <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                        <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
                           Certificado Orgánico
                         </span>
                       </a>
@@ -327,22 +327,22 @@ export default async function ProductDetailPage({ params }: Props) {
               )}
 
               {/* Contact CTA */}
-              <div className="bg-gradient-to-br from-[#000] to-[#000] rounded-xl p-6 md:p-8 shadow-lg flex-shrink-0">
-                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="bg-gradient-to-br from-[#000] to-[#000] rounded-xl p-5 sm:p-6 md:p-8 shadow-lg flex-shrink-0">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-3 md:gap-4">
                   <div className="text-center sm:text-left">
-                    <h3 className="text-lg font-semibold text-white mb-1">
+                    <h3 className="text-base md:text-lg font-semibold text-white mb-1">
                       ¿Interesado en este producto?
                     </h3>
-                    <p className="text-sm text-gray-300">
+                    <p className="text-xs md:text-sm text-gray-300">
                       Contactanos para más información
                     </p>
                   </div>
                   <Link
                     href="/contacto"
-                    className="w-full sm:w-auto bg-white hover:bg-gray-50 text-[#223534] px-6 py-3 rounded-lg font-semibold transition-all hover:-translate-y-0.5 hover:shadow-md flex items-center justify-center gap-2 whitespace-nowrap"
+                    className="w-full sm:w-auto bg-white hover:bg-gray-50 text-[#223534] px-5 md:px-6 py-2.5 md:py-3 rounded-lg text-sm md:text-base font-semibold transition-all hover:-translate-y-0.5 hover:shadow-md flex items-center justify-center gap-2 whitespace-nowrap"
                   >
                     <svg
-                      className="w-5 h-5"
+                      className="w-4 h-4 md:w-5 md:h-5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
