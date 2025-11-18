@@ -266,7 +266,7 @@ export default function ContactoPage() {
                     onValueChange={(value) => handleChange("area", value)}
                     required
                   >
-                    <SelectTrigger className="w-full h-11 border-[#E5E7EB] focus:ring-2 focus:ring-[#659C39]">
+                    <SelectTrigger className="w-full h-11 border-2 border-[#D1D5DB] shadow-sm hover:border-[#9CA3AF] focus:ring-2 focus:ring-[#659C39] focus:border-[#659C39] transition-all bg-white">
                       <SelectValue placeholder="Seleccione un área" />
                     </SelectTrigger>
                     <SelectContent>
