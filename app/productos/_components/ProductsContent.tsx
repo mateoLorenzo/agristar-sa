@@ -1,16 +1,45 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { SearchBar } from "./SearchBar";
 import { SidebarFilters } from "./SidebarFilters";
 import { ProductsGrid } from "./ProductsGrid";
 import { PRODUCTS } from "../_data/products";
 
 export function ProductsContent() {
+  const searchParams = useSearchParams();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(
     new Set()
   );
+
+  // Leer parámetros de URL y sincronizar con el estado
+  useEffect(() => {
+    const subParam = searchParams.get("sub");
+    const catParam = searchParams.get("cat");
+    const qParam = searchParams.get("q");
+
+    // Sincronizar búsqueda con URL
+    if (qParam) {
+      setSearchQuery(qParam);
+    } else {
+      setSearchQuery("");
+    }
+
+    // Sincronizar categorías con URL
+    if (subParam) {
+      const decodedSub = decodeURIComponent(subParam);
+      setSelectedCategories(new Set([decodedSub]));
+    } else if (catParam) {
+      // Si solo hay categoría principal, agregarla
+      const decodedCat = decodeURIComponent(catParam);
+      setSelectedCategories(new Set([decodedCat]));
+    } else {
+      // Si no hay parámetros de categoría, limpiar filtros
+      setSelectedCategories(new Set());
+    }
+  }, [searchParams]);
 
   // Filter products based on search and selected categories
   const filteredProducts = useMemo(() => {
