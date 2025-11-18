@@ -136,12 +136,26 @@ export default async function ProductDetailPage({ params }: Props) {
 
       {/* Main Content */}
       <div className="max-w-[1280px] mx-auto px-6 md:px-12 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-[2fr_3fr] gap-12 mb-16">
-          {/* Left Column - Product Image & Category */}
-          <div className="space-y-6">
-            {/* Product Logo */}
-            <div className="bg-white rounded-2xl border border-[#E5E7EB] p-8 md:p-12 shadow-sm">
-              <div className="relative w-full aspect-square max-w-md mx-auto">
+        {/* Product Title - Moverlo arriba para mejor jerarquía visual */}
+        <div className="mb-8">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#111] mb-3 leading-tight">
+            {product.name}
+          </h1>
+          {/* Category Badge inline */}
+          <div className="flex items-center gap-2">
+            <div className="w-2 h-2 rounded-full bg-[#659C39]" />
+            <p className="text-sm text-[#6B7280] font-medium">
+              {product.mainCategory} • {product.subcategory}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16">
+          {/* Left Column - Product Image */}
+          <div className="order-2 lg:order-1">
+            {/* Product Logo - altura fija para simetría */}
+            <div className="bg-white rounded-2xl border border-[#E5E7EB] p-8 md:p-12 shadow-sm lg:sticky lg:top-24 h-[500px] lg:h-[600px] flex items-center justify-center">
+              <div className="relative w-full h-full max-w-md mx-auto">
                 <Image
                   src={product.logoUrl}
                   alt={`Logo de ${product.name}`}
@@ -152,176 +166,205 @@ export default async function ProductDetailPage({ params }: Props) {
                 />
               </div>
             </div>
-
-            {/* Category Badge */}
-            <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 shadow-sm">
-              <div className="flex items-center gap-3">
-                <div className="w-2 h-2 rounded-full bg-[#659C39]" />
-                <div>
-                  <p className="text-xs text-[#6B7280] uppercase tracking-wide font-medium mb-1">
-                    Categoría
-                  </p>
-                  <p className="text-sm font-semibold text-[#111]">
-                    {product.mainCategory} • {product.subcategory}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Contact CTA */}
-            <Link
-              href="/contacto"
-              className="block w-full bg-[#223534] hover:bg-[##182424 text-white text-center py-4 px-6 rounded-xl font-medium transition-all hover:-translate-y-0.5 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-[#659C39] focus-visible:outline-offset-2"
-            >
-              Consultar sobre este producto
-            </Link>
           </div>
 
-          {/* Right Column - Product Details */}
-          <div className="space-y-8">
-            {/* Product Title */}
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-[#111] mb-4 leading-tight">
-                {product.name}
-              </h1>
-              {/* {product.composition && (
-                <p className="text-lg text-[#6B7280] font-medium">
-                  {product.composition}
-                </p>
-              )} */}
-            </div>
+          {/* Right Column - Product Details con scroll */}
+          <div className="order-1 lg:order-2">
+            {/* Container con altura fija y scroll interno */}
+            <div className="lg:h-[600px] flex flex-col space-y-6">
+              {/* Description con scroll si es necesario */}
+              {product.description && (
+                <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 md:p-8 shadow-sm flex-1 flex flex-col overflow-hidden">
+                  <h2 className="text-base font-semibold text-[#111] uppercase tracking-wide mb-4 flex items-center gap-2 flex-shrink-0">
+                    <svg
+                      className="w-5 h-5 text-[#659C39]"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                    Descripción
+                  </h2>
+                  <div className="overflow-y-auto flex-1 pr-2 custom-scrollbar">
+                    <p className="text-[#374151] leading-relaxed whitespace-pre-line">
+                      {product.description}
+                    </p>
+                  </div>
+                </div>
+              )}
 
-            {/* Description */}
-            {product.description && (
-              <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 shadow-sm">
-                <h2 className="text-sm font-semibold text-[#111] uppercase tracking-wide mb-3">
-                  Descripción
-                </h2>
-                <p className="text-[#374151] text-sm leading-relaxed whitespace-pre-line">
-                  {product.description}
-                </p>
-              </div>
-            )}
+              {/* Documents Section - Solo mostrar si hay al menos un documento */}
+              {(product.safetySheet ||
+                product.brochure ||
+                product.label ||
+                product.certifications?.pdf) && (
+                <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 md:p-8 shadow-sm flex-shrink-0">
+                  <h2 className="text-base font-semibold text-[#111] uppercase tracking-wide mb-4 flex items-center gap-2">
+                    <svg
+                      className="w-5 h-5 text-[#659C39]"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                      />
+                    </svg>
+                    Documentación
+                  </h2>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {product.safetySheet && (
+                      <a
+                        href={product.safetySheet}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                      >
+                        <svg
+                          className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                          />
+                        </svg>
+                        <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                          Hoja de Seguridad
+                        </span>
+                      </a>
+                    )}
+                    {product.brochure && (
+                      <a
+                        href={product.brochure}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                      >
+                        <svg
+                          className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                          />
+                        </svg>
+                        <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                          Folleto
+                        </span>
+                      </a>
+                    )}
+                    {product.label && (
+                      <a
+                        href={product.label}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                      >
+                        <svg
+                          className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                          />
+                        </svg>
+                        <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                          Etiqueta
+                        </span>
+                      </a>
+                    )}
+                    {product.certifications?.pdf && (
+                      <a
+                        href={product.certifications.pdf}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                      >
+                        <svg
+                          className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                          />
+                        </svg>
+                        <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                          Certificado Orgánico
+                        </span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              )}
 
-            {/* Documents Section - Solo mostrar si hay al menos un documento */}
-            {(product.safetySheet ||
-              product.brochure ||
-              product.label ||
-              product.certifications?.pdf) && (
-              <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 shadow-sm">
-                <h2 className="text-sm font-semibold text-[#111] uppercase tracking-wide mb-4">
-                  Documentación
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {product.safetySheet && (
-                    <a
-                      href={product.safetySheet}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+              {/* Contact CTA */}
+              <div className="bg-gradient-to-br from-[#000] to-[#000] rounded-xl p-6 md:p-8 shadow-lg flex-shrink-0">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+                  <div className="text-center sm:text-left">
+                    <h3 className="text-lg font-semibold text-white mb-1">
+                      ¿Interesado en este producto?
+                    </h3>
+                    <p className="text-sm text-gray-300">
+                      Contactanos para más información
+                    </p>
+                  </div>
+                  <Link
+                    href="/contacto"
+                    className="w-full sm:w-auto bg-white hover:bg-gray-50 text-[#223534] px-6 py-3 rounded-lg font-semibold transition-all hover:-translate-y-0.5 hover:shadow-md flex items-center justify-center gap-2 whitespace-nowrap"
+                  >
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
                     >
-                      <svg
-                        className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                      <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                        Hoja de Seguridad
-                      </span>
-                    </a>
-                  )}
-                  {product.brochure && (
-                    <a
-                      href={product.brochure}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                    >
-                      <svg
-                        className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                      <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                        Folleto
-                      </span>
-                    </a>
-                  )}
-                  {product.label && (
-                    <a
-                      href={product.label}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                    >
-                      <svg
-                        className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                      <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                        Etiqueta
-                      </span>
-                    </a>
-                  )}
-                  {product.certifications?.pdf && (
-                    <a
-                      href={product.certifications.pdf}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                    >
-                      <svg
-                        className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                        />
-                      </svg>
-                      <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                        Certificado Orgánico
-                      </span>
-                    </a>
-                  )}
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                      />
+                    </svg>
+                    Consultar ahora
+                  </Link>
                 </div>
               </div>
-            )}
+            </div>
           </div>
         </div>
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <div>
+          <div className="mt-20">
             <div className="mb-8">
               <h2 className="text-2xl md:text-3xl font-bold text-[#111] mb-2">
                 Productos Relacionados
