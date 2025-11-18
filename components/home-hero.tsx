@@ -11,7 +11,7 @@ export default function HomeHero() {
 
   const handleScrollToNext = () => {
     window.scrollTo({
-      top: window.innerHeight - 50,
+      top: window.innerHeight + 25,
       behavior: "smooth",
     });
   };

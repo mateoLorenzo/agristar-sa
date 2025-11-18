@@ -96,14 +96,14 @@ export default function Footer() {
                   Datos Tributarios
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/novedades"
                   className="text-white/70 text-[0.9375rem] transition-colors hover:text-white"
                 >
                   Novedades
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link
                   href="/contacto"

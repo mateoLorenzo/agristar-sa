@@ -50,8 +50,11 @@ const categories = [
 export default function CategoryCarousel() {
   const [api, setApi] = useState<CarouselApi>();
 
-  // Animación para el contenedor del carousel
-  const carouselAnimation = useScrollAnimation({ delay: 0.1 });
+  // Animaciones escalonadas para cada elemento
+  const subtitleAnimation = useScrollAnimation({ delay: 0 });
+  const titleAnimation = useScrollAnimation({ delay: 0.1 });
+  const carouselAnimation = useScrollAnimation({ delay: 0.2 });
+  const buttonAnimation = useScrollAnimation({ delay: 0.3 });
 
   // Triplicar las cards para asegurar suficiente contenido para el loop
   const infiniteCategories = [...categories, ...categories, ...categories];
@@ -70,11 +73,31 @@ export default function CategoryCarousel() {
     <section className="py-16 md:py-24 lg:py-30 bg-white overflow-hidden">
       {/* Header Section - Centered with max-width */}
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12">
-        <div className="text-center mb-10 md:mb-16">
-          <p className="text-xs sm:text-sm font-medium text-gray-600 uppercase tracking-wider mb-3 md:mb-4">
+        <div className="text-center mb-10 md:mb-8">
+          <p
+            ref={subtitleAnimation.ref}
+            className="text-xs sm:text-sm font-medium text-gray-600 uppercase tracking-wider mb-3 md:mb-4"
+            style={{
+              opacity: subtitleAnimation.isVisible ? 1 : 0,
+              transform: subtitleAnimation.isVisible
+                ? "translateY(0)"
+                : "translateY(20px)",
+              transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+            }}
+          >
             CATÁLOGO
           </p>
-          <h2 className="text-2xl sm:text-3xl md:text-[2.5rem] font-semibold leading-tight text-[#1a1a1a] tracking-tight mb-4 px-2">
+          <h2
+            ref={titleAnimation.ref}
+            className="text-xl sm:text-3xl md:text-[2.5rem] font-semibold leading-tight text-[#1a1a1a] tracking-tight mb-4 px-2"
+            style={{
+              opacity: titleAnimation.isVisible ? 1 : 0,
+              transform: titleAnimation.isVisible
+                ? "translateY(0)"
+                : "translateY(20px)",
+              transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+            }}
+          >
             Conozca nuestros productos
             <br className="hidden sm:block" />
             <span className="sm:hidden"> </span>
@@ -86,13 +109,13 @@ export default function CategoryCarousel() {
       {/* Carousel Section - Full width */}
       <div
         ref={carouselAnimation.ref}
-        className="relative mb-8 md:mb-12 w-full"
+        className="relative mb-4 md:mb-12 w-full"
         style={{
           opacity: carouselAnimation.isVisible ? 1 : 0,
           transform: carouselAnimation.isVisible
             ? "translateY(0)"
-            : "translateY(30px)",
-          transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
+            : "translateY(20px)",
+          transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
         }}
       >
         <Carousel
@@ -164,7 +187,17 @@ export default function CategoryCarousel() {
 
       {/* See All Button - Centered with max-width */}
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12">
-        <div className="flex justify-center">
+        <div
+          ref={buttonAnimation.ref}
+          className="flex justify-center"
+          style={{
+            opacity: buttonAnimation.isVisible ? 1 : 0,
+            transform: buttonAnimation.isVisible
+              ? "translateY(0)"
+              : "translateY(20px)",
+            transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
+          }}
+        >
           <Link
             href="/productos"
             className="group relative inline-flex items-center gap-0 pl-5 sm:pl-5.5 pr-1.5 py-1.5 bg-[#011f2b] text-white rounded-full text-xs sm:text-sm font-normal transition-all hover:bg-[#022b3d] active:scale-95 sm:hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(1,31,43,0.4)] focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
