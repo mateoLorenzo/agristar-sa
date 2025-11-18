@@ -67,16 +67,17 @@ export default function CategoryCarousel() {
   }, [api]);
 
   return (
-    <section className="py-30 bg-white overflow-hidden">
+    <section className="py-16 md:py-24 lg:py-30 bg-white overflow-hidden">
       {/* Header Section - Centered with max-width */}
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
-        <div className="text-center mb-16">
-          <p className="text-sm font-medium text-gray-600 uppercase tracking-wider mb-4">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12">
+        <div className="text-center mb-10 md:mb-16">
+          <p className="text-xs sm:text-sm font-medium text-gray-600 uppercase tracking-wider mb-3 md:mb-4">
             CATÁLOGO
           </p>
-          <h2 className="text-[2.5rem] font-semibold leading-tight text-[#1a1a1a] tracking-tight mb-4">
+          <h2 className="text-2xl sm:text-3xl md:text-[2.5rem] font-semibold leading-tight text-[#1a1a1a] tracking-tight mb-4 px-2">
             Conozca nuestros productos
-            <br />
+            <br className="hidden sm:block" />
+            <span className="sm:hidden"> </span>
             Calidad, innovación y eficacia para cada necesidad
           </h2>
         </div>
@@ -85,7 +86,7 @@ export default function CategoryCarousel() {
       {/* Carousel Section - Full width */}
       <div
         ref={carouselAnimation.ref}
-        className="relative mb-12 w-full"
+        className="relative mb-8 md:mb-12 w-full"
         style={{
           opacity: carouselAnimation.isVisible ? 1 : 0,
           transform: carouselAnimation.isVisible
@@ -105,19 +106,19 @@ export default function CategoryCarousel() {
           setApi={setApi}
           className="w-full"
         >
-          <CarouselContent className="-ml-4">
+          <CarouselContent className="-ml-3 md:-ml-4">
             {infiniteCategories.map((category, index) => (
               <CarouselItem
                 key={index}
-                className="pl-4 basis-[290px] min-w-[290px]"
+                className="pl-3 md:pl-4 basis-[260px] sm:basis-[280px] md:basis-[290px] min-w-[260px] sm:min-w-[280px] md:min-w-[290px]"
               >
                 <Link
                   href={`/productos?cat=Agroquímicos&sub=${encodeURIComponent(
                     category.name
                   )}`}
-                  className="group block rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_12px_24px_rgba(0,0,0,0.15)] focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
+                  className="group block rounded-xl md:rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-[0_12px_24px_rgba(0,0,0,0.15)] focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
                 >
-                  <div className="relative h-[400px] overflow-hidden">
+                  <div className="relative h-[380px] sm:h-[400px] overflow-hidden">
                     <img
                       src={category.image || "/placeholder.svg"}
                       alt={`${category.name} category`}
@@ -126,27 +127,28 @@ export default function CategoryCarousel() {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent from-40% via-transparent via-50% to-black/70" />
 
                     {/* Circle with arrow - Top Right */}
-                    <div className="absolute top-5 right-5 w-11 h-11 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110">
+                    <div className="absolute top-4 right-4 md:top-5 md:right-5 w-10 h-10 md:w-11 md:h-11 bg-white/20 backdrop-blur-md border border-white/30 rounded-full flex items-center justify-center text-white shadow-lg transition-all duration-300 group-hover:bg-white/30 group-hover:scale-110">
                       <svg
-                        width="18"
-                        height="18"
+                        width="16"
+                        height="16"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
+                        className="md:w-[18px] md:h-[18px]"
                       >
                         <path d="M5 12h14M12 5l7 7-7 7" />
                       </svg>
                     </div>
 
                     {/* Text overlay - Bottom */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="text-xl font-semibold text-white leading-tight mb-2">
+                    <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6">
+                      <h3 className="text-lg md:text-xl font-semibold text-white leading-tight mb-1.5 md:mb-2">
                         {category.name}
                       </h3>
-                      <p className="text-sm text-white/90">
+                      <p className="text-sm text-white/90 leading-relaxed">
                         {category.description}
                       </p>
                     </div>
@@ -155,29 +157,30 @@ export default function CategoryCarousel() {
               </CarouselItem>
             ))}
           </CarouselContent>
-          <CarouselPrevious className="left-12 bg-white/90 hover:bg-white border-gray-200 shadow-lg" />
-          <CarouselNext className="right-12 bg-white/90 hover:bg-white border-gray-200 shadow-lg" />
+          <CarouselPrevious className="hidden md:flex left-4 lg:left-12 bg-white/90 hover:bg-white border-gray-200 shadow-lg" />
+          <CarouselNext className="hidden md:flex right-4 lg:right-12 bg-white/90 hover:bg-white border-gray-200 shadow-lg" />
         </Carousel>
       </div>
 
       {/* See All Button - Centered with max-width */}
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 md:px-12">
         <div className="flex justify-center">
           <Link
             href="/productos"
-            className="group relative inline-flex items-center gap-0 pl-5.5 pr-1.5 py-1.5 bg-[#011f2b] text-white rounded-full text-sm font-normal transition-all hover:bg-[#022b3d] hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(1,31,43,0.4)] focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
+            className="group relative inline-flex items-center gap-0 pl-5 sm:pl-5.5 pr-1.5 py-1.5 bg-[#011f2b] text-white rounded-full text-xs sm:text-sm font-normal transition-all hover:bg-[#022b3d] active:scale-95 sm:hover:-translate-y-0.5 hover:shadow-[0_8px_20px_rgba(1,31,43,0.4)] focus-visible:outline-2 focus-visible:outline-blue-600 focus-visible:outline-offset-2"
           >
             Ver todos
-            <div className="ml-5 w-9 h-9 bg-white rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
+            <div className="ml-3 sm:ml-5 w-8 h-8 sm:w-9 sm:h-9 bg-white rounded-full flex items-center justify-center transition-transform group-hover:scale-105">
               <svg
-                width="16"
-                height="16"
+                width="14"
+                height="14"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="#011f2b"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+                className="sm:w-4 sm:h-4"
               >
                 <path d="M5 12h14M12 5l7 7-7 7" />
               </svg>
