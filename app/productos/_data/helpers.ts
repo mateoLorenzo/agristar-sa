@@ -1,5 +1,6 @@
 import type { Product } from "./types";
 import { PRODUCTS } from "./products";
+import productsData from "@/lib/products.json";
 
 /**
  * Parses a comma-separated category parameter from URL
@@ -81,7 +82,7 @@ function categoryToSlug(category: string): string {
  * Gets a product by its ID
  */
 export function getProductById(id: string): Product | undefined {
-  return PRODUCTS.find((product) => product.id === id);
+  return productsData.find((product: any) => product.id === id) as Product;
 }
 
 /**

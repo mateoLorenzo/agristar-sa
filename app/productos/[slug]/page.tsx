@@ -6,7 +6,7 @@ import { ProductCard } from "../_components/ProductCard";
 import type { Metadata } from "next";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 // Generate static paths for all products
@@ -18,59 +18,90 @@ export async function generateStaticParams() {
 
 // Generate metadata for SEO
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
+  const product = getProductById(slug);
+
+  if (!product) {
+    return {
+      title: "Producto no encontrado - AGRI STAR S.A.",
+      description: "El producto que buscas no existe.",
+    };
+  }
+
   return {
-    title: "STARECO - AGRI STAR S.A.",
-    description:
-      "Insecticida-acaricida orgánico de contacto para control biológico de plagas",
+    title: `${product.name} - AGRI STAR S.A.`,
+    description: product.description || `${product.name}`,
   };
 }
 
-export default function ProductDetailPage({ params }: Props) {
-  // Por ahora usando datos hardcodeados para mostrar el layout
-  const productFromDB = getProductById(params.slug);
+export default async function ProductDetailPage({ params }: Props) {
+  // 1. Await params y extraer el ID del producto desde la URL
+  const { slug } = await params;
+  const productId = slug;
 
-  // Datos hardcodeados de ejemplo basados en STARECO
-  const product = {
-    id: params.slug,
-    name: productFromDB?.name || "STARECO",
-    logoUrl: productFromDB?.logoUrl || "/products/logos/STARECO.png",
-    category: "Bioestimulantes" as const,
-    mainCategory: "Línea Bio" as const,
-    subcategory: "Bioinsumos" as const,
-    // composition: "Mezcla de ésteres vegetales 86% SL",
-    description:
-      "STARECO es un moderno insecticida-acaricida orgánico de contacto que se deposita sobre la cutícula de los artrópodos de cuerpo blando, y comienza a disolverla, evitando el intercambio gaseoso por lo que provoca la muerte del insecto. Stareco es un producto total y fácilmente biodegradable, y no produce ningún daño ambiental.",
-    characteristics: [
-      "Producto total y fácilmente biodegradable",
-      "No produce ningún daño ambiental",
-      "Especialmente indicado para el Control biológico de plagas",
-      "Posee propiedades insecticidas y además particularidades de coadyuvante – adherente agrícola",
-      "Puede aplicarse hasta antes de cosecha. No posee carencia",
-      "Recomendado para el manejo integral de plagas (M.I.P)",
-    ],
-    applications: [
-      "Control de ácaros",
-      "Control de trips",
-      "Control de mosca blanca",
-      "Control de áfidos",
-    ],
-    recommendedCrops: [
-      "Frutales de carozo",
-      "Frutales de pepita",
-      "Citrus",
-      "Hortalizas",
-      "Ornamentales",
-    ],
-    dosage:
-      "Aplicar en intervalos de 3-10 días según sea necesario. Consultar con un ingeniero agrónomo para dosificación específica según cultivo y plaga.",
-    certifications: {
-      organic: true,
-      pdf: "/docs/certificado-organico-stareco.pdf",
+  // 2. Buscar el producto por ID directamente desde el JSON
+  const rawProduct = getProductById(productId);
+
+  // 3. Si el producto no existe, mostrar mensaje de error
+  if (!rawProduct) {
+    return (
+      <div className="min-h-screen bg-[#FAFAFA] pt-20 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-[#111] mb-4">
+            Producto no encontrado
+          </h1>
+          <p className="text-[#6B7280] mb-8">
+            El producto que buscas no existe.
+          </p>
+          <Link
+            href="/productos"
+            className="inline-block bg-[#223534] hover:bg-[#182424] text-white py-3 px-6 rounded-xl font-medium transition-all"
+          >
+            Volver a productos
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  // 4. Mapear las categorías para obtener mainCategory y subcategory
+  const categoryMapping: Record<string, any> = {
+    bioinsumos: { mainCategory: "Línea Bio", subcategory: "Bioinsumos" },
+    "linea-bio": { mainCategory: "Línea Bio", subcategory: "Bioinsumos" },
+    feromonas: { mainCategory: "Línea Bio", subcategory: "Feromonas" },
+    herbicidas: { mainCategory: "Agroquímicos", subcategory: "Herbicidas" },
+    insecticidas: { mainCategory: "Agroquímicos", subcategory: "Insecticidas" },
+    fungicidas: { mainCategory: "Agroquímicos", subcategory: "Fungicidas" },
+    fertilizantes: {
+      mainCategory: "Agroquímicos",
+      subcategory: "Fertilizantes",
     },
-    safetySheet: "/docs/hoja-seguridad-stareco.pdf",
-    label: "/docs/etiqueta-stareco.pdf",
+    "coadyuvantes-fitoreguladores-pgr": {
+      mainCategory: "Agroquímicos",
+      subcategory: "Coadyuvantes, Fitoreguladores y PGR",
+    },
+    "fumigantes-de-suelo": {
+      mainCategory: "Agroquímicos",
+      subcategory: "Fumigantes de suelo",
+    },
+    agroquimicos: {
+      mainCategory: "Agroquímicos",
+      subcategory: "Fertilizantes",
+    },
   };
 
+  const firstCategory = rawProduct.categories?.[0] || "bioinsumos";
+  const mapping =
+    categoryMapping[firstCategory] || categoryMapping["bioinsumos"];
+
+  // 5. Construir el objeto producto con toda la data necesaria
+  const product = {
+    ...rawProduct,
+    mainCategory: mapping.mainCategory,
+    subcategory: mapping.subcategory,
+  };
+
+  // 6. Obtener productos relacionados
   const relatedProducts = getRelatedProducts(product.id);
 
   return (
@@ -166,149 +197,125 @@ export default function ProductDetailPage({ params }: Props) {
                 <h2 className="text-sm font-semibold text-[#111] uppercase tracking-wide mb-3">
                   Descripción
                 </h2>
-                <p className="text-[#374151] text-sm leading-relaxed">
-                  {/* {product.description} */}
-                  STARECO es un moderno insecticida-acaricida orgánico de
-                  contacto que se deposita sobre la cutícula de los artrópodos
-                  de cuerpo blando, y comienza a disolverla, evitando el
-                  intercambio gaseoso por lo que provoca la muerte del insecto.
-                  <br />
-                  <br />
-                  Stareco es un producto total y fácilmente biodegradable, y no
-                  produce ningún daño ambiental.
-                  <br />
-                  <br />
-                  Stareco esta especialmente indicado para el Control biológico
-                  de plagas. Puede usarse como insecticida para control de
-                  ácaros, trips, mosca blanca, áfidos, etc. en intervalos de
-                  3-10 días, de ser necesario.
-                  <br />
-                  <br />
-                  El tratamiento es aplicable hasta antes de cosecha. No posee
-                  carencia.
-                  <br />
-                  <br />
-                  Esta recomendado para el manejo integral de plagas (M.I.P).
-                  <br />
-                  <br />
-                  Posee propiedades insecticidas y además particularidades de
-                  coadyuvante – adherente agrícola.
-                  <br />
-                  <br />
-                  Especialmente recomendado para Cultivos: Frutales de Carozo y
-                  de Pepita, Citrus, Hortalizas y Ornamentales..
+                <p className="text-[#374151] text-sm leading-relaxed whitespace-pre-line">
+                  {product.description}
                 </p>
               </div>
             )}
 
-            {/* Documents Section */}
-            <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 shadow-sm">
-              <h2 className="text-sm font-semibold text-[#111] uppercase tracking-wide mb-4">
-                Documentación
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {product.safetySheet && (
-                  <a
-                    href={product.safetySheet}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                  >
-                    <svg
-                      className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+            {/* Documents Section - Solo mostrar si hay al menos un documento */}
+            {(product.safetySheet ||
+              product.brochure ||
+              product.label ||
+              product.certifications?.pdf) && (
+              <div className="bg-white rounded-xl border border-[#E5E7EB] p-6 shadow-sm">
+                <h2 className="text-sm font-semibold text-[#111] uppercase tracking-wide mb-4">
+                  Documentación
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {product.safetySheet && (
+                    <a
+                      href={product.safetySheet}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                    <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                      Hoja de Seguridad
-                    </span>
-                  </a>
-                )}
-                {product.label && (
-                  <a
-                    href={product.label}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                  >
-                    <svg
-                      className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      <svg
+                        className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                      <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                        Hoja de Seguridad
+                      </span>
+                    </a>
+                  )}
+                  {product.brochure && (
+                    <a
+                      href={product.brochure}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                    <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                      Folleto
-                    </span>
-                  </a>
-                )}
-                {product.label && (
-                  <a
-                    href={product.label}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                  >
-                    <svg
-                      className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      <svg
+                        className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                      <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                        Folleto
+                      </span>
+                    </a>
+                  )}
+                  {product.label && (
+                    <a
+                      href={product.label}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                    <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                      Etiqueta
-                    </span>
-                  </a>
-                )}
-                {product.certifications?.pdf && (
-                  <a
-                    href={product.certifications.pdf}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                  >
-                    <svg
-                      className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
+                      <svg
+                        className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                      <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                        Etiqueta
+                      </span>
+                    </a>
+                  )}
+                  {product.certifications?.pdf && (
+                    <a
+                      href={product.certifications.pdf}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-3 p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                    <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                      Certificado Orgánico
-                    </span>
-                  </a>
-                )}
+                      <svg
+                        className="w-5 h-5 text-[#6B7280] group-hover:text-[#659C39]"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                      <span className="text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                        Certificado Orgánico
+                      </span>
+                    </a>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
 
