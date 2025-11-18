@@ -108,12 +108,12 @@ export default function HomeHero() {
       {/* Animated Chevron for scroll to next section */}
       <div
         ref={chevron.ref}
-        className="absolute bottom-8 md:bottom-12 left-1/2 -translate-x-1/2 z-[2]"
+        className="absolute bottom-8 md:bottom-12 left-1/2 z-[2]"
         style={{
           opacity: chevron.isVisible ? 1 : 0,
           transform: chevron.isVisible
-            ? "translate(-50%, 0)"
-            : "translate(-50%, -20px)",
+            ? "translateX(-50%) translateY(0)"
+            : "translateX(-50%) translateY(-20px)",
           transition: "opacity 0.6s ease-out, transform 0.6s ease-out",
         }}
       >
