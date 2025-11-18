@@ -22,10 +22,63 @@ export default function ContactoPage() {
     mensaje: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{
+    type: "success" | "error" | null;
+    message: string;
+  }>({ type: null, message: "" });
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aquí se puede implementar la lógica de envío del formulario
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: "" });
+
+    try {
+      const response = await fetch("/api/mail", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: formData.nombre,
+          lastName: formData.apellido,
+          email: formData.email,
+          phone: formData.telefono,
+          area: formData.area,
+          message: formData.mensaje,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setSubmitStatus({
+          type: "success",
+          message:
+            "Consulta enviada correctamente. Nos pondremos en contacto pronto.",
+        });
+        // Limpiar el formulario
+        setFormData({
+          nombre: "",
+          apellido: "",
+          email: "",
+          telefono: "",
+          area: "",
+          mensaje: "",
+        });
+      } else {
+        throw new Error(data.error || "Error al enviar el formulario");
+      }
+    } catch (error) {
+      setSubmitStatus({
+        type: "error",
+        message:
+          "Hubo un error al enviar la consulta. Por favor, inténtelo nuevamente.",
+      });
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -312,12 +365,34 @@ export default function ContactoPage() {
                   />
                 </div>
 
+                {/* Status Message */}
+                {submitStatus.type && (
+                  <div
+                    className={`p-4 rounded-lg ${
+                      submitStatus.type === "success"
+                        ? "bg-green-50 border border-green-200"
+                        : "bg-red-50 border border-red-200"
+                    }`}
+                  >
+                    <p
+                      className={`text-sm ${
+                        submitStatus.type === "success"
+                          ? "text-green-800"
+                          : "text-red-800"
+                      }`}
+                    >
+                      {submitStatus.message}
+                    </p>
+                  </div>
+                )}
+
                 {/* Submit Button */}
                 <Button
                   type="submit"
-                  className="w-full md:w-auto bg-[#000] hover:bg-[#000 text-white px-8 py-6 text-base font-medium rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg"
+                  disabled={isSubmitting}
+                  className="w-full md:w-auto bg-[#000] hover:bg-[#111] text-white px-8 py-6 text-base font-medium rounded-lg transition-all hover:-translate-y-0.5 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 >
-                  Enviar consulta
+                  {isSubmitting ? "Enviando..." : "Enviar consulta"}
                 </Button>
               </form>
             </div>

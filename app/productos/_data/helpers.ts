@@ -90,7 +90,7 @@ export function getProductById(id: string): Product | undefined {
  */
 export function getRelatedProducts(
   currentProductId: string,
-  limit: number = 4
+  limit: number = 12
 ): Product[] {
   const currentProduct = getProductById(currentProductId);
   if (!currentProduct) return [];

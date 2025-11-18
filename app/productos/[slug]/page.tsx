@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getProductById, getRelatedProducts } from "../_data/helpers";
 import { PRODUCTS } from "../_data/products";
-import { ProductCard } from "../_components/ProductCard";
+import { RelatedProductsCarousel } from "../_components/RelatedProductsCarousel";
 import type { Metadata } from "next";
 
 type Props = {
@@ -363,23 +363,7 @@ export default async function ProductDetailPage({ params }: Props) {
         </div>
 
         {/* Related Products */}
-        {relatedProducts.length > 0 && (
-          <div className="mt-20">
-            <div className="mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-[#111] mb-2">
-                Productos Relacionados
-              </h2>
-              <p className="text-[#6B7280]">
-                Otros productos de la misma categoría
-              </p>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-              {relatedProducts.map((relatedProduct) => (
-                <ProductCard key={relatedProduct.id} product={relatedProduct} />
-              ))}
-            </div>
-          </div>
-        )}
+        <RelatedProductsCarousel products={relatedProducts} />
       </div>
     </div>
   );
