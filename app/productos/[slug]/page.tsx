@@ -150,7 +150,7 @@ export default async function ProductDetailPage({ params }: Props) {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mb-12 md:mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-4 lg:gap-4 mb-12 md:mb-16">
           {/* Left Column - Product Image */}
           <div className="order-1 lg:order-1">
             {/* Product Logo - proporción 2:4 en mobile, altura controlada en desktop */}
@@ -172,10 +172,11 @@ export default async function ProductDetailPage({ params }: Props) {
 
           {/* Right Column - Product Details con altura fija en desktop */}
           <div className="order-2 lg:order-2">
-            <div className="flex flex-col space-y-4 md:space-y-6 lg:space-y-0 lg:h-[100%]">
+            {/* Altura total fija: md:p-12 (3rem = 48px top + 48px bottom) + lg:h-[280px] = 376px total */}
+            <div className="flex flex-col space-y-4 md:space-y-6 lg:space-y-0 lg:h-[376px]">
               {/* Description - flex-1 para ocupar espacio disponible */}
               {product.description && (
-                <div className="bg-white rounded-xl border border-[#E5E7EB] p-5 sm:p-6 md:p-8 shadow-sm flex-1 lg:mb-4 flex flex-col overflow-hidden">
+                <div className="bg-white rounded-xl border border-[#E5E7EB] p-5 sm:p-6 md:p-8 shadow-sm flex-1 lg:mb-4 flex flex-col min-h-0">
                   <h2 className="text-sm md:text-base font-semibold text-[#111] uppercase tracking-wide mb-3 md:mb-4 flex items-center gap-2 flex-shrink-0">
                     <svg
                       className="w-4 h-4 md:w-5 md:h-5 text-[#659C39]"
@@ -192,7 +193,7 @@ export default async function ProductDetailPage({ params }: Props) {
                     </svg>
                     Descripción
                   </h2>
-                  <div className="overflow-y-auto flex-1 pr-2 custom-scrollbar">
+                  <div className="overflow-y-auto flex-1 pr-2 custom-scrollbar min-h-0">
                     <p className="text-sm md:text-base text-[#374151] leading-relaxed whitespace-pre-line">
                       {product.description}
                     </p>
