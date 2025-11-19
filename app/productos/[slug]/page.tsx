@@ -153,28 +153,29 @@ export default async function ProductDetailPage({ params }: Props) {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 lg:gap-12 mb-12 md:mb-16">
           {/* Left Column - Product Image */}
           <div className="order-1 lg:order-1">
-            {/* Product Logo - proporción 2:4 en mobile, altura fija en desktop */}
-            <div className="bg-white rounded-xl md:rounded-2xl border border-[#E5E7EB] p-6 sm:p-8 md:p-12 shadow-sm lg:sticky lg:top-24">
-              <div className="relative w-full aspect-[4/2] lg:aspect-auto lg:h-[600px]">
-                <Image
-                  src={product.logoUrl}
-                  alt={`Logo de ${product.name}`}
-                  fill
-                  className="object-contain"
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
+            {/* Product Logo - proporción 2:4 en mobile, altura controlada en desktop */}
+            <div className="bg-white rounded-xl md:rounded-2xl border border-[#E5E7EB] p-6 sm:p-8 md:p-12 shadow-sm">
+              <div className="relative w-full aspect-[4/2] lg:aspect-auto lg:h-[280px] flex items-center justify-center">
+                <div className="relative w-full h-full max-w-md mx-auto">
+                  <Image
+                    src={product.logoUrl}
+                    alt={`Logo de ${product.name}`}
+                    fill
+                    className="object-contain"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column - Product Details con scroll */}
+          {/* Right Column - Product Details con altura fija en desktop */}
           <div className="order-2 lg:order-2">
-            {/* Container con altura fija y scroll interno */}
-            <div className="lg:h-[600px] flex flex-col space-y-4 md:space-y-6">
-              {/* Description con scroll si es necesario */}
+            <div className="flex flex-col space-y-4 md:space-y-6 lg:space-y-0 lg:h-[100%]">
+              {/* Description - flex-1 para ocupar espacio disponible */}
               {product.description && (
-                <div className="bg-white rounded-xl border border-[#E5E7EB] p-5 sm:p-6 md:p-8 shadow-sm flex-1 flex flex-col overflow-hidden">
+                <div className="bg-white rounded-xl border border-[#E5E7EB] p-5 sm:p-6 md:p-8 shadow-sm flex-1 lg:mb-4 flex flex-col overflow-hidden">
                   <h2 className="text-sm md:text-base font-semibold text-[#111] uppercase tracking-wide mb-3 md:mb-4 flex items-center gap-2 flex-shrink-0">
                     <svg
                       className="w-4 h-4 md:w-5 md:h-5 text-[#659C39]"
@@ -199,134 +200,7 @@ export default async function ProductDetailPage({ params }: Props) {
                 </div>
               )}
 
-              {/* Documents Section - Solo mostrar si hay al menos un documento */}
-              {(product.safetySheet ||
-                product.brochure ||
-                product.label ||
-                product.certifications?.pdf) && (
-                <div className="bg-white rounded-xl border border-[#E5E7EB] p-5 sm:p-6 md:p-8 shadow-sm flex-shrink-0">
-                  <h2 className="text-sm md:text-base font-semibold text-[#111] uppercase tracking-wide mb-3 md:mb-4 flex items-center gap-2">
-                    <svg
-                      className="w-4 h-4 md:w-5 md:h-5 text-[#659C39]"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                      />
-                    </svg>
-                    Documentación
-                  </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 md:gap-3">
-                    {product.safetySheet && (
-                      <a
-                        href={product.safetySheet}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                      >
-                        <svg
-                          className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                        <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                          Hoja de Seguridad
-                        </span>
-                      </a>
-                    )}
-                    {product.brochure && (
-                      <a
-                        href={product.brochure}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                      >
-                        <svg
-                          className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                        <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                          Folleto
-                        </span>
-                      </a>
-                    )}
-                    {product.label && (
-                      <a
-                        href={product.label}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                      >
-                        <svg
-                          className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                        <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                          Etiqueta
-                        </span>
-                      </a>
-                    )}
-                    {product.certifications?.pdf && (
-                      <a
-                        href={product.certifications.pdf}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
-                      >
-                        <svg
-                          className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                          />
-                        </svg>
-                        <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
-                          Certificado Orgánico
-                        </span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              )}
-
-              {/* Contact CTA */}
+              {/* Contact CTA - altura fija */}
               <div className="bg-gradient-to-br from-[#000] to-[#000] rounded-xl p-5 sm:p-6 md:p-8 shadow-lg flex-shrink-0">
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-3 md:gap-4">
                   <div className="text-center sm:text-left">
@@ -361,6 +235,133 @@ export default async function ProductDetailPage({ params }: Props) {
             </div>
           </div>
         </div>
+
+        {/* Documents Section - Fuera del contenedor principal, debajo */}
+        {(product.safetySheet ||
+          product.brochure ||
+          product.label ||
+          product.certifications?.pdf) && (
+          <div className="bg-white rounded-xl border border-[#E5E7EB] p-5 sm:p-6 md:p-8 shadow-sm mb-12 md:mb-16">
+            <h2 className="text-sm md:text-base font-semibold text-[#111] uppercase tracking-wide mb-3 md:mb-4 flex items-center gap-2">
+              <svg
+                className="w-4 h-4 md:w-5 md:h-5 text-[#659C39]"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                />
+              </svg>
+              Documentación
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 md:gap-3">
+              {product.safetySheet && (
+                <a
+                  href={product.safetySheet}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                >
+                  <svg
+                    className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                    Hoja de Seguridad
+                  </span>
+                </a>
+              )}
+              {product.brochure && (
+                <a
+                  href={product.brochure}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                >
+                  <svg
+                    className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                    Folleto
+                  </span>
+                </a>
+              )}
+              {product.label && (
+                <a
+                  href={product.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                >
+                  <svg
+                    className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                    Etiqueta
+                  </span>
+                </a>
+              )}
+              {product.certifications?.pdf && (
+                <a
+                  href={product.certifications.pdf}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2.5 md:gap-3 p-3 md:p-4 rounded-lg border border-[#E5E7EB] hover:border-[#659C39] hover:bg-[#F8F9FB] transition-all group"
+                >
+                  <svg
+                    className="w-4 h-4 md:w-5 md:h-5 text-[#6B7280] group-hover:text-[#659C39] flex-shrink-0"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                    />
+                  </svg>
+                  <span className="text-xs md:text-sm text-[#374151] group-hover:text-[#659C39] font-medium">
+                    Certificado Orgánico
+                  </span>
+                </a>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* Related Products */}
         <RelatedProductsCarousel products={relatedProducts} />

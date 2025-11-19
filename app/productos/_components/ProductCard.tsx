@@ -11,6 +11,7 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
+  console.log("product from carousel", product);
   const animation = useScrollAnimation({ delay: 0.2 }); // Mismo delay para todos los productos
 
   return (

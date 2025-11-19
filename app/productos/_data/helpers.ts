@@ -82,7 +82,7 @@ function categoryToSlug(category: string): string {
  * Gets a product by its ID
  */
 export function getProductById(id: string): Product | undefined {
-  return productsData.find((product: any) => product.id === id) as Product;
+  return PRODUCTS.find((product) => product.id === id);
 }
 
 /**
