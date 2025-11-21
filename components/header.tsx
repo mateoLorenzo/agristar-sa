@@ -96,7 +96,7 @@ export default function Header() {
             onClick={handleHomeClick}
           >
             <Image
-              src="/logo.png"
+              src="/new-logo.png"
               alt="Agri Star"
               width={160}
               height={60}
