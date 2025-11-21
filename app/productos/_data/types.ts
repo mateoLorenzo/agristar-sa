@@ -26,10 +26,18 @@ export type Product = {
   id: string;
   name: string;
   logoUrl: string;
-  category: Category;
+  categories: string[]; // Array de slugs de categorías (e.g., ["bioinsumos", "linea-bio"])
+  description?: string;
+  // Campos de documentación (nombres coinciden con el JSON)
+  flyerUrl?: string | null;
+  safetySheetUrl?: string | null;
+  labelUrl?: string | null;
+  organicCertificateUrl?: string | null;
+  // Campos calculados/agregados dinámicamente (no en JSON original)
+  category?: Category;
   mainCategory?: MainCategory;
   subcategory?: Subcategory;
-  description?: string;
+  // Campos opcionales adicionales (por si se agregan en el futuro)
   composition?: string;
   applications?: string[];
   characteristics?: string[];
@@ -39,11 +47,10 @@ export type Product = {
     organic?: boolean;
     pdf?: string;
   };
-  safetySheet?: string;
-  label?: string;
-  brochure?: string;
-  // Array original de categorías del JSON (slugs en minúsculas)
-  categories?: string[];
+  // Aliases para retrocompatibilidad (mapeados desde los campos originales)
+  brochure?: string; // Alias de flyerUrl
+  safetySheet?: string; // Alias de safetySheetUrl
+  label?: string; // Alias de labelUrl
 };
 
 export type CategoryStructure = {

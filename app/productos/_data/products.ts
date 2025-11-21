@@ -155,8 +155,20 @@ export const PRODUCTS: Product[] = productsData.map((product: any) => {
     mainCategory: mapping.mainCategory,
     subcategory: mapping.subcategory,
     description: product.description || undefined,
-    // ✅ IMPORTANTE: Preservar el array original de categorías del JSON
+    // Array original de categorías del JSON
     categories: product.categories,
+    // Campos de documentación (nombres del JSON)
+    flyerUrl: product.flyerUrl,
+    safetySheetUrl: product.safetySheetUrl,
+    labelUrl: product.labelUrl,
+    organicCertificateUrl: product.organicCertificateUrl,
+    // Aliases para retrocompatibilidad con el código existente
+    brochure: product.flyerUrl,
+    safetySheet: product.safetySheetUrl,
+    label: product.labelUrl,
+    certifications: product.organicCertificateUrl
+      ? { pdf: product.organicCertificateUrl }
+      : undefined,
   };
 });
 
