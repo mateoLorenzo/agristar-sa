@@ -29,7 +29,7 @@ export default function AcercaPage() {
                 </p>
                 <p>
                   Nuestra misión es brindar productos de última generación, para
-                  lo cual trabajamos constantemente desde hace 15 años en nuevas
+                  lo cual trabajamos constantemente desde hace 20 años en nuevas
                   tecnologías y desarrollos innovadores.
                 </p>
                 <p>
