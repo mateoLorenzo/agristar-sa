@@ -32,7 +32,6 @@ export default function ContactFormEmail({
   // Mapeo de áreas para mostrar el nombre completo
   const areaNames: Record<string, string> = {
     tecnica: "Técnica",
-    administrativo: "Administrativo",
     "comercial-cuyo":
       "Comercial Zona Cuyo y Valle (Mendoza, San Luis, San Juan, Rio Negro y Neuquén)",
     "comercial-sur-ba":

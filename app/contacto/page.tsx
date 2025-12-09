@@ -213,9 +213,6 @@ export default function ContactoPage() {
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="tecnica">Técnica</SelectItem>
-                      <SelectItem value="administrativo">
-                        Administrativo
-                      </SelectItem>
                       <SelectItem value="comercial-cuyo">
                         Comercial Zona Cuyo y Valle (Mendoza, San Luis, San
                         Juan, Rio Negro y Neuquén)
