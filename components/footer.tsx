@@ -44,9 +44,9 @@ export default function Footer() {
           >
             <p className="text-white/70 text-[0.9375rem] leading-relaxed max-w-[400px]">
               Agri Star S.A., fundada en 2005, es una empresa especializada en
-              la comercialización de agroquímicos, fertilizantes y semillas. Nos
-              destacamos por ofrecer productos confiables, de alto rendimiento y
-              compatibles con las buenas prácticas agrícolas.
+              la comercialización de agroquímicos, bioestimulantes y semillas.
+              Nos destacamos por ofrecer productos confiables, de alto
+              rendimiento y compatibles con las buenas prácticas agrícolas.
             </p>
           </div>
 
@@ -154,10 +154,10 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/productos?cat=Agroquímicos&sub=Fertilizantes"
+                  href="/productos?cat=Agroquímicos&sub=Bioestimulantes"
                   className="text-white/70 text-[0.9375rem] transition-colors hover:text-white"
                 >
-                  Fertilizantes
+                  Bioestimulantes
                 </Link>
               </li>
               <li>

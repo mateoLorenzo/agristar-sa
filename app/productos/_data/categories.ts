@@ -14,7 +14,7 @@ export const CATEGORY_HIERARCHY: CategoryStructure[] = [
   {
     name: "Agroquímicos",
     subcategories: [
-      "Fertilizantes",
+      "Bioestimulantes",
       "Fumigantes de suelo",
       "Fungicidas",
       "Herbicidas",

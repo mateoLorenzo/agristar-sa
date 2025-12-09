@@ -3,7 +3,7 @@ export type MainCategory = "Agroquímicos" | "Línea Bio";
 
 // Subcategorías por categoría principal
 export type AgroquimicosSubcategory =
-  | "Fertilizantes"
+  | "Bioestimulantes"
   | "Fumigantes de suelo"
   | "Fungicidas"
   | "Herbicidas"

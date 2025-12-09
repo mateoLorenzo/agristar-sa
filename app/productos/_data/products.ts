@@ -36,9 +36,9 @@ const categoryMapping: Record<
     subcategory: "Fungicidas",
     category: "Fungicidas",
   },
-  fertilizantes: {
+  bioestimulantes: {
     mainCategory: "Agroquímicos",
-    subcategory: "Fertilizantes",
+    subcategory: "Bioestimulantes",
     category: "Aditivos",
   },
   "coadyuvantes-fitoreguladores-pgr": {
@@ -53,7 +53,7 @@ const categoryMapping: Record<
   },
   agroquimicos: {
     mainCategory: "Agroquímicos",
-    subcategory: "Fertilizantes",
+    subcategory: "Bioestimulantes",
     category: "Aditivos",
   },
 };

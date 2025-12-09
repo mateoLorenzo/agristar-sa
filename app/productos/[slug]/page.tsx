@@ -72,9 +72,9 @@ export default async function ProductDetailPage({ params }: Props) {
     herbicidas: { mainCategory: "Agroquímicos", subcategory: "Herbicidas" },
     insecticidas: { mainCategory: "Agroquímicos", subcategory: "Insecticidas" },
     fungicidas: { mainCategory: "Agroquímicos", subcategory: "Fungicidas" },
-    fertilizantes: {
+    bioestimulantes: {
       mainCategory: "Agroquímicos",
-      subcategory: "Fertilizantes",
+      subcategory: "Bioestimulantes",
     },
     "coadyuvantes-fitoreguladores-pgr": {
       mainCategory: "Agroquímicos",
@@ -86,7 +86,7 @@ export default async function ProductDetailPage({ params }: Props) {
     },
     agroquimicos: {
       mainCategory: "Agroquímicos",
-      subcategory: "Fertilizantes",
+      subcategory: "Bioestimulantes",
     },
   };
 

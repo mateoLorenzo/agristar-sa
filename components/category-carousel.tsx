@@ -30,7 +30,7 @@ const categories = [
     image: "/herbicide-weed-control-farming.jpg",
   },
   {
-    name: "Fertilizantes",
+    name: "Bioestimulantes",
     description:
       "Formulaciones que potencian el crecimiento y la productividad.",
     image: "/fertilizer-soil-nutrients-agriculture.jpg",

@@ -185,5 +185,5 @@ ContactFormEmail.PreviewProps = {
   phone: "+54 9 11 1234-5678",
   area: "comercial-cuyo",
   message:
-    "Buenos días,\n\nEstoy interesado en conocer más información sobre sus productos para el cultivo de tomates en la zona de Mendoza. Específicamente me gustaría saber sobre fungicidas y fertilizantes recomendados.\n\nQuedo atento a su respuesta.\n\nSaludos cordiales.",
+    "Buenos días,\n\nEstoy interesado en conocer más información sobre sus productos para el cultivo de tomates en la zona de Mendoza. Específicamente me gustaría saber sobre fungicidas y bioestimulantes recomendados.\n\nQuedo atento a su respuesta.\n\nSaludos cordiales.",
 } satisfies ContactFormEmailProps;

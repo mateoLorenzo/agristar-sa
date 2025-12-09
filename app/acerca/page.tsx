@@ -23,7 +23,7 @@ export default function AcercaPage() {
               <div className="space-y-4 text-[#374151] leading-relaxed">
                 <p>
                   <strong>Agri Star S.A.</strong> es una empresa especializada
-                  en la fabricación de Fertilizantes y comercialización de
+                  en la fabricación de bioestimulantes y comercialización de
                   Agroquímicos y Semillas hortícolas. Nuestros mercados son
                   principalmente los cultivos intensivos.
                 </p>

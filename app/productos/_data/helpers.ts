@@ -64,7 +64,7 @@ function categoryToSlug(category: string): string {
     Agroquímicos: "agroquimicos",
     "Línea Bio": "linea-bio",
     // Agroquímicos subcategories
-    Fertilizantes: "fertilizantes",
+    Bioestimulantes: "bioestimulantes",
     "Fumigantes de suelo": "fumigantes-de-suelo",
     Fungicidas: "fungicidas",
     Herbicidas: "herbicidas",
