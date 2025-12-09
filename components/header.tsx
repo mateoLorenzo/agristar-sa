@@ -25,6 +25,7 @@ export default function Header() {
     { label: "Productos", href: "/productos" },
     { label: "Información", href: "/informacion" },
     { label: "Acerca", href: "/acerca" },
+    { label: "Datos Tributarios", href: "/datos-tributarios" },
   ];
 
   // Animación inicial del header (drawer effect)
