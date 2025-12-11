@@ -12,7 +12,6 @@ export default function Footer() {
   const companyAnimation = useScrollAnimation({ delay: 0.08 });
   const agroquimicosAnimation = useScrollAnimation({ delay: 0.16 });
   const lineaBioAnimation = useScrollAnimation({ delay: 0.24 });
-  const socialAnimation = useScrollAnimation({ delay: 0.28 });
 
   // Función para scroll smooth al top cuando ya estás en home
   const handleHomeClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -24,7 +23,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="text-white py-24 pb-12 m-0"
+      className="text-white py-24 pb-6 m-0"
       style={{
         background: "#101C1C",
       }}
@@ -232,103 +231,97 @@ export default function Footer() {
               <li className="text-white/70 text-[0.9375rem]">
                 Buenos Aires, Argentina
               </li>
+              <li className="flex gap-4 mt-2">
+                <Link
+                  href="/contacto"
+                  aria-label="Contacto"
+                  className="text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </Link>
+                <a
+                  href="https://www.instagram.com/agristar.arg/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://www.youtube.com/channel/UCwyjvmxeHYUdJNcb9DNXdfw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                  className="text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
+                  </svg>
+                </a>
+                <a
+                  href="https://www.linkedin.com/company/agri-star-s-a-"
+                  target="_blank"
+                  aria-label="LinkedIn"
+                  className="text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
+                >
+                  <svg
+                    width="20"
+                    height="20"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
+                  </svg>
+                </a>
+              </li>
             </ul>
           </div>
         </div>
 
-        <div className="pt-12 border-t border-white/10">
-          <div
-            ref={socialAnimation.ref}
-            className="flex gap-6"
-            style={{
-              opacity: socialAnimation.isVisible ? 1 : 0,
-              transform: socialAnimation.isVisible
-                ? "translateY(0)"
-                : "translateY(20px)",
-              transition: "opacity 0.5s ease-out, transform 0.5s ease-out",
-            }}
-          >
-            <Link
-              href="/contacto"
-              aria-label="Contacto"
-              className="text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-                <polyline points="22,6 12,13 2,6" />
-              </svg>
-            </Link>
-            <a
-              href="https://www.instagram.com/agristar.arg/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Instagram"
-              className="text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-            </a>
-
-            <a
-              href="https://www.youtube.com/channel/UCwyjvmxeHYUdJNcb9DNXdfw"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube"
-              className="text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
-              </svg>
-            </a>
-            <a
-              href="https://www.linkedin.com/company/agri-star-s-a-"
-              target="_blank"
-              aria-label="LinkedIn"
-              className="text-white/70 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-white focus-visible:outline-offset-2 rounded"
-            >
-              <svg
-                width="20"
-                height="20"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-              >
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </a>
-          </div>
+        <div className="pt-8 border-t border-white/10">
+          <p className="text-white/50 text-sm text-center">
+            © {new Date().getFullYear()} Agri Star S.A. Todos los derechos
+            reservados.
+          </p>
         </div>
       </div>
     </footer>
