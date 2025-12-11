@@ -214,23 +214,19 @@ export default function ContactoPage() {
                     <SelectContent>
                       <SelectItem value="tecnica">Técnica</SelectItem>
                       <SelectItem value="comercial-cuyo">
-                        Comercial Zona Cuyo y Valle (Mendoza, San Luis, San
-                        Juan, Rio Negro y Neuquén)
+                        Comercial Zona Cuyo (Mendoza, San Luis, San Juan)
                       </SelectItem>
-                      <SelectItem value="comercial-sur-ba">
-                        Comercial Zona Sur Buenos Aires (Centro y sur de Buenos
+                      <SelectItem value="comercial-valle">
+                        Comercial Zona Valle (Río Negro, Neuquén, Sur de Buenos
                         Aires hasta Viedma)
                       </SelectItem>
-                      <SelectItem value="comercial-norte-ba">
-                        Comercial Zona Norte Buenos Aires y Santa Fe (Cinturón
-                        Hortícola La Plata, San Pedro, Rosario y Santa Fe)
+                      <SelectItem value="comercial-sur-ba">
+                        Comercial Zona Sur Buenos Aires (Sudeste de Buenos
+                        Aires)
                       </SelectItem>
-                      <SelectItem value="comercial-nea">
-                        Comercial Zona Nea (Entre Ríos, Corrientes y Chaco)
-                      </SelectItem>
-                      <SelectItem value="comercial-noa">
-                        Comercial Zona Noa (Santiago del Estero, Tucumán, Salta
-                        Y Jujuy)
+                      <SelectItem value="comercial-ba-sf">
+                        Comercial Zona Buenos Aires y Santa Fe (Cinturón
+                        Hortícola La Plata, San Pedro y Mar del Plata)
                       </SelectItem>
                     </SelectContent>
                   </Select>

@@ -32,15 +32,14 @@ export default function ContactFormEmail({
   // Mapeo de áreas para mostrar el nombre completo
   const areaNames: Record<string, string> = {
     tecnica: "Técnica",
-    "comercial-cuyo":
-      "Comercial Zona Cuyo y Valle (Mendoza, San Luis, San Juan, Rio Negro y Neuquén)",
+    "comercial-cuyo": "Comercial Zona Cuyo (Mendoza, San Luis, San Juan)",
+    // "comercial-sur-ba":
+    "comercial-valle":
+      "Comercial Zona Valle (Río Negro, Neuquén, Sur de Buenos Aires hasta Viedma)",
     "comercial-sur-ba":
-      "Comercial Zona Sur Buenos Aires (Centro y sur de Buenos Aires hasta Viedma)",
-    "comercial-norte-ba":
-      "Comercial Zona Norte Buenos Aires y Santa Fe (Cinturón Hortícola La Plata, San Pedro, Rosario y Santa Fe)",
-    "comercial-nea": "Comercial Zona Nea (Entre Ríos, Corrientes y Chaco)",
-    "comercial-noa":
-      "Comercial Zona Noa (Santiago del Estero, Tucumán, Salta Y Jujuy)",
+      "Comercial Zona Sur Buenos Aires (Sudeste de Buenos Aires)",
+    "comercial-ba-sf":
+      "Comercial Zona Buenos Aires y Santa Fe (Cinturón Hortícola La Plata, San Pedro y Mar del Plata)",
   };
 
   const areaDisplay = area ? areaNames[area] || area : "No especificada";
