@@ -141,16 +141,29 @@ export default function Header() {
             </ul>
           </nav>
 
-          {/* Desktop Contact Button */}
-          <Link
-            href="/contacto"
-            className="hidden md:block px-6 py-2.5 rounded-lg text-[0.9375rem] font-medium transition-all duration-300 hover:opacity-90 hover:-translate-y-px"
-            style={{
-              color: shouldUseWhiteBackground ? "#1a1a1a" : "#ffffff",
-            }}
-          >
-            Contactanos
-          </Link>
+          {/* Desktop Buttons */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="http://45.227.68.124/PEP/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-2.5 rounded-lg text-[0.9375rem] font-medium transition-all duration-300 hover:opacity-90 hover:-translate-y-px"
+              style={{
+                color: shouldUseWhiteBackground ? "#1a1a1a" : "#ffffff",
+              }}
+            >
+              Login
+            </a>
+            <Link
+              href="/contacto"
+              className="px-6 py-2.5 rounded-lg text-[0.9375rem] font-medium transition-all duration-300 hover:opacity-90 hover:-translate-y-px"
+              style={{
+                color: shouldUseWhiteBackground ? "#1a1a1a" : "#ffffff",
+              }}
+            >
+              Contactanos
+            </Link>
+          </div>
 
           {/* Mobile Hamburger Menu */}
           <button
@@ -206,7 +219,16 @@ export default function Header() {
             </ul>
           </nav>
 
-          <div className="border-t border-[#E5E7EB] px-6 py-4">
+          <div className="border-t border-[#E5E7EB] px-6 py-4 space-y-3">
+            <a
+              href="http://45.227.68.124/PEP/login"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="block w-full bg-white hover:bg-[#F3F4F6] text-[#1a1a1a] border border-[#E5E7EB] py-3 px-6 rounded-lg font-medium text-center transition-colors"
+            >
+              Login
+            </a>
             <Link
               href="/contacto"
               onClick={() => setIsMobileMenuOpen(false)}
