@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getProductById, getRelatedProducts } from "../_data/helpers";
 import { PRODUCTS } from "../_data/products";
 import { RelatedProductsCarousel } from "../_components/RelatedProductsCarousel";
+import { ProductImage } from "../_components/ProductImage";
 import type { Metadata } from "next";
 
 type Props = {
@@ -155,18 +156,7 @@ export default async function ProductDetailPage({ params }: Props) {
           <div className="order-1 lg:order-1 flex flex-col space-y-4">
             {/* Product Logo - proporción 2:4 en mobile, altura controlada en desktop */}
             <div className="bg-white rounded-xl md:rounded-2xl border border-[#E5E7EB] p-6 sm:p-8 md:p-12 shadow-sm">
-              <div className="relative w-full aspect-[4/2] lg:aspect-auto lg:h-[280px] flex items-center justify-center">
-                <div className="relative w-full h-full max-w-md mx-auto">
-                  <Image
-                    src={product.logoUrl}
-                    alt={`Logo de ${product.name}`}
-                    fill
-                    className="object-contain"
-                    priority
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-              </div>
+              <ProductImage logoUrl={product.logoUrl} name={product.name} />
             </div>
 
             {/* Documents Section - Debajo de la imagen */}

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import type { Product } from "../_data/types";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
@@ -13,6 +14,7 @@ interface ProductCardProps {
 export function ProductCard({ product, index = 0 }: ProductCardProps) {
   console.log("product from carousel", product);
   const animation = useScrollAnimation({ delay: 0.2 }); // Mismo delay para todos los productos
+  const [imageError, setImageError] = useState(false);
 
   return (
     <Link
@@ -34,14 +36,21 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
         {/* Logo Container */}
         <div className="bg-[#F8F9FB] rounded-lg p-4 md:p-5 mb-3 md:mb-4 flex items-center justify-center min-h-[80px] md:min-h-[100px]">
           <div className="relative w-full h-16 md:h-20">
-            <Image
-              src={product.logoUrl}
-              alt={`Logo de ${product.name}`}
-              fill
-              className="object-contain"
-              loading="lazy"
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
+            {product.logoUrl && !imageError ? (
+              <Image
+                src={product.logoUrl}
+                alt={`Logo de ${product.name}`}
+                fill
+                className="object-contain"
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-gray-400">
+                <span className="text-sm">Sin imagen</span>
+              </div>
+            )}
           </div>
         </div>
 
