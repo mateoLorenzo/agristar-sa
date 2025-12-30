@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 export default function HomeHero() {
-  const title = useScrollAnimation({ delay: 0.2 });
-  const subtitle = useScrollAnimation({ delay: 0.3 });
-  const buttons = useScrollAnimation({ delay: 0.4 });
-  const chevron = useScrollAnimation({ delay: 0.6 });
+  const title = useScrollAnimation({ delay: 0 });
+  const subtitle = useScrollAnimation({ delay: 0.1 });
+  const buttons = useScrollAnimation({ delay: 0.2 });
+  const chevron = useScrollAnimation({ delay: 0.2 });
 
   const handleScrollToNext = () => {
     window.scrollTo({
