@@ -17,33 +17,39 @@ const categories = [
   {
     name: "Fungicidas",
     description: "Prevenga y elimine las principales enfermedades fúngicas.",
-    image: "/fungicide-agricultural-spray-crops.jpg",
+    // image: "/fungicide-agricultural-spray-crops.jpg",
+    image: "/portadas/funguicidas.jpeg",
   },
   {
     name: "Insecticidas",
     description: "Protección eficaz frente a las plagas más comunes.",
-    image: "/insecticide-pest-control-agriculture.jpg",
+    // image: "/insecticide-pest-control-agriculture.jpg",
+    image: "/portadas/insecticidas.jpeg",
   },
   {
     name: "Herbicidas",
     description: "Soluciones selectivas para un control total de malezas.",
-    image: "/herbicide-weed-control-farming.jpg",
+    // image: "/herbicide-weed-control-farming.jpg",
+    image: "/portadas/herbicidas.jpeg",
   },
   {
     name: "Bioestimulantes",
     description:
       "Formulaciones que potencian el crecimiento y la productividad.",
-    image: "/fertilizer-soil-nutrients-agriculture.jpg",
+    // image: "/fertilizer-soil-nutrients-agriculture.jpg",
+    image: "/portadas/bioestimulantes.jpeg",
   },
   {
     name: "Coadyuvantes, Fitoreguladores y PGR",
     description: "Optimizan aplicaciones y estimulan el desarrollo vegetal.",
-    image: "/fitoreguladores-temp.jpg",
+    // image: "/fitoreguladores-temp.jpg",
+    image: "/portadas/coadyudantes_pgrs.jpeg",
   },
   {
     name: "Fumigantes de suelo",
     description: "Preparan el terreno para un cultivo sano y uniforme.",
-    image: "/soil-fumigation-agriculture-treatment.jpg",
+    // image: "/soil-fumigation-agriculture-treatment.jpg",
+    image: "/portadas/biofumigantes.jpeg",
   },
 ];
 

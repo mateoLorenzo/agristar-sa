@@ -96,7 +96,8 @@ export default function CTASection() {
         >
           <img
             // src="/person-installing-solar-panels-on-roof.jpg"
-            src="/image-1.jpg"
+            // src="/image-1.jpg"
+            src="/portadas/calidadunica.jpeg"
             alt="Professional installing solar panels"
             // className="w-full h-auto block"
             className="h-full w-full block object-cover object-center"

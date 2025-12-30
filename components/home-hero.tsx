@@ -22,7 +22,8 @@ export default function HomeHero() {
       <div className="absolute inset-0 z-0">
         <img
           // src="/wind-turbines-in-green-landscape-aerial-view.jpg" // TODO: Change to the actual image
-          src="/hero-image.jpg"
+          // src="/hero-image.jpg"
+          src="/portadas/portada.jpeg"
           alt="Wind turbines in a lush green landscape"
           className="w-full h-full object-cover object-center"
         />
