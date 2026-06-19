@@ -663,7 +663,7 @@
     "id": "silwet-evo",
     "name": "SILWET EVO",
     "logoUrl": "/newProducts/SILWET.jpg",
-    "categories": [],
+    "categories": ["agroquimicos", "coadyuvantes-fitoreguladores-pgr"],
     "description": "SILWET EVO es un coadyuvante siliconado que reduce notoriamente la tensión superficial de las gotas de la pulverización, favoreciendo la eficacia de la aplicación de los productos fitosanitarios, permitiendo un mojado uniforme y asegurando una cobertura total con el caldo de aspersión. En hojas y frutos con superficies cerosas y/o pilosas, aumenta la capacidad de mojado.",
     "flyerUrl": null,
     "safetySheetUrl": "https://drive.google.com/file/d/14YRcDVUh8RYHANHRCJHhlURmkY3Y9ML-/view?usp=sharing",
