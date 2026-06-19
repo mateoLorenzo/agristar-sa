@@ -212,22 +212,6 @@ export default function Footer() {
               Contacto
             </h3>
             <ul className="list-none flex flex-col gap-3">
-              <li>
-                <a
-                  href="tel:+541142312052"
-                  className="text-white/70 text-[0.9375rem] transition-colors hover:text-white"
-                >
-                  (011) 4231-2052
-                </a>
-              </li>
-              <li>
-                <a
-                  href="mailto:info@agristar.com.ar"
-                  className="text-white/70 text-[0.9375rem] transition-colors hover:text-white"
-                >
-                  info@agristar.com.ar
-                </a>
-              </li>
               <li className="text-white/70 text-[0.9375rem]">
                 Buenos Aires, Argentina
               </li>

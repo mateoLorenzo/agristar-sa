@@ -95,15 +95,6 @@ export default function DatosTributariosPage() {
                 <strong>Dirección:</strong> Garibaldi 2619, B1834BCD Llavallol,
                 Provincia de Buenos Aires, Argentina
               </p>
-              <p>
-                <strong>Teléfono:</strong>{" "}
-                <a
-                  href="tel:+541142312052"
-                  className="text-[#659C39] hover:underline"
-                >
-                  (011) 4231-2052
-                </a>
-              </p>
             </div>
           </div>
         </div>
