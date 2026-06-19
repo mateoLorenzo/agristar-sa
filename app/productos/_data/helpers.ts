@@ -31,23 +31,19 @@ export function matchesQuery(name: string, query: string): boolean {
 export function filterProducts(
   products: Product[],
   selectedCategories: Set<string>,
-  searchQuery: string
+  searchQuery: string,
 ): Product[] {
   return products.filter((product) => {
-    // Si no hay categorías seleccionadas, mostrar todos los productos
     if (selectedCategories.size === 0) {
       return matchesQuery(product.name, searchQuery);
     }
 
-    // Verificar si el producto tiene alguna de las categorías seleccionadas
-    // Los productos del JSON tienen un array de categorías en formato slug
     const productCategories = (product as any).categories || [];
     const hasMatchingCategory = Array.from(selectedCategories).some(
       (selectedCat) => {
-        // Convertir la categoría seleccionada a slug para comparar
         const selectedSlug = categoryToSlug(selectedCat);
         return productCategories.includes(selectedSlug);
-      }
+      },
     );
 
     const matchesSearch = matchesQuery(product.name, searchQuery);
@@ -60,17 +56,15 @@ export function filterProducts(
  */
 function categoryToSlug(category: string): string {
   const categoryMap: Record<string, string> = {
-    // Main categories
     Agroquímicos: "agroquimicos",
     "Línea Bio": "linea-bio",
-    // Agroquímicos subcategories
+
     Bioestimulantes: "bioestimulantes",
     "Fumigantes de suelo": "fumigantes-de-suelo",
     Fungicidas: "fungicidas",
     Herbicidas: "herbicidas",
     Insecticidas: "insecticidas",
-    "Coadyuvantes, Fitoreguladores y PGR": "coadyuvantes-fitoreguladores-pgr",
-    // Línea Bio subcategories
+    Coadyuvantes: "coadyuvantes-fitoreguladores-pgr",
     Bioinsumos: "bioinsumos",
     Feromonas: "feromonas",
   };
@@ -90,21 +84,19 @@ export function getProductById(id: string): Product | undefined {
  */
 export function getRelatedProducts(
   currentProductId: string,
-  limit: number = 12
+  limit: number = 12,
 ): Product[] {
   const currentProduct = getProductById(currentProductId);
   if (!currentProduct) return [];
 
-  // Obtener las categorías del producto actual del JSON
   const currentCategories = (currentProduct as any).categories || [];
 
   return PRODUCTS.filter((product) => {
     if (product.id === currentProductId) return false;
 
-    // Verificar si el producto comparte alguna categoría con el producto actual
     const productCategories = (product as any).categories || [];
     return productCategories.some((cat: string) =>
-      currentCategories.includes(cat)
+      currentCategories.includes(cat),
     );
   }).slice(0, limit);
 }

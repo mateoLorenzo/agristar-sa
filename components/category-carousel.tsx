@@ -40,7 +40,7 @@ const categories = [
     image: "/portadas/bioestimulantes.jpeg",
   },
   {
-    name: "Coadyuvantes, Fitoreguladores y PGR",
+    name: "Coadyuvantes",
     description: "Optimizan aplicaciones y estimulan el desarrollo vegetal.",
     // image: "/fitoreguladores-temp.jpg",
     image: "/portadas/coadyudantes_pgrs.jpeg",

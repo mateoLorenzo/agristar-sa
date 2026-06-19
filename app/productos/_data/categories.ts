@@ -1,6 +1,5 @@
 import type { Category, CategoryStructure } from "./types";
 
-// Para retrocompatibilidad
 export const CATEGORIES: Category[] = [
   "Herbicidas",
   "Insecticidas",
@@ -9,7 +8,6 @@ export const CATEGORIES: Category[] = [
   "Bioestimulantes",
 ];
 
-// Nueva estructura jerárquica
 export const CATEGORY_HIERARCHY: CategoryStructure[] = [
   {
     name: "Agroquímicos",
@@ -19,7 +17,7 @@ export const CATEGORY_HIERARCHY: CategoryStructure[] = [
       "Fungicidas",
       "Herbicidas",
       "Insecticidas",
-      "Coadyuvantes, Fitoreguladores y PGR",
+      "Coadyuvantes",
     ],
   },
   {

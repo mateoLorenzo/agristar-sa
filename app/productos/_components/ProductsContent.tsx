@@ -163,7 +163,7 @@ function categoryToSlug(category: string): string {
     Fungicidas: "fungicidas",
     Herbicidas: "herbicidas",
     Insecticidas: "insecticidas",
-    "Coadyuvantes, Fitoreguladores y PGR": "coadyuvantes-fitoreguladores-pgr",
+    Coadyuvantes: "coadyuvantes-fitoreguladores-pgr",
     // Línea Bio subcategories
     Bioinsumos: "bioinsumos",
     Feromonas: "feromonas",

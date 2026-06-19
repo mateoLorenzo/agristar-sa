@@ -43,7 +43,7 @@ const categoryMapping: Record<
   },
   "coadyuvantes-fitoreguladores-pgr": {
     mainCategory: "Agroquímicos",
-    subcategory: "Coadyuvantes, Fitoreguladores y PGR",
+    subcategory: "Coadyuvantes",
     category: "Aditivos",
   },
   "fumigantes-de-suelo": {

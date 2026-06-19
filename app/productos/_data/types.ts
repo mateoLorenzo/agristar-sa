@@ -1,20 +1,17 @@
-// Categorías principales
 export type MainCategory = "Agroquímicos" | "Línea Bio";
 
-// Subcategorías por categoría principal
 export type AgroquimicosSubcategory =
   | "Bioestimulantes"
   | "Fumigantes de suelo"
   | "Fungicidas"
   | "Herbicidas"
   | "Insecticidas"
-  | "Coadyuvantes, Fitoreguladores y PGR";
+  | "Coadyuvantes";
 
 export type LineaBioSubcategory = "Bioinsumos" | "Feromonas";
 
 export type Subcategory = AgroquimicosSubcategory | LineaBioSubcategory;
 
-// Para retrocompatibilidad
 export type Category =
   | "Herbicidas"
   | "Insecticidas"
@@ -26,18 +23,15 @@ export type Product = {
   id: string;
   name: string;
   logoUrl: string;
-  categories: string[]; // Array de slugs de categorías (e.g., ["bioinsumos", "linea-bio"])
+  categories: string[];
   description?: string;
-  // Campos de documentación (nombres coinciden con el JSON)
   flyerUrl?: string | null;
   safetySheetUrl?: string | null;
   labelUrl?: string | null;
   organicCertificateUrl?: string | null;
-  // Campos calculados/agregados dinámicamente (no en JSON original)
   category?: Category;
   mainCategory?: MainCategory;
   subcategory?: Subcategory;
-  // Campos opcionales adicionales (por si se agregan en el futuro)
   composition?: string;
   applications?: string[];
   characteristics?: string[];
@@ -47,10 +41,9 @@ export type Product = {
     organic?: boolean;
     pdf?: string;
   };
-  // Aliases para retrocompatibilidad (mapeados desde los campos originales)
-  brochure?: string; // Alias de flyerUrl
-  safetySheet?: string; // Alias de safetySheetUrl
-  label?: string; // Alias de labelUrl
+  brochure?: string;
+  safetySheet?: string;
+  label?: string;
 };
 
 export type CategoryStructure = {

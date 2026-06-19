@@ -79,7 +79,7 @@ export default async function ProductDetailPage({ params }: Props) {
     },
     "coadyuvantes-fitoreguladores-pgr": {
       mainCategory: "Agroquímicos",
-      subcategory: "Coadyuvantes, Fitoreguladores y PGR",
+      subcategory: "Coadyuvantes",
     },
     "fumigantes-de-suelo": {
       mainCategory: "Agroquímicos",

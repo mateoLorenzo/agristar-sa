@@ -161,10 +161,10 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  href="/productos?cat=Agroquímicos&sub=Coadyuvantes, Fitoreguladores y PGR"
+                  href="/productos?cat=Agroquímicos&sub=Coadyuvantes"
                   className="text-white/70 text-[0.9375rem] transition-colors hover:text-white"
                 >
-                  Coadyuvantes / PGR
+                  Coadyuvantes
                 </Link>
               </li>
               <li>
