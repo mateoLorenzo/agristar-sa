@@ -66,9 +66,18 @@ export default async function ProductDetailPage({ params }: Props) {
   }
 
   // 4. Mapear las categorías para obtener mainCategory y subcategory
-  const categoryMapping: Record<string, any> = {
+  // Parent slugs only define the main category, never a subcategory
+  const parentLabels: Record<string, string> = {
+    agroquimicos: "Agroquímicos",
+    "linea-bio": "Línea Bio",
+  };
+
+  // Subcategory slugs map to both their main category and display label
+  const subcategoryMapping: Record<
+    string,
+    { mainCategory: string; subcategory: string }
+  > = {
     bioinsumos: { mainCategory: "Línea Bio", subcategory: "Bioinsumos" },
-    "linea-bio": { mainCategory: "Línea Bio", subcategory: "Bioinsumos" },
     feromonas: { mainCategory: "Línea Bio", subcategory: "Feromonas" },
     herbicidas: { mainCategory: "Agroquímicos", subcategory: "Herbicidas" },
     insecticidas: { mainCategory: "Agroquímicos", subcategory: "Insecticidas" },
@@ -85,21 +94,27 @@ export default async function ProductDetailPage({ params }: Props) {
       mainCategory: "Agroquímicos",
       subcategory: "Fumigantes de suelo",
     },
-    agroquimicos: {
-      mainCategory: "Agroquímicos",
-      subcategory: "Bioestimulantes",
-    },
   };
 
-  const firstCategory = rawProduct.categories?.[0] || "bioinsumos";
-  const mapping =
-    categoryMapping[firstCategory] || categoryMapping["bioinsumos"];
+  const categories = rawProduct.categories ?? [];
+  // Prefer the real subcategory slug, skipping the parent category slug
+  const subcategorySlug = categories.find((c) => subcategoryMapping[c]);
+  const parentSlug = categories.find((c) => parentLabels[c]);
+
+  const mainCategory = subcategorySlug
+    ? subcategoryMapping[subcategorySlug].mainCategory
+    : parentSlug
+      ? parentLabels[parentSlug]
+      : "Línea Bio";
+  const subcategory = subcategorySlug
+    ? subcategoryMapping[subcategorySlug].subcategory
+    : null;
 
   // 5. Construir el objeto producto con toda la data necesaria
   const product = {
     ...rawProduct,
-    mainCategory: mapping.mainCategory,
-    subcategory: mapping.subcategory,
+    mainCategory,
+    subcategory,
   };
 
   // 6. Obtener productos relacionados
@@ -146,7 +161,8 @@ export default async function ProductDetailPage({ params }: Props) {
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 rounded-full bg-[#659C39]" />
             <p className="text-xs sm:text-sm text-[#6B7280] font-medium">
-              {product.mainCategory} • {product.subcategory}
+              {product.mainCategory}
+              {product.subcategory ? ` • ${product.subcategory}` : ""}
             </p>
           </div>
         </div>
