@@ -114,10 +114,10 @@ const logoFileMap: Record<string, string> = {
   "FITOCEL 75": "Fitocel 75.png",
   "CARBENDAZIM INSUAGRO": "Carbendazim Insuagro.png",
   PHOTON: "PHOTON.png",
-  STARON: "STARON.jpg",
-  STARZONE: "Starzone.jpg",
+  STARON: "STARON.png",
+  STARZONE: "Starzone.png",
   "STARZONE 36 CS": "logo STARZONE 36 CS.png",
-  STARCHER: "Starcher.jpg",
+  STARCHER: "Starcher.png",
   STARTOP: "Startop.png",
   // ✅ Nuevas imágenes agregadas
   "SUPER ONECIDE": "super-onecide.png",

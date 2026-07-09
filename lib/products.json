@@ -563,7 +563,7 @@
   {
     "id": "anamed-wb",
     "name": "ANAMED WB",
-    "logoUrl": "/newProducts/Anamed WB.jpg",
+    "logoUrl": "/newProducts/Anamed WB.png",
     "categories": ["feromonas", "linea-bio"],
     "description": "ANAMED WB es un producto para atraer moscas desarrollado para programas de control de mosca de la fruta. Las moscas son atraídas desde largas distancias y una vez que se acercan al producto son estimuladas a alimentarse del atrayente.",
     "flyerUrl": "https://drive.google.com/file/d/1a9GPgeUtUUpsbd44KCb0MJplld_eaI_t/view?usp=sharing",
@@ -574,7 +574,7 @@
   {
     "id": "belstar",
     "name": "BELSTAR",
-    "logoUrl": "/newProducts/Belstar.jpg",
+    "logoUrl": "/newProducts/Belstar.png",
     "categories": ["agroquimicos", "fungicidas"],
     "description": "BELSTAR es un fungicida de acción prolongada con efecto preventivo y curativo. Actúa por inhibición de la germinación de esporas de hongos, la elongación del tubo terminativo, el crecimiento micelar y la esporulación. Posee efecto translaminar y acción sistémica local. Asimismo, otorga una prolongada persistencia de acción y reduce el riesgo de resistencia, por combinar ingredientes activos pertenecientes a distintos grupos químicos.",
     "flyerUrl": null,
@@ -585,7 +585,7 @@
   {
     "id": "bromostar-ec",
     "name": "BROMOSTAR EC",
-    "logoUrl": "/newProducts/BROMOSTAR EC.jpg",
+    "logoUrl": "/newProducts/BROMOSTAR EC.png",
     "categories": ["agroquimicos", "herbicidas"],
     "description": "BROMOSTAR EC es un herbicida formulado para el control de malezas en los cultivos indicados. Asegura una aplicación eficaz y un control eficiente de las principales malezas, contribuyendo a proteger el rendimiento del cultivo. Para conocer dosis, cultivos y modo de empleo recomendados, consulte la hoja de seguridad y el marbete del producto.",
     "flyerUrl": null,
@@ -596,7 +596,7 @@
   {
     "id": "clorantrastar",
     "name": "CLORANTRASTAR",
-    "logoUrl": "/newProducts/Clorantrastar.jpg",
+    "logoUrl": "/newProducts/Clorantrastar.png",
     "categories": ["agroquimicos", "insecticidas"],
     "description": "CLORANTRASTAR es un insecticida formulado como suspensión concentrada para aplicación por aspersión, utilizando agua como vehículo. Su principio activo, clorantraniliprole, pertenece a la familia química “diamidas antranílicas” que posee un nuevo modo de acción actuando como agonista (activador) de los receptores de rianodina de los insectos, afectando el proceso de contracción muscular. Los individuos afectados presentan parálisis, letargia, rápidamente dejan de comer y mueren en el transcurso de 1 - 3 días. CLORANTRASTAR es especialmente efectivo por ingestión de las partes tratadas de las plantas, aunque también tiene actividad por contacto. Este producto puede ser usado como parte de un programa de Manejo Integrado de Plagas (MIP), porque no afecta a los insectos “benécos” cuando es usado en las condiciones indicadas en esta etiqueta.",
     "flyerUrl": null,
@@ -607,7 +607,7 @@
   {
     "id": "cosavet-80-wg",
     "name": "COSAVET 80 WG",
-    "logoUrl": "/newProducts/Cosavet 80 WG.jpg",
+    "logoUrl": "/newProducts/Cosavet 80 WG.png",
     "categories": ["agroquimicos", "fungicidas"],
     "description": "COSAVET 80 WG es un fungicida de contacto, preventivo y curativo para el control de oídium y ácaros que afectan a cultivos hortícolas (Pimiento), florícolas (Rosales) y frutícolas (Cítricos, Duraznero, Manzano, Peral, Melón y Vid).",
     "flyerUrl": null,
@@ -640,7 +640,7 @@
   {
     "id": "noctovi-ff",
     "name": "NOCTOVI FF",
-    "logoUrl": "/newProducts/NOCTOVI FF.jpg",
+    "logoUrl": "/newProducts/NOCTOVI FF.png",
     "categories": ["feromonas", "linea-bio"],
     "description": "NOCTOVI® FF es un atrayente alimentario para Noctuideos, que mezclado con un insecticida provoca un efecto de atracción y muerte. Atractivo para polillas de la familia Noctuidae, especialmente Spodoptera sp., Helicoverpa sp., Chrysodeixis Includens, Anticarsia, Agrotis.",
     "flyerUrl": "https://drive.google.com/file/d/1kCe51pYazPKVeh9rdp9wo1CSj1xasztu/view?usp=sharing",
@@ -662,7 +662,7 @@
   {
     "id": "silwet-evo",
     "name": "SILWET EVO",
-    "logoUrl": "/newProducts/SILWET.jpg",
+    "logoUrl": "/newProducts/SILWET.png",
     "categories": ["agroquimicos", "coadyuvantes-fitoreguladores-pgr"],
     "description": "SILWET EVO es un coadyuvante siliconado que reduce notoriamente la tensión superficial de las gotas de la pulverización, favoreciendo la eficacia de la aplicación de los productos fitosanitarios, permitiendo un mojado uniforme y asegurando una cobertura total con el caldo de aspersión. En hojas y frutos con superficies cerosas y/o pilosas, aumenta la capacidad de mojado.",
     "flyerUrl": null,
@@ -673,7 +673,7 @@
   {
     "id": "spirostar",
     "name": "SPIROSTAR",
-    "logoUrl": "/newProducts/spirostar.jpg",
+    "logoUrl": "/newProducts/spirostar.png",
     "categories": ["agroquimicos", "insecticidas"],
     "description": "SPIROSTAR actúa en la plaga objetivo principalmente a través de la ingestión. Por lo tanto, la eficacia biológica completa depende de la penetración de la sustancia activa en los tejidos foliares y translocación generalizada dentro de la planta. Por su modo de acción de doble sistemia, posee la propiedad de poder traslocarse vía acropétala a través del xilema, y simultáneamente vía basipétala y acropétala vía floema llegando a todos los puntos de la planta inclusive raíces. SPIROSTAR actúa interfiriendo el metabolismo de lípidos alterando el balance energético de las plagas y tiene acción fisiológica que altera su función reguladora hormonal. El insecto básicamente no puede mudar o pasar a su siguiente estado ninfal, quedando atrapado en estado quiescente, llevando a la muerte al insecto tratado.",
     "flyerUrl": null,
@@ -684,7 +684,7 @@
   {
     "id": "starcher",
     "name": "STARCHER",
-    "logoUrl": "/newProducts/Starcher.jpg",
+    "logoUrl": "/products/logos-nuevos/Starcher.png",
     "categories": [],
     "description": "STARCHER es un herbicida sistémico de aplicación postemergente, que controla malezas gramíneas en el cultivo de arroz. Es absorbido a través del follaje y se transloca a los tejidos meristemáticos de la planta donde ejerce su acción herbicida. Las malezas detienen su crecimiento a las pocas horas de la aplicación y pocos días después se observan: clorosis en las hojas y tallos, coloración que va del rojo al morado y necrosis en los puntos de crecimiento.",
     "flyerUrl": null,
@@ -717,7 +717,7 @@
   {
     "id": "staron",
     "name": "STARON",
-    "logoUrl": "/newProducts/STARON.jpg",
+    "logoUrl": "/products/logos-nuevos/STARON.png",
     "categories": ["agroquimicos", "herbicidas"],
     "description": "STARON es un herbicida selectivo de pre y post emergencia temprana. Es absorbido principalmente por las raíces, y en menor proporción por el follaje. Se aplica en un gran número de cultivos, para el control simultáneo de malezas de hoja ancha y de hoja angosta (pastos y gramíneas), después de la siembra y antes de la germinación del cultivo (herbicida de premergencia) o cuando las plantas del cultivo y las malezas han aparecido sobre la superficie del suelo (herbicida de postemergencia).",
     "flyerUrl": null,
@@ -728,7 +728,7 @@
   {
     "id": "startina-3-6-ec",
     "name": "STARTINA 3,6_ EC",
-    "logoUrl": "/newProducts/Startina 3.6 EC.jpg",
+    "logoUrl": "/newProducts/Startina 3.6 EC.png",
     "categories": ["agroquimicos", "insecticidas"],
     "description": "STARTINA 3,6% EC es un insecticida-acaricida de origen natural, que actúa por ingestión y por contacto directo y de movimiento translaminar. Actúa en forma curativa y preventiva. Controla ácaros e insectos (estados adultos e inmaduros). Es de acción lenta y demora entre 3 y 7 días, dependiendo de la temperatura, para alcanzar la mortalidad máxima, si bien el insecto durante este período ya no se alimenta. No requiere el agregado de adherentes o surfactantes. Se recomienda usar Aceite Mineral de Verano cuando se aplique en cítricos, peras y para control de polilla en cultivo de tomate.\n\nClasificación (modo o sitio de acción): 6 (IRAC): 6 – Activadores del canal de cloruro",
     "flyerUrl": null,
@@ -750,7 +750,7 @@
   {
     "id": "starzone",
     "name": "STARZONE",
-    "logoUrl": "/newProducts/Starzone.jpg",
+    "logoUrl": "/products/logos-nuevos/Starzone.png",
     "categories": ["agroquimicos", "herbicidas"],
     "description": "STARZONE es un herbicida selectivo para los cultivos de arroz, soja y maní; estando especialmente indicado para el control de capín, pasto cuaresma, cola de zorro y otras malezas latifoliadas y gramíneas anuales. La absorción del herbicida se realiza a nivel de meristemas o puntos de crecimiento de la parte aérea de las malezas y también de las raíces, por lo tanto puede controlarlas tanto en aplicaciones pre-emergentes como post-emergentes.",
     "flyerUrl": null,
@@ -783,7 +783,7 @@
   {
     "id": "tubo-mata-picudo-tmp",
     "name": "TUBO MATA PICUDO (TMP)",
-    "logoUrl": "/newProducts/TUBO MATA PICUDO.jpg",
+    "logoUrl": "/newProducts/TUBO MATA PICUDO.png",
     "categories": [],
     "description": "TUBO MATA PICUDO (TMP)\n El TMP es un sistema de atracción y control para el Picudo del Algodonero (Anthonomus grandis). Está compuesto por una feromona que atrae al picudo y al ponerse en contacto con el insecticida del TMP muere.",
     "flyerUrl": "https://drive.google.com/file/d/1ltfc_mCelBdlLICL4H0SkDC9RCa_s4n-/view?usp=sharing",
