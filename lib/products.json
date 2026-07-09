@@ -790,5 +790,16 @@
     "safetySheetUrl": "https://drive.google.com/file/d/13V3836sE6ZSjrhfVvWFqB4YYdx269aHc/view?usp=sharing",
     "labelUrl": null,
     "organicCertificateUrl": null
+  },
+  {
+    "id": "lancelot",
+    "name": "LANCELOT",
+    "logoUrl": "/newProducts/Lancelot.png",
+    "categories": ["agroquimicos", "insecticidas"],
+    "description": "Lancelot es un insecticida organofosforado del Grupo 1B, formulado como polvo soluble a base de acefato al 75%, que actúa de forma sistémica y por contacto para controlar una amplia gama de plagas como isocas, pulgones, langostas y cochinillas. Gracias a su baja toxicidad para la fauna superior y su acción prolongada, es una solución versátil y segura para proteger cultivos de alfalfa, algodón, soja, cítricos, tomate, tabaco y césped, entre otros. Este producto de origen chino, inscripto en el SENASA bajo el Nº 38.090 y clasificado como Moderadamente Peligroso (Clase II), garantiza un control inmediato de insectos masticadores y chupadores mediante aplicaciones terrestres o aéreas.",
+    "flyerUrl": null,
+    "safetySheetUrl": "https://drive.google.com/file/d/12bWCanXUC4qhhXEL2JhCjCVCRy5utfXU/view?usp=sharing",
+    "labelUrl": "https://drive.google.com/file/d/123xwz6rMDvGoL12FxNQUsjKD6iJz3JI7/view?usp=sharing",
+    "organicCertificateUrl": null
   }
 ]
