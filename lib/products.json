@@ -801,5 +801,16 @@
     "safetySheetUrl": "https://drive.google.com/file/d/12bWCanXUC4qhhXEL2JhCjCVCRy5utfXU/view?usp=sharing",
     "labelUrl": "https://drive.google.com/file/d/123xwz6rMDvGoL12FxNQUsjKD6iJz3JI7/view?usp=sharing",
     "organicCertificateUrl": null
+  },
+  {
+    "id": "carbendazim",
+    "name": "CARBENDAZIM",
+    "logoUrl": "/newProducts/Carbendazim.png",
+    "categories": ["agroquimicos", "fungicidas"],
+    "description": "Carbendazim 50 % SC es un fungicida polivalente y sistémico de amplio espectro, que se absorbe por los órganos verdes y las raíces de los vegetales siendo su persistencia de acción de 2 a 3 semanas.\nPuede ser utilizado como Fungicida pre-cosecha y/o post-cosecha.",
+    "flyerUrl": null,
+    "safetySheetUrl": "https://drive.google.com/file/d/1rhq7hzcEzt1S3XKEjOryFY0OHjuh8xQo/view?usp=sharing",
+    "labelUrl": "https://drive.google.com/file/d/15VATJYJE5NB4-KnWme4l_RyiRDLV0o8y/view?usp=sharing",
+    "organicCertificateUrl": null
   }
 ]
