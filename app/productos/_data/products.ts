@@ -133,7 +133,7 @@ function getLocalLogoPath(productName: string, externalUrl: string): string {
   const fileName = logoFileMap[productName];
 
   if (fileName) {
-    return `/products/logos-nuevos/${fileName}`;
+    return `/products/logos-nuevos/${encodeURIComponent(fileName)}`;
   }
 
   // Fallback a la URL externa si no encontramos el archivo local
