@@ -718,7 +718,7 @@
     "id": "staron",
     "name": "STARON",
     "logoUrl": "/newProducts/STARON.jpg",
-    "categories": [],
+    "categories": ["agroquimicos", "herbicidas"],
     "description": "STARON es un herbicida selectivo de pre y post emergencia temprana. Es absorbido principalmente por las raíces, y en menor proporción por el follaje. Se aplica en un gran número de cultivos, para el control simultáneo de malezas de hoja ancha y de hoja angosta (pastos y gramíneas), después de la siembra y antes de la germinación del cultivo (herbicida de premergencia) o cuando las plantas del cultivo y las malezas han aparecido sobre la superficie del suelo (herbicida de postemergencia).",
     "flyerUrl": null,
     "safetySheetUrl": "https://drive.google.com/file/d/1dIcSJawXNK6yEwLvTdMab-_onf6NxWjK/view?usp=sharing",
